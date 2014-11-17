@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- CSS_START -->
+		<!--  <link rel="stylesheet" href="css/local-fonts.css"/> -->
+		<link rel="stylesheet" href="http://pasteup.guim.co.uk/0.0.5/css/fonts.pasteup.min.css"/>
+		<link rel="stylesheet" href="css/main.css"/>
+
+
+		<!-- CSS_END -->
+		<!-- JS_START -->
+		<script src='js/libs/jquery-2.1.1.js' type="text/javascript"></script>
+		<script src='js/libs/TweenMax.min.js' type="text/javascript"></script>
+		<script src="js/libs/touchmouse.js"></script>
+		<script src="js/libs/d3/d3.js" charset="utf-8"></script>
+		<script src="js/libs/underscore/underscore-min.js" charset="utf-8"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
+		<script src="js/libs/datejs/date-en-GB.js"></script>
+		
+		<!--  USE THIS REMOTELY -->
+		<!--<script src="//interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>-->
+		<!--  USE THIS LOCALLY -->
+		<script src="http://interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>
+		
+		<title>Rooney goals</title>
+
+		</head>
+	<body>
+
+		<div id='rooney-container'>
+
+
+		</div>
+
+	
+
+<script>
+//IE fixes and iframe init
+var makeUnselectable = function( $target ) {
+    $target
+        .addClass( 'unselectable' ) // All these attributes are inheritable
+        .attr( 'unselectable', 'on' ) // For IE9 - This property is not inherited, needs to be placed onto everything
+        .attr( 'draggable', 'false' ) // For moz and webkit, although Firefox 16 ignores this when -moz-user-select: none; is set, it's like these properties are mutually exclusive, seems to be a bug.
+        .on( 'dragstart', function() { return false; } );  // Needed since Firefox 16 seems to ingore the 'draggable' attribute we just applied above when '-moz-user-select: none' is applied to the CSS 
+
+    $target // Apply non-inheritable properties to the child elements
+        .find( '*' )
+        .attr( 'draggable', 'false' )
+        .attr( 'unselectable', 'on' ); 
+};
+
+var links = document.querySelectorAll('a');
+
+for(var i = 0; i < links.length; i++) {
+    		links[i].addEventListener('click', function(event) {
+        		event.preventDefault();
+        		iframeMessenger.navigate(this.href);
+    		}, false);
+}
+iframeMessenger.enableAutoResize();
+//
+
+
+//global vars
+var dataset =[], datasetRooney, datasetLineker, data;	
+
+
+$(function() {
+
+	$(document).ready(function() {
+		
+		initData();
+
+	})	
+
+	if(!Array.indexOf) {// IE fix
+	Array.prototype.indexOf = function(obj) {
+		for(var i = 0; i < this.length; i++) {
+			if(this[i] === obj) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	}
+});
+
+
+
+function initData() {
+
+	"use strict";
+
+	var key = "1iqnsSw6SLMcbjTneQK7r3kyzF2Yz190dEEf4hKYUFec";
+
+	//var key = window.location.search.slice(1);
+				
+				var url = "http://interactive.guim.co.uk/spreadsheetdata/" + key + ".json";
+
+				$.getJSON(url, handleResponse);
+
+};
+
+
+function handleResponse(data) {
+	
+
+
+	datasetRooney = data.sheets.rooney;
+
+	datasetLineker = data.sheets.lineker;
+
+	
+		_.each(datasetRooney, function(item){
+			item.scorer = "rooney";
+		})
+
+		_.each(datasetLineker, function(item){
+			item.scorer = "lineker";
+		})
+
+	dataset.push(datasetRooney);
+	dataset.push(datasetLineker);
+	
+	buildView (dataset);
+
+}
+
+
+function buildView (dataset){
+
+	var cardString = "<div class='rooney-card'><div class='rooneyCol-left'> </div><div class='rooneyCol-center'></div><div class='rooneyCol-right'></div></div>";
+	var htmlStr="";
+	
+		_.each(dataset, function(item){
+			htmlStr+=cardString;
+		});
+
+	$( "#rooney-container" ).html(htmlStr);	
+
+	$(".rooney-card").each(function(i, e) {
+		  $(e).attr("id", "card_" + i);
+	});
+
+	addDataToView();
+
+}
+
+function addDataToView(){
+	var counter = 0;
+	_.each(dataset, function(item){
+			var targetClipNameColLeft = "#card_"+counter+" .rooneyCol-left";
+			var targetClipNameColCenter = "#card_"+counter+" .rooneyCol-center";
+			var targetClipNameColRight = "#card_"+counter+" .rooneyCol-right";
+			var finalTally = item[item.length-1];
+			console.log(finalTally);
+
+			$(targetClipNameColLeft).html(finalTally.goalno)
+			$(targetClipNameColCenter).html(finalTally.scorer)
+
+			counter++;
+
+			});
+
+
+}
+
+
+function scrollPage(d) {
+	var scrollTo = d.pageYOffset + d.iframeTop + currentPosition;
+	iframeMessenger.scrollTo(0, scrollTo);
+}
+
+
+function forceIframeResize() {
+	var h = $("#wrapper").innerHeight();
+	iframeMessenger.resize(h);
+}
+
+
+</script>
+
+
+	</body>
+</html>
