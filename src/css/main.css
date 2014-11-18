@@ -24,16 +24,87 @@ html, body {
 	height: auto;
 }
 
+#topArea{
+	width: 100%;
+	height: auto;
+	padding:0 0 12px 0;
+}
+
+#top-bar{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:4px;
+	width:70px;
+	background-color:#4bc6df;
+}
+
+
+#drop-down-holder{
+	position:relative;
+
+	width:100%;
+	height:auto;
+	padding:36px 0 0 0;
+	
+}
+
+
+#top-header{
+	position:relative;
+	float:left;
+	clear:right;
+	left:0px;
+	top:6px;
+	width:100%;
+	height:auto;
+	font-family:"Guardian Egyptian Headline", Georgia, serif;
+	font-size:2.2em;
+	line-height: 1.2em;
+	font-weight:700;
+	text-align:left;
+	color: #005689;
+	padding-bottom:12px;
+}
+
+
+.drop-down-text-title{
+	postion: relative;
+	left: 0px;
+	top:24px;
+	float: left;
+    font-family: "Guardian Egyptian Headline",Georgia,serif;
+    font-size: 1.8em;
+    font-weight: 500;
+    color:#005689;
+    padding:0 12px 0 0;
+}
+
+
+#cardsHolder{
+	width: 100%;
+	height: auto;
+}
+
+
 .rooney-card{
 	width: 100%;
 	height: auto;
 	position: relative;
 	padding-top: 3px;
+	cursor:pointer;
+
+	background-color:#FFF;
 }
 
 
-
-
+.rooney-card-selected{
+	width: 100%;
+	position: relative;
+	padding-top: 3px;
+	cursor:pointer;
+	background-color:#EAEAEA;
+}
 
 .rooneyCol-left{ 
 	float: left; 
@@ -43,7 +114,6 @@ html, body {
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 200;
 	font-size: 4.8em;
-	line-height: 1.5em;
 	color: #4BC6DF;
 }
 
@@ -52,20 +122,46 @@ html, body {
 	width: 60px;  
 	height:60px; 
 	border-radius:50%;
-	background-color:#CCCCCC;
+	background-image: url("../images/Gary_Lineker.jpg");
+	background-size: 60px 60px;
+    background-repeat: no-repeat;
 }
 
 .rooneyCol-center{ 
 	display: inline-block; 
-	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-family: "Guardian Agate Sans", Helvetica, Arial;
 	font-weight: 500;
-	font-size: 1.5em;
-	line-height: 1.5em;
+	font-size: 1.4em;
+	line-height: 1em;
 	width: auto; 
 	height:100px;
-	background-color:#FFF; 
+	background-color:none; 
 	color:#005689;
 }
+
+.rooney-card-infobox{
+	position: relative;
+	width: 100%;
+	background-color:#333;
+	color:#FFF;
+}
+
+
+/* *********** type *************** */
+.large-number{
+	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-weight: 200;
+	font-size: 8.4em;
+	text-align: left;
+	
+	padding: 0 10px 12px 70px;
+	margin: 0;
+	color: #bdbdbd;
+	
+}
+
+
+
 
 body {
 	font-family: "Guardian Agate Sans", Arial, sans-serif;

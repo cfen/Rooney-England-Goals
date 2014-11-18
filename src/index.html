@@ -31,7 +31,23 @@
 	<body>
 
 		<div id='rooney-container'>
+		<div id="topArea">	
+			<div id="top-bar"></div>
+				<div id="top-header">England goalscorers</div>
+					<div id="drop-down-holder">
+						<div class="drop-down-text-title">Select </div>
+						<select id="drop-down-menu">
+						  <option value="all" id="select_All"selected>All goals</option>
+						  <option value="tournaments" id="select_Tournaments">Tournaments</option>
+						  <option value="qualifiers" id="select_Qualifiers">Qualifiers</option>
+						  <option value="friendlies" id="select_Friendlies">Friendlies</option>
+						</select>
+					</div>
+			</div>
 
+			<div id="cardsHolder">
+
+			</div>
 
 		</div>
 
@@ -65,9 +81,10 @@ iframeMessenger.enableAutoResize();
 
 
 //global vars
-var dataset =[], datasetRooney, datasetLineker, data;	
+var dataset = tempDataset =[], datasetRooney, datasetLineker, data, globalSortCategory = "A";	
 
-
+var bgSVG = '<svg version="1.1" viewBox="0 0 1260 652"><path d="M241.651,564.449 L241.651,105.137 L1014.18,105.137 L1014.18,563.342 M429.802,563.342 L429.802,380.725 L826.027,380.725 L826.027,563.342" id="Stroke-1" stroke="#FFF" stroke-width="3" fill="none"></path> <path d="M784.036,564.449 L818.578,652.254 L441.421,652.254 L489.468,564.449" id="Stroke-2" stroke="#FFF" stroke-width="7" fill="none"></path> <path d="M634.556,226.329 C634.556,229.997 631.582,232.97 627.915,232.97 C624.248,232.97 621.274,229.997 621.274,226.329 C621.274,222.661 624.248,219.689 627.915,219.689 C631.582,219.689 634.556,222.661 634.556,226.329" id="Fill-3" fill="#FFF"></path><path d="M627.682,0.084 C696.854,-1.113 776.368,39.885 816.299,104.607 M628.148,0.084 C558.975,-1.113 479.462,39.885 439.531,104.607 M0,564.449 L1260,564.449" id="Stroke-4" stroke="#FFF" stroke-width="3" fill="none"></path><path d="M699.5,626.5 L717.5,308.5" id="Line" stroke="#E6711B" stroke-width="7" stroke-linecap="square"></path></svg>';
+// <svg viewBox="0 0 1128 583" width="1128px" height="583px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"> <title>pitch</title> <desc>Created with Sketch.</desc> <defs></defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Imported-Layers" sketch:type="MSLayerGroup" transform="translate(-6.000000, -6.000000)"> <path d="M217.896,510 L217.896,95 L915.896,95 L915.896,509 M387.896,509 L387.896,344 L745.896,344 L745.896,509" id="Stroke-1" stroke="#005689" stroke-width="3" sketch:type="MSShapeGroup"></path> <path d="M707.956,510 L739.166,589.334 L398.394,589.334 L441.806,510" id="Stroke-2" stroke="#005689" stroke-width="7" sketch:type="MSShapeGroup"></path> <path d="M572.896,204.5 C572.896,207.814 570.21,210.5 566.896,210.5 C563.583,210.5 560.896,207.814 560.896,204.5 C560.896,201.186 563.583,198.5 566.896,198.5 C570.21,198.5 572.896,201.186 572.896,204.5" id="Fill-3" fill="#005689" sketch:type="MSShapeGroup"></path> <path d="M566.685,0.082 C629.185,-1 701.027,36.043 737.106,94.521 M567.107,0.082 C504.607,-1 432.766,36.043 396.686,94.521 M-0.441,510 L1138.002,510" id="Stroke-4" stroke="#005689" stroke-width="3" sketch:type="MSShapeGroup"></path> </g> </g></svg>
 $(function() {
 
 	$(document).ready(function() {
@@ -108,67 +125,211 @@ function initData() {
 
 function handleResponse(data) {
 	
-
-
 	datasetRooney = data.sheets.rooney;
-
 	datasetLineker = data.sheets.lineker;
 
-	
 		_.each(datasetRooney, function(item){
-			item.scorer = "rooney";
+			item.scorer = "Wayne Rooney";
 		})
 
 		_.each(datasetLineker, function(item){
-			item.scorer = "lineker";
+			item.scorer = "Gary Lineker";
 		})
 
-	dataset.push(datasetRooney);
 	dataset.push(datasetLineker);
-	
+	dataset.push(datasetRooney);
+
 	buildView (dataset);
 
 }
 
 
-function buildView (dataset){
+function buildView (dataIn){
 
-	var cardString = "<div class='rooney-card'><div class='rooneyCol-left'> </div><div class='rooneyCol-center'></div><div class='rooneyCol-right'></div></div>";
+	$( "#cardsHolder" ).html(" ");	
+
+	var cardString = "<div class='rooney-card'><div class='rooneyCol-left'> </div><div class='rooneyCol-center'></div><div class='rooneyCol-right'></div><div class='rooney-card-infobox'></div></div>";
 	var htmlStr="";
 	
-		_.each(dataset, function(item){
+		_.each(dataIn, function(item){
 			htmlStr+=cardString;
 		});
 
-	$( "#rooney-container" ).html(htmlStr);	
+	$( "#cardsHolder" ).html(htmlStr);	
 
 	$(".rooney-card").each(function(i, e) {
 		  $(e).attr("id", "card_" + i);
 	});
 
-	addDataToView();
+	addDataToView(dataIn);
 
 }
 
-function addDataToView(){
+function addDataToView(dataIn){
 	var counter = 0;
-	_.each(dataset, function(item){
+
+	_.each(dataIn, function(item){
 			var targetClipNameColLeft = "#card_"+counter+" .rooneyCol-left";
 			var targetClipNameColCenter = "#card_"+counter+" .rooneyCol-center";
 			var targetClipNameColRight = "#card_"+counter+" .rooneyCol-right";
 			var finalTally = item[item.length-1];
-			console.log(finalTally);
 
-			$(targetClipNameColLeft).html(finalTally.goalno)
-			$(targetClipNameColCenter).html(finalTally.scorer)
+			var htmlStr = setCenterColTxt(finalTally);
 
+			$(targetClipNameColLeft).html(item.length)
+			$(targetClipNameColCenter).html(htmlStr)
+			$(targetClipNameColRight).css("background-image", "url(images/"+finalTally.scorer.replace(/ /g,"_")+".jpg)")
 			counter++;
+		});
 
-			});
+	addListeners();
+
+}
+
+function newDataSort(){
+
+	tempDataset = tempSubArr  = [];
+
+	if (globalSortCategory == "A"){
+		tempDataset = dataset;
+	}
+
+	if (globalSortCategory != "A"){
+			_.each(dataset, function(subArr){
+						_.each(subArr, function(item){
+								tempSubArr = _.filter(subArr, function(item){ return item.matchcategory  == globalSortCategory; });
+						});
+					tempDataset.push(tempSubArr);
+				});
+	}
+
+	//_(tempDataset).sortBy(function(arr) { return -arr[arr.length-1].goalno ; });
+
+
+	tempDataset = _.sortBy(tempDataset, function(subArr) { return subArr.length; });
+	tempDataset.reverse();
+
+	buildView (tempDataset);
+}
+
+
+function addListeners(){
+	$( "select" ).change(function (e) {
+        upDateFromSelect(e);
+    })
+
+    $(".rooney-card").click(function(e){
+    	expandCard(e.currentTarget);
+    });
+}
+
+function upDateFromSelect(e){
+    setglobalSortCategory(e.currentTarget.value);
+	console.log(globalSortCategory);
+}
+
+function expandCard(currClip){
+
+
+	$(".rooney-card-selected .rooney-card-infobox").html(" ")
+	$(".rooney-card-selected").removeClass("rooney-card-selected").addClass("rooney-selected")
+	$(currClip).addClass("rooney-card-selected");
+	
+
+	var dataArr = getCardData(currClip);
+	upDateInfoBox(dataArr)
+	//$(".rooney-card-selected").html("TARGET ITEM HERE")
+}
+
+
+function upDateInfoBox(dataArr){
+	var newItem = dataArr[0];
+	htmlStr = "Goal 1 of "+dataArr.length+"<br/>"+newItem.opposition+" "+newItem.comp+"</br>";
+
+	htmlStr+= bgSVG;
+	/*capno: 15
+	comp: "UEFA Euro 2004"
+	date: "17/06/2004"
+	date_2: "6 January 1970"
+	goalno: 6matchcategory: "T"
+	opposition: "Switzerland"
+	rowNumber: 6scoreafterft: "3–0"
+	scoreaftergoal: "1–0"
+	scorer: "Wayne Rooney"
+	venue: "Estádio Cidade de Coimbra,Coimbra, Portugal"*/
+
+	$(".rooney-card-selected .rooney-card-infobox").html(htmlStr)
+}
+
+
+function getCardData(currClip){
+	var idStr = ($(currClip).attr("id")).split("_");
+
+	return(tempDataset[idStr[1]]);
+
+
+
+
 
 
 }
 
+
+function setglobalSortCategory(valIn){
+
+		if (valIn == "all"){
+			globalSortCategory="A";
+		}
+
+		if (valIn == "tournaments"){
+			globalSortCategory="T";
+			
+		}
+
+		if (valIn == "qualifiers"){
+			globalSortCategory="Q";
+			
+		}
+		if (valIn == "friendlies"){
+			globalSortCategory="F";
+			
+		}
+
+
+		newDataSort()
+}
+
+function setCenterColTxt(finalTally){
+	var strOut;
+	strOut = finalTally.scorer+"<br/>Goals in "+getGameTypeStr() +" matches";
+	return strOut;
+}
+
+function getGameTypeStr(){
+
+	var strOut;
+
+			if (globalSortCategory == "A"){
+				strOut="all";
+			}
+
+			if (globalSortCategory == "T"){
+				strOut="tournament";
+				
+			}
+
+			if (globalSortCategory == "Q"){
+				strOut="qualifying";
+				
+			}
+			if (globalSortCategory == "F"){
+				strOut="friendly";
+				
+			}
+
+	return strOut;
+
+}
 
 function scrollPage(d) {
 	var scrollTo = d.pageYOffset + d.iframeTop + currentPosition;
