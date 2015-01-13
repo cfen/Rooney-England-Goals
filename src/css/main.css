@@ -19,7 +19,7 @@ html, body {
 	font-size: 10px;
 }
 
-#rooney-container{
+#player-container{
 	width: 100%;
 	height: auto;
 }
@@ -86,27 +86,27 @@ html, body {
 	height: auto;
 }
 
-
-.rooney-card{
-	width: 100%;
-	height: auto;
+.player-card{
 	position: relative;
+	width: 320px;
+	height: auto;
+	float:left;
 	padding-top: 3px;
 	cursor:pointer;
-
-	background-color:#FFF;
+	background-color:#484848;
 }
 
-
-.rooney-card-selected{
-	width: 100%;
+.player-card-selected{
 	position: relative;
+	width: 320px;
+	height: auto;
+	float:left;
 	padding-top: 3px;
 	cursor:pointer;
 	background-color:#EAEAEA;
 }
 
-.rooneyCol-left{ 
+.playerCol-left{ 
 	float: left; 
 	width: 70px; 
 	height:100px; 
@@ -114,10 +114,10 @@ html, body {
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 200;
 	font-size: 4.8em;
-	color: #4BC6DF;
+	color: #4bc6df;
 }
 
-.rooneyCol-right{ 
+.playerCol-right{ 
 	float: right; 
 	width: 60px;  
 	height:60px; 
@@ -127,7 +127,7 @@ html, body {
     background-repeat: no-repeat;
 }
 
-.rooneyCol-center{ 
+.playerCol-center{ 
 	display: inline-block; 
 	font-family: "Guardian Agate Sans", Helvetica, Arial;
 	font-weight: 500;
@@ -136,10 +136,10 @@ html, body {
 	width: auto; 
 	height:100px;
 	background-color:none; 
-	color:#005689;
+	color:#4bc6df;
 }
 
-.rooney-card-infobox{
+.player-card-infobox{
 	position: relative;
 	width: 100%;
 	background-color:#333;
@@ -148,16 +148,15 @@ html, body {
 
 
 /* *********** type *************** */
+
 .large-number{
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 200;
 	font-size: 8.4em;
 	text-align: left;
-	
 	padding: 0 10px 12px 70px;
 	margin: 0;
-	color: #bdbdbd;
-	
+	color: #bdbdbd;	
 }
 
 .nav-button{
@@ -167,7 +166,6 @@ html, body {
 	border-radius:50%;
 	cursor:pointer;
 }
-
 
 body {
 	font-family: "Guardian Agate Sans", Arial, sans-serif;
@@ -233,9 +231,9 @@ h6{
 }
 
 
-/*
-THIS FOR FOUR IN ROW -------------------------------------------------------------------------------------------------------------------------
-*/
+/* ------------------------------------------------------------- THIS FOR FOUR IN ROW ------------------------------------------------------------ */
+
+
 @media screen and (min-width: 400px) {
 
 	#wc-shirts-2014-grid .wc-shirts-2014-cell-wrapper {
