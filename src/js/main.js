@@ -26,7 +26,7 @@ iframeMessenger.enableAutoResize();
 
 //global vars
 var dataset = filteredDataset = globalCardArray = [], datasetRooney, datasetLineker, data, globalSortCategory = "A", currentIndex = 0, initViewBuilt = false, scorersArr = [];
-var goalSquaresArr = ["TL","TCL","T","TCR","TR","CL","CCL","C","CCR","CR","BL","BCL","B","BCR","BR"];
+var goalSquaresArr = ["TL","TCL","TC","TCR","TR","CL","CCL","CC","CCR","CR","BL","BCL","BC","BCR","BR"];
 var pitchSVG ='<svg version="1.1" class="playerPitch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="320px" height="210px" viewBox="0 360 320 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"/><circle clip-path="url(#SVGID_2_)" fill="#010101" fill-opacity="0" stroke="#FFFFFF" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"/><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"/><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z"  class="svgSixYardBox"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z"  class="svgPenaltyArea"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"/>'
 
 //var bgSVG ='<svg version="1.1" class="playerPitch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 623.622 396.851" xml:space="preserve"><rect x="116.59" y="-226.77" fill="#008000" width="390.441" height="623.621"/><path fill="#008000" stroke="#FFFFFF" stroke-width="2" d="M127.435,85.041v284.697h368.751v-569.395H127.435V85.041l368.751,0L127.435,85.041z"/><circle fill-opacity="0" stroke="#FFFFFF" stroke-width="2" cx="311.811" cy="85.041" r="49.619"/><circle fill="#FFFFFF" stroke="#FFFFFF" cx="311.811" cy="85.041" r="1.084"/><circle fill="#FFFFFF" stroke="#FFFFFF" cx="311.811" cy="310.086" r="1.084"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M292.505,369.738v5.422h39.153v-5.422H292.505z"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M262.68,369.738v-29.826h98.804v29.826H262.68z"/><path class="penaltyBoxRect" fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M203.029,369.738v-89.477h218.106v89.477H203.029z"/><path fill="#008000" stroke="#FFFFFF" stroke-width="2" d="M272.156,280.261c16.472-21.9,47.58-26.301,69.48-9.829c3.722,2.799,7.03,6.107,9.829,9.829H272.156z"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M132.858,369.738c0-2.995-2.428-5.423-5.423-5.423v5.423H132.858z"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M496.186,364.315c-2.994,0-5.423,2.428-5.423,5.423h5.423V364.315z"/></svg>';
@@ -157,11 +157,11 @@ function buildView (dataIn){
 	$( "#cardsHolder" ).html(htmlStr);	
 
 	$(".player-card").each(function(i, e) {
-		$(e).attr("id", "card_" +i);
+		$(e).attr("id", "card_" +scorersArr[i]);
 	});
 
 	$(".player-card").each(function(i, e) {
-		$(e).attr("id", "card_" +i);
+		$(e).attr("id", "card_" +scorersArr[i]);
 	});
 
 	$(".playerPitch").each(function(i, e) {
@@ -178,11 +178,11 @@ function buildView (dataIn){
 
 function addDataToView(dataIn){
 
-
 	_.each(dataIn, function(item,i){
-			var targetClipNameColLeft = "#card_"+i+" .playerCol-left";
-			var targetClipNameColCenter = "#card_"+i+" .playerCol-center";
-			var targetClipNameColRight = "#card_"+i+" .playerCol-right";
+		var currCard =("#card_"+item[0].scorer)
+			var targetClipNameColLeft = currCard+" .playerCol-left";
+			var targetClipNameColCenter = currCard+" .playerCol-center";
+			var targetClipNameColRight = currCard+" .playerCol-right";
 			var finalTally = item[item.length-1];
 			var htmlStr = setCenterColTxt(finalTally);
 			$(targetClipNameColLeft).html(item.length)
@@ -199,45 +199,35 @@ function addDataToView(dataIn){
 
 		var penBox = d3.select(".svgPenaltyArea");
 
-		
-		
 			_.each(item, function(itemObj,k){
-				var goalDistance = itemObj.goaldistance;
+				var goalDistance = itemObj.goaldistance *2.5;
 				var itemCoords;
 				var itemAngle = itemObj.goalangle *1;
 				var startXPos = getXYPos1(itemObj.goalsquare);
-				var startYPos = 535;
+				var startYPos = 530;
 				var currScorer = itemObj.scorer;
-				var strokeColor = "#FFCC00";
+				var strokeColor = getStrokeColor(itemObj.matchcategory);
+
 				var endXPos;
 
+				itemAngle == 90 ? itemAngle+=1 : itemAngle = itemAngle;
+
 				if(itemAngle <= 90){
-					console.log("acute "+goalDistance+"  angle="+itemAngle)
 					itemCoords = solveTriangle(a=null, b=goalDistance, c=null, A=null, B=itemAngle, C=90);
-					endXPos = startXPos - itemCoords[1];
+					endXPos = startXPos - itemCoords[0];
 				}
 
 				if(itemAngle > 90){
 					itemAngle = 180-itemAngle;
-					console.log("obtuse goal distance="+goalDistance+"  angle="+itemAngle)
-					itemCoords = solveTriangle(a=null, b=null, c=goalDistance, A=null, B=90, C=itemAngle);
-
-					// endXPos needs to adjust to startXPos + (?????? + itemCoords[1]);
-					endXPos = startXPos + itemCoords[1];
+					itemCoords = solveTriangle(a=null, b=goalDistance, c=null, A=null, B=itemAngle, C=90);
+					var xAdjuster =  startXPos + (itemCoords[0] * 2)
+					endXPos = xAdjuster;
 				}	
 
-				//http://www.nayuki.io/page/triangle-solver-javascript
-				//itemCoords = solveTriangle(a=null, b=goalDistance, c=null, A=null, B=itemAngle, C=90);
-				
-				console.log(itemCoords)
-				//var sides  = (a != null) + (b != null) + (c != null);  // Boolean to integer conversion
-				//var angles = (A != null) + (B != null) + (C != null);  // Boolean to integer conversion
 
 				var endYPos = startYPos - goalDistance;
 				
 
-				// add lines to group        
-                // x2 should reflect goal angle
 				var lineGraph = svgContainer.append("line")
                     .attr("x1", startXPos)
                     .attr("y1", startYPos)
@@ -247,12 +237,19 @@ function addDataToView(dataIn){
                     .attr("class", "goal-line-marker")
                     .attr("stroke-width", 1)
                     .attr("stroke", strokeColor);
-				
-			})
-			
+			})		
 		});
 
 
+}
+
+function getStrokeColor(strIn){
+	//console.log(strIn)
+	var strOut = "#333";
+	if(strIn == globalSortCategory){
+		strOut = "#4bc6df";
+	}
+	return strOut;
 }
 
 function getXYPos1(refIn){
@@ -263,7 +260,7 @@ function getXYPos1(refIn){
 	if (refIn == "TCL" || refIn == "CCL"|| refIn == "BCL"){
 		numOut=160;
 	}
-	if (refIn == "T" || refIn == "C"|| refIn == "B"){
+	if (refIn == "TC" || refIn == "CC"|| refIn == "BC"){
 		numOut=155;
 	}
 	if (refIn == "TCR" || refIn == "CCR"|| refIn == "BCR"){
@@ -299,7 +296,7 @@ function newDataSort(){
 	filteredDataset = _.sortBy(filteredDataset, function(subArr) { return subArr.length; });
 	filteredDataset.reverse();
 
-	buildView (filteredDataset);
+	buildView (dataset);
 
 	currentIndex = 0;
 
