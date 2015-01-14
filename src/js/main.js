@@ -193,25 +193,60 @@ function addDataToView(dataIn){
 
 	// addGoals
 	_.each(dataIn, function(item,i){
-		var selectedPitch ="pitch_"+item[0].scorer;
+		var selectedPitch ="#pitch_"+item[0].scorer;
+
+		var svgContainer = d3.select(selectedPitch);
+
+		var penBox = d3.select(".svgPenaltyArea");
+
+		
 		
 			_.each(item, function(itemObj,k){
-				// add goals
-				var startXPos = getXYPos1(itemObj.goalsquare);
-				var startYPos = 10;
+				var goalDistance = itemObj.goaldistance;
+				var itemCoords;
 				var itemAngle = itemObj.goalangle *1;
-				itemAngle > 90 ? itemAngle-=90 : itemAngle = itemAngle;
+				var startXPos = getXYPos1(itemObj.goalsquare);
+				var startYPos = 535;
+				var currScorer = itemObj.scorer;
+				var strokeColor = "#FFCC00";
+				var endXPos;
 
-				var itemAngle2 = 180-90-itemAngle;
+				if(itemAngle <= 90){
+					console.log("acute "+goalDistance+"  angle="+itemAngle)
+					itemCoords = solveTriangle(a=null, b=goalDistance, c=null, A=null, B=itemAngle, C=90);
+					endXPos = startXPos - itemCoords[1];
+				}
 
-				var side1 = itemAngle2/(Math.sin(itemAngle2)) //= 90/sin(90)
+				if(itemAngle > 90){
+					itemAngle = 180-itemAngle;
+					console.log("obtuse goal distance="+goalDistance+"  angle="+itemAngle)
+					itemCoords = solveTriangle(a=null, b=null, c=goalDistance, A=null, B=90, C=itemAngle);
 
-				console.log(side1)
+					// endXPos needs to adjust to startXPos + (?????? + itemCoords[1]);
+					endXPos = startXPos + itemCoords[1];
+				}	
 
-				var newPath=  '<path d = "M '+startXPos+' '+starYPos+' L 300 150 L 200 150 L 200 50" stroke = "#FFCC00" stroke-width = "3" fill = "none"/>'
+				//http://www.nayuki.io/page/triangle-solver-javascript
+				//itemCoords = solveTriangle(a=null, b=goalDistance, c=null, A=null, B=itemAngle, C=90);
+				
+				console.log(itemCoords)
+				//var sides  = (a != null) + (b != null) + (c != null);  // Boolean to integer conversion
+				//var angles = (A != null) + (B != null) + (C != null);  // Boolean to integer conversion
 
-				//http://www.mathsisfun.com/algebra/trig-solving-asa-triangles.html
+				var endYPos = startYPos - goalDistance;
+				
 
+				// add lines to group        
+                // x2 should reflect goal angle
+				var lineGraph = svgContainer.append("line")
+                    .attr("x1", startXPos)
+                    .attr("y1", startYPos)
+                    .attr("x2", endXPos)
+                    .attr("y2", endYPos)
+                    .attr("id", "goal_"+currScorer+"_"+k)
+                    .attr("class", "goal-line-marker")
+                    .attr("stroke-width", 1)
+                    .attr("stroke", strokeColor);
 				
 			})
 			
@@ -223,19 +258,22 @@ function addDataToView(dataIn){
 function getXYPos1(refIn){
 	var numOut;
 	if (refIn == "TL" || refIn == "CL"|| refIn == "BL"){
-		numOut=165
+		numOut=165;
 	}
 	if (refIn == "TCL" || refIn == "CCL"|| refIn == "BCL"){
-		numOut=160
+		numOut=160;
 	}
 	if (refIn == "T" || refIn == "C"|| refIn == "B"){
-		numOut=155
+		numOut=155;
 	}
 	if (refIn == "TCR" || refIn == "CCR"|| refIn == "BCR"){
-		numOut=150
+		numOut=150;
 	}
 	if (refIn == "TR" || refIn == "CR"|| refIn == "BR"){
-		numOut=145
+		numOut=145;
+	}
+	if (numOut == undefined || numOut =="" || numOut ==null){
+		numOut=0
 	}
 	return numOut
 }

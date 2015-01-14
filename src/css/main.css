@@ -1,8 +1,6 @@
 /*
-
 FONT FAMILIES FROM GU STYLESHEET
 <link rel="stylesheet" href="http://pasteup.guim.co.uk/0.0.5/css/fonts.pasteup.min.css"/>
-
 "Guardian Egyptian Text", Georgia, serif;
 "Guardian Egyptian Headline", Georgia, serif;
 "Guardian Sans Text", Georgia, serif;
@@ -10,7 +8,6 @@ FONT FAMILIES FROM GU STYLESHEET
 "Guardian Titlepiece", Georgia, serif;
 "Guardian Agate Sans", Arial, sans-serif;
 "Guardian Compact", Georgia, serif;
-
 */
 
 html, body {
@@ -42,13 +39,10 @@ html, body {
 
 #drop-down-holder{
 	position:relative;
-
 	width:100%;
 	height:auto;
-	padding:36px 0 0 0;
-	
+	padding:36px 0 0 0;	
 }
-
 
 #top-header{
 	position:relative;
@@ -67,7 +61,6 @@ html, body {
 	padding-bottom:12px;
 }
 
-
 .drop-down-text-title{
 	postion: relative;
 	left: 0px;
@@ -79,7 +72,6 @@ html, body {
     color:#005689;
     padding:0 12px 0 0;
 }
-
 
 #cardsHolder{
 	width: 100%;
