@@ -25,7 +25,7 @@ iframeMessenger.enableAutoResize();
 
 
 //global vars
-var dataset = filteredDataset = globalCardArray = allGoalsArr =[], datasetRooney, datasetLineker, data, globalSortCategory = "A", currentIndex = 0, initViewBuilt = false, scorersArr = [];
+var dataset = filteredDataset = globalCardArray = allMatchesArr = allGoalsArr =[], datasetRooney, datasetLineker, datasetCharlton, datasetGreaves, datasetOwen, datasetTopline, data, globalSortCategory = "A", currentIndex = 0, initViewBuilt = false, scorersArr = [];
 var goalSquaresArr = ["TL","TCL","TC","TCR","TR","CL","CCL","CC","CCR","CR","BL","BCL","BC","BCR","BR"];
 var pitchSVG ='<svg version="1.1" class="playerPitch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="320px" height="210px" viewBox="0 360 320 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"/><circle clip-path="url(#SVGID_2_)" fill="#010101" fill-opacity="0" stroke="#FFFFFF" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"/><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"/><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z"  class="svgSixYardBox"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z"  class="svgPenaltyArea"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"/>'
 
@@ -55,9 +55,6 @@ $(function() {
 
 
 function initData() {
-
-	console.log("IN")
-
 	"use strict";
 
 	var key = "1G0m0CuXqIVxjBv8c2T-KEGFM4Dg-NKNRqbcP4Jzdtw8";
@@ -78,6 +75,7 @@ function handleResponse(data) {
 	datasetCharlton = data.sheets.Charlton;
 	datasetOwen = data.sheets.Owen;
 	datasetGreaves = data.sheets.Greaves;
+	datasetTopline = data.sheets.ToplineStats;
 
 		_.each(datasetRooney, function(item){
 			item.scorer = "Rooney";
@@ -106,41 +104,41 @@ function handleResponse(data) {
 	dataset.push(datasetOwen);
 	dataset.push(datasetGreaves);
 
-	buildPlayerCardsView (dataset);
+	buildPlayerCardsView (dataset, dataset);
 
 }
 
 
 function setDummyDataForViz(dataIn){
 
-if(dataIn.length > 0){
-		_.each(dataIn, function(item,i){
-			
-			//scorersArr.push(item[0].scorer)
-			_.each(item, function(itemObj,k){
-				if(itemObj.goalsquare==""){
-					itemObj.goalsquare = goalSquaresArr[Math.floor(Math.random()*goalSquaresArr.length)];
-				}
-
-				if(itemObj.goaldistance==""){
-					itemObj.goaldistance = Math.ceil(Math.random()*30);
-				}	
-
-				if(itemObj.goalangle==""){
-					itemObj.goalangle = Math.ceil(Math.random()*170);
-				}
-
+	if(dataIn.length > 0){
+			_.each(dataIn, function(item,i){
 				
-			})
-		});
-	}
+				scorersArr.push(item[0].scorer)
+				_.each(item, function(itemObj,k){
+					if(itemObj.goalsquare==""){
+						itemObj.goalsquare = goalSquaresArr[Math.floor(Math.random()*goalSquaresArr.length)];
+					}
 
-return dataIn;
+					if(itemObj.goaldistance==""){
+						itemObj.goaldistance = Math.ceil(Math.random()*30);
+					}	
+
+					if(itemObj.goalangle==""){
+						itemObj.goalangle = Math.ceil(Math.random()*170);
+					}
+
+					
+				})
+			});
+		}
+
+	return dataIn;
 
 }
 
 
-function buildPlayerCardsView (dataIn){
+function buildPlayerCardsView (dataIn,filteredData){
 
 	$( "#cardsHolder" ).html(" ");	
 
@@ -159,10 +157,6 @@ function buildPlayerCardsView (dataIn){
 		$(e).attr("id", "card_" +i);
 	});
 
-	$(".player-card").each(function(i, e) {
-		$(e).attr("id", "card_" +i);
-	});
-
 	$(".playerPitch").each(function(i, e) {
 		$(e).attr("id", "pitch_" +i);
 	});
@@ -170,18 +164,145 @@ function buildPlayerCardsView (dataIn){
 	addPrevNextListeners();
 	addCardListeners();	
 	initViewBuilt = true;
-	buildInitGoalsView(dataIn);
+	buildGoalsView(dataIn,filteredData);
 
 }
-function updatePlayerText(dataIn,ref){
-		var currCard =("#card_"+ref);
+
+function buildGoalsView(dataIn,filteredData){
+	allGoalsArr = _.flatten(dataIn);
+	allMatchesArr = _.flatten(dataset);
+	var selectedPitch;
+	var svgContainer;
+	var targetClipNameColRight;
+	var currCard;
+
+	if(filteredData.length != 0){
+		_.each(filteredData, function(item,i){
+			currCard =("#card_"+i);
+			selectedPitch =d3.select("#pitch_"+i);
+			svgContainer = d3.select(selectedPitch);
+			targetClipNameColRight = currCard+" .playerCol-right";
+			updatePlayerText(item,i);
+			var scorer = item[0].scorer;
+				if(item[0].scorer==undefined){
+					console.log(scorer)
+				}
+				if(item[0].scorer != undefined){
+					$(targetClipNameColRight).css("background-image", "url(images/"+item[0].scorer.replace(/ /g,"_")+".jpg)");
+					addGoalsToPitch(selectedPitch, scorer);
+				}
+						
+		});	
+	}
+	
+}
+
+function addGoalsToPitch(selectedPitch, currScorer){
+//handle 0 greaves here
+
+
+
+	var tempGoalsArr =[];	
+	tempGoalsArr = _.filter(allGoalsArr, function(item){ return item.scorer == currScorer; });
+
+	if(tempGoalsArr.length == 0){
+		console.log(currScorer+" 0 goals")
+	}
+	
+	plotGoals(selectedPitch, tempGoalsArr)
+}
+
+
+// if (globalSortCategory!="A"){
+// 		tempArr = _.filter(allGoalsArr, function(item){ return item.matchcategory == globalSortCategory && item.scorer == currScorer; });
+// 	}else{
+// 		tempArr = _.filter(allGoalsArr, function(item){ return item.scorer == currScorer; });
+// 	}
+
+function plotGoals(selectedPitch, tempArr){
+	var lineDataUnselected = [];
+	var lineDataSelected = [];
+	_.each(tempArr, function(item,i){
+		//var penBox = d3.select(".svgPenaltyArea");
+			
+			var matchCat = item.matchcategory;
+			var goalDistance = item.goaldistance*2.5;
+			var startXPos = getXPos1(item.goalsquare);
+			var startYPos = getYPos1(item.goalsquare);
+			var currScorer = item.scorer;
+			var endXPos = getEndXPos(startXPos,item.goalangle*1, goalDistance);
+			var endYPos = startYPos - goalDistance;
+			var coords = {"x1":startXPos, "y1":startYPos, "x2":endXPos, "y2":endYPos, "id":"goal_"+currScorer+"_"+i};
+			matchCat == globalSortCategory ? lineDataSelected.push(coords) : lineDataUnselected.push(coords);	
+		});
+	
+	var unselectedGroup = selectedPitch.append("g")
+	.attr("id", "unselectedLines");
+
+	var linesUnselected = unselectedGroup.selectAll("line")
+        .data(lineDataUnselected)
+        .enter()
+        .append("line");
+
+    var lineAttributesUnselected = linesUnselected
+		.attr("x1",  function (d) { return d.x1; })
+        .attr("y1",  function (d) { return d.y1; })
+        .attr("x2",  function (d) { return d.x2; })
+        .attr("y2",  function (d) { return d.y2; })
+        .attr("class", "goal-line-marker")
+        .attr("id", function (d) { return d.id; });
+
+    var selectedGroup = selectedPitch.append("g")
+		.attr("id", "selectedLines");
+
+	var linesSelected = selectedGroup.selectAll("line")
+        .data(lineDataSelected)
+        .enter()
+        .append("line");
+
+    var lineAttributesSelected = linesSelected
+		.attr("x1",  function (d) { return d.x1; })
+        .attr("y1",  function (d) { return d.y1; })
+        .attr("x2",  function (d) { return d.x2; })
+        .attr("y2",  function (d) { return d.y2; })
+        .attr("class", "goal-line-marker-selected")
+        //.attr("stroke-opacity","0")
+        .attr("id", function (d) { return d.id; });
+}
+
+
+function getEndXPos(startXPos,itemAngle, goalDistance){
+	var endXPos;
+	itemAngle == 90 ? itemAngle+=1 : itemAngle = itemAngle;
+
+				if(itemAngle <= 90){
+					itemCoords = solveTriangle(a=null, b=goalDistance, c=null, A=null, B=itemAngle, C=90);
+					endXPos = startXPos - itemCoords[0];
+				}
+
+				if(itemAngle > 90){
+					var xAdjusted;
+					itemAngle = 180-itemAngle;
+					itemCoords = solveTriangle(a=null, b=goalDistance, c=null, A=null, B=itemAngle, C=90);
+					xAdjusted =  startXPos + (itemCoords[0] * 2)
+					endXPos = xAdjusted;
+				}
+
+	return endXPos;
+}
+
+
+
+
+function updatePlayerText(item,i){
+		var currCard =("#card_"+i);
 		var targetClipNameColLeft = currCard+" .playerCol-left";
 		var targetClipNameColCenter = currCard+" .playerCol-center";
 		var targetClipNameColRight = currCard+" .playerCol-right";
-		var finalTally = dataIn[dataIn.length-1];
-		var htmlStr = setCenterColTxt(finalTally);
-		$(targetClipNameColLeft).html(dataIn.length);
-		$(targetClipNameColCenter).html(htmlStr);
+		var finalTally = item[item.length-1];
+		var htmlStr = setCenterColTxt(finalTally, item);
+		$(targetClipNameColLeft).html(item.length);
+		$(targetClipNameColCenter).html(htmlStr);	
 }
 
 function setNilGoals(cardIn){
@@ -195,81 +316,43 @@ function setNilGoals(cardIn){
 }
 
 
-function buildInitGoalsView(dataIn){
-	allGoalsArr = _.flatten(dataIn);
-
-	_.each(dataIn, function(item,i){
-			var currCard =("#card_"+item[0].scorer);
-			var targetClipNameColRight = currCard+" .playerCol-right";
-			updatePlayerText(item,i)
-			$(targetClipNameColRight).css("background-image", "url(images/"+item[0].scorer.replace(/ /g,"_")+".jpg)")			
-	});
-
-	// init addGoals to view
-	_.each(dataIn, function(item,i){
-		var selectedPitch ="#pitch_"+i;
-		var svgContainer = d3.select(selectedPitch);
-		var penBox = d3.select(".svgPenaltyArea");
-
-			_.each(item, function(itemObj,k){
-					var goalDistance = itemObj.goaldistance *2.5;
-					var itemCoords;
-					var itemAngle = itemObj.goalangle *1;
-					var startXPos = getXYPos1(itemObj.goalsquare);
-					var startYPos = 530;
-					var currScorer = itemObj.scorer;
-					var endXPos;
-					var tempClass;
-
-					itemObj.matchcategory == globalSortCategory ? tempClass = "goal-line-marker-selected":tempClass = "goal-line-marker-selected";
-					itemAngle == 90 ? itemAngle+=1 : itemAngle = itemAngle;
-
-					if(itemAngle <= 90){
-						itemCoords = solveTriangle(a=null, b=goalDistance, c=null, A=null, B=itemAngle, C=90);
-						endXPos = startXPos - itemCoords[0];
-					}
-
-					if(itemAngle > 90){
-						itemAngle = 180-itemAngle;
-						itemCoords = solveTriangle(a=null, b=goalDistance, c=null, A=null, B=itemAngle, C=90);
-						var xAdjusted =  startXPos + (itemCoords[0] * 2)
-						endXPos = xAdjusted;
-					}	
-
-					var endYPos = startYPos - goalDistance;
-					
-					var lineGraph = svgContainer.append("line")
-	                    .attr("x1", startXPos)
-	                    .attr("y1", startYPos)
-	                    .attr("x2", endXPos)
-	                    .attr("y2", endYPos)
-	                    .attr("id", "goal_"+currScorer+"_"+k)
-	                    .attr("class", tempClass);
-			})		
-		});
-
-}
-
-
-function getXYPos1(refIn){
+function getXPos1(refIn){
 	var numOut;
 	if (refIn == "TL" || refIn == "CL"|| refIn == "BL"){
-		numOut=170;
+		numOut=173;
 	}
 	if (refIn == "TCL" || refIn == "CCL"|| refIn == "BCL"){
-		numOut=165;
+		numOut=167;
 	}
 	if (refIn == "TC" || refIn == "CC"|| refIn == "BC"){
-		numOut=160;
+		numOut=158;
 	}
 	if (refIn == "TCR" || refIn == "CCR"|| refIn == "BCR"){
-		numOut=155;
+		numOut=149;
 	}
 	if (refIn == "TR" || refIn == "CR"|| refIn == "BR"){
-		numOut=150;
+		numOut=140;
 	}
 	if (numOut == undefined || numOut =="" || numOut ==null){
 		numOut=0
+	}
+	return numOut
+}
+
+function getYPos1(refIn){
+	var numOut = 530;
+
+	if (refIn == "TL" || refIn == "TCL" || refIn == "TC" || refIn == "TCR" || refIn == "TR"){
+		numOut=536;
+	}
+	if (refIn == "CL" || refIn == "CCL" || refIn == "CC" || refIn == "CCR" || refIn == "CR"){
+		numOut=533;
+	}
+	if (refIn == "BL" || refIn == "BCL" || refIn == "BC" || refIn == "BCR" || refIn == "BR"){
+		numOut=530;
+	}
+	if (numOut == undefined || numOut =="" || numOut ==null){
+		numOut+=0
 	}
 	return numOut
 }
@@ -290,31 +373,58 @@ function goalDataSort(){
 							tempSubArr = _.filter(subArr, function(item){ return item.matchcategory == globalSortCategory; });
 					});
 				filteredDataset.push(tempSubArr);
+
 			});
 		}
 
 	filteredDataset = _.sortBy(filteredDataset, function(subArr) { return subArr.length; });
 	filteredDataset.reverse();
-	buildPlayerCardsView (filteredDataset);
 
-	_.each(filteredDataset, function(item,i){
-			if(item[0].scorer != null){
-				var currCard =("#card_"+i);
-				var targetClipNameColRight = currCard+" .playerCol-right";
-				updatePlayerText(item)
-				$(targetClipNameColRight).css("background-image", "url(images/"+item[0].scorer.replace(/ /g,"_")+".jpg)")
-			}
 
-			if(item[0].scorer == null){
-				setNilGoals($("#card_"+item[0].scorer));
-			}
+
+	
+
+	// _.each(filteredDataset, function(item,i){
+	// 	console.log(item[0])
+	// 		if(item[0].scorer != null){
+	// 			var currCard =("#card_"+i);
+	// 			var targetClipNameColRight = currCard+" .playerCol-right";
+	// 			updatePlayerText(item)
+	// 			$(targetClipNameColRight).css("background-image", "url(images/"+item[0].scorer.replace(/ /g,"_")+".jpg)")
+	// 		}
+
+	// 		if(item[0].scorer == null){
+	// 			setNilGoals($("#card_"+i));
+	// 		}
 			
 						
-	});
+	// });
 
-	currentIndex = 0;
+	
+
+
+	!initViewBuilt ? buildPlayerCardsView (dataset, dataset) : buildPlayerCardsView (dataset, filteredDataset);
+	// currentIndex = 0;
 }
 
+function upDateGoalClasses(){
+	if (globalSortCategory == "A"){
+		$(".goal-line-marker").attr("class", "goal-line-marker-selected");
+	}
+
+	if (globalSortCategory != "A"){
+		$(".goal-line-marker-selected").attr("class", "goal-line-marker");
+			_.each(dataset, function(subArr){
+				_.each(subArr, function(item){	
+					var targetClip;
+						if (item.matchcategory == globalSortCategory){
+							targetClip = $("#goal_"+item.scorer+"_"+item.goalno);
+							$(targetClip).attr("class", "goal-line-marker goal-line-marker-selected");
+						}
+					})
+			});	
+	}
+}
 
 function addPrevNextListeners(){
 	$( "select" ).change(function (e) {
@@ -405,11 +515,47 @@ function setglobalSortCategory(valIn){
 }
 
 
-function setCenterColTxt(finalTally){
+function setCenterColTxt(finalTally, item){
 	var strOut;
+	var capsNum = 0;
 
-	strOut = finalTally.scorer+"<br/>Goals in "+getGameTypeStr()+" matches";
+	
+	_.each(datasetTopline, function(playerData){
+		var currDataObj;
 
+		if (playerData.scorer==finalTally.scorer)
+		{
+			currDataObj = playerData;
+			if (globalSortCategory == "A"){
+				capsNum = currDataObj.totalcaps;
+			}
+
+			if (globalSortCategory == "T"){
+				capsNum = currDataObj.tournamentcaps;
+			}
+			if (globalSortCategory == "Q"){
+				capsNum = currDataObj.qualifiercaps;
+			}
+			if (globalSortCategory == "F"){
+				capsNum = (currDataObj.totalcaps-(currDataObj.qualifiercaps+currDataObj.tournamentcaps));
+			}
+		}
+
+		
+
+		// if (matchItem.scorer == finalTally.scorer && matchItem.matchcategory == globalSortCategory ){
+		// 	matchCount++;
+		// }
+	});
+	
+
+	if(finalTally==undefined){
+		strOut = "Greaves<br/>0 Goals in XX matches";
+	}else{
+		strOut = finalTally.scorer+"<br/>Goals in "+getGameTypeStr()+" "+capsNum+" matches";
+	}
+	
+	
 	return strOut;
 }
 
