@@ -17,6 +17,7 @@ html, body {
 }
 
 #player-container{
+	max-width:1260px;
 	width: 100%;
 	height: auto;
 }
@@ -24,7 +25,7 @@ html, body {
 #topArea{
 	width: 100%;
 	height: auto;
-	padding:0 0 12px 0;
+	padding:0 0 48px 0;
 }
 
 #top-bar{
@@ -41,7 +42,9 @@ html, body {
 	position:relative;
 	width:100%;
 	height:auto;
-	padding:36px 0 0 0;	
+	padding:36px 0 12px; 0;	
+	float:left;
+	clear:right;
 }
 
 #top-header{
@@ -73,6 +76,24 @@ html, body {
     padding:0 12px 0 0;
 }
 
+#cardsHolder{
+	width: 100%;
+	height: auto;
+}
+
+#allBarChartsHolder{
+	width: 100%;
+	height: auto;
+}
+.bar-chart-holder{
+
+	width: auto;
+	height: 72px;
+	background-color: #EFEFEF;
+	border-bottom: 1px dotted #bdbdbd;
+
+
+}
 #cardsHolder{
 	width: 100%;
 	height: auto;

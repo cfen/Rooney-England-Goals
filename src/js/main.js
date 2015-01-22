@@ -143,15 +143,19 @@ function buildPlayerCardsView (dataIn,filteredData){
 	$( "#cardsHolder" ).html(" ");	
 
 	var cardString = "<div class='player-card'><div class='playerCol-left'> </div><div class='playerCol-center'></div><div class='playerCol-right'></div><div class='pitchHolder'>"+pitchSVG+"</svg></div><div class='player-card-infobox'></div></div>";
-	var htmlStr="";
+	var graphString = "<div class='bar-chart-holder'></div>";
+	var htmlStr = "";
+	var htmlStrGraphs = ""
 
 	dataIn = setDummyDataForViz(dataIn);
 	
 	_.each(dataIn, function(item,i){
-		htmlStr+=cardString;	
+		htmlStr+=cardString;
+		htmlStrGraphs+=graphString;
 	})
 
 	$( "#cardsHolder" ).html(htmlStr);	
+	$( "#graphsHolder" ).html(htmlStrGraphs);	
 
 	$(".player-card").each(function(i, e) {
 		$(e).attr("id", "card_" +i);
@@ -161,12 +165,72 @@ function buildPlayerCardsView (dataIn,filteredData){
 		$(e).attr("id", "pitch_" +i);
 	});
 
+	$(".bar-chart-holder").each(function(i, e) {
+		$(e).attr("id", "bar-chart_" +i);
+	});
+
 	addPrevNextListeners();
 	addCardListeners();	
 	initViewBuilt = true;
 	buildGoalsView(dataIn,filteredData);
+	buildBarChartView();
+}
+
+function buildBarChartView(){
+
+	$(".bar-chart-holder").empty();
+
+	var chart = d3.select("#bar-chart_0")
+
+	var tickXArray = [];
+	var maxCaps = getMaxVal( datasetTopline, "totalcaps");
+	var maxGoals = 4;
+	var margin = {top: 12, right: 160, bottom: 12, left: 3};
+	var width = $("#bar-chart_0").width() - margin.left - margin.right;
+    var height = $("#bar-chart_0").height() -margin.top - margin.bottom;
+	var barUnitH = height/maxGoals; 
+	var barWidth = numDivision(width, maxCaps);
+	
+	var x = d3.scale.linear().range([0, width]);
+	var y = d3.scale.linear().range([0, height ]);
+
+	x.domain([0, maxCaps]);
+	y.domain([0, maxGoals]);
+
+
+  var bar = chart.selectAll("g")
+      .data(datasetRooney)
+      .enter().append("g")
+      .attr("transform", function(d, i) { return "translate(" + i * barWidth + ",0)"; });
+
+  bar.append("rect")
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", 10)
+      .attr("width", barWidth - 1);
+	
+	
+}
+
+
+
+
+
+function numDivision(widthRef, unitRef){
+	var numOut = Math.floor(widthRef/unitRef);
+	return numOut;
 
 }
+
+function getMaxVal(arrIn,varIn){
+	var numOut = 0;
+	_.each(arrIn, function(item,i){
+		item[varIn] > numOut ? numOut = (item[varIn]) : numOut=numOut;
+
+	});
+	return numOut;
+
+}
+
 
 function buildGoalsView(dataIn,filteredData){
 	allGoalsArr = _.flatten(dataIn);
@@ -199,9 +263,6 @@ function buildGoalsView(dataIn,filteredData){
 
 function addGoalsToPitch(selectedPitch, currScorer){
 //handle 0 greaves here
-
-
-
 	var tempGoalsArr =[];	
 	tempGoalsArr = _.filter(allGoalsArr, function(item){ return item.scorer == currScorer; });
 
