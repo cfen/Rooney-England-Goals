@@ -64,6 +64,24 @@ html, body {
 	padding-bottom:12px;
 }
 
+.sub-header{
+	position:relative;
+	float:left;
+	clear:right;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:36px;
+	font-family:"Guardian Egyptian Headline", Georgia, serif;
+	font-size:1.8em;
+	line-height: 1.2em;
+	font-weight:200;
+	text-align:left;
+	color: #bdbdbd;
+	padding-bottom:3px 0 12px 0;
+	border-top: 1px solid #4bc6df;
+}
+
 .drop-down-text-title{
 	postion: relative;
 	left: 0px;
@@ -86,14 +104,38 @@ html, body {
 	height: auto;
 }
 .bar-chart-holder{
-
 	width: auto;
-	height: 72px;
-	background-color: #EFEFEF;
-	border-bottom: 1px dotted #bdbdbd;
-
-
+	height: 120px;
+	background-color: #FFF;
+	padding: 12px 0 0 0;
 }
+
+
+.bar-in-chart{
+	fill: #4bc6df;
+}
+
+.chart text {
+  fill: #767676;
+  font: 10px "Guardian Agate Sans", Helvetica, Arial,sans-serif;
+  text-anchor: end;
+}
+
+
+
+.axis path,
+.axis line {
+	  fill: none;
+	  stroke: rgba(200,200,200,0.2);
+	  shape-rendering: crispEdges;
+}
+
+.axis text {
+	  font: 10px "Guardian Agate Sans", Helvetica, Arial,sans-serif;
+	  fill: #4bc6df;
+	  text-anchor: end;
+	}
+
 #cardsHolder{
 	width: 100%;
 	height: auto;

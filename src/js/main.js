@@ -97,12 +97,12 @@ function handleResponse(data) {
 			item.scorer = "Greaves";
 		})
 
-
-	dataset.push(datasetLineker);
 	dataset.push(datasetRooney);
 	dataset.push(datasetCharlton);
-	dataset.push(datasetOwen);
+	dataset.push(datasetLineker);
 	dataset.push(datasetGreaves);
+	dataset.push(datasetOwen);
+	
 
 	buildPlayerCardsView (dataset, dataset);
 
@@ -177,48 +177,94 @@ function buildPlayerCardsView (dataIn,filteredData){
 }
 
 function buildBarChartView(){
-
 	$(".bar-chart-holder").empty();
 
-	var chart = d3.select("#bar-chart_0")
-
-	var tickXArray = [];
+	var currChart;
+	var initGraphData = [];
+	// var tickXArray = [];
+	// var tickYArray = ["0","1","2","3","4",""];
 	var maxCaps = getMaxVal( datasetTopline, "totalcaps");
-	var maxGoals = 4;
-	var margin = {top: 12, right: 160, bottom: 12, left: 3};
+	var maxGoals = 5;
+	var margin = {top: 36, right: 160, bottom: 6, left: 3};
 	var width = $("#bar-chart_0").width() - margin.left - margin.right;
-    var height = $("#bar-chart_0").height() -margin.top - margin.bottom;
+    var height = $("#bar-chart_0").height() - (margin.top*1.5) - margin.bottom;
 	var barUnitH = height/maxGoals; 
 	var barWidth = numDivision(width, maxCaps);
 	
 	var x = d3.scale.linear().range([0, width]);
-	var y = d3.scale.linear().range([0, height ]);
+	var y = d3.scale.linear().range([height, 0]);
+
+	
 
 	x.domain([0, maxCaps]);
-	y.domain([0, maxGoals]);
+	y.domain([0, maxGoals ]);
 
+	 _.each(datasetTopline, function(item,i){
+	 	var currScorer = item.scorer;
+	 	var currWidth = item.totalcaps * barWidth;
+	 	initGraphData = [];
+	 	currChart = "#bar-chart_"+i;
+		currChart = d3.select(currChart)
 
-  var bar = chart.selectAll("g")
-      .data(datasetRooney)
-      .enter().append("g")
-      .attr("transform", function(d, i) { return "translate(" + i * barWidth + ",0)"; });
+		for(var i = 0; i<item.totalcaps; i++){
+			var coords = {"x":i * barWidth, "y": 0, "w": barWidth-1, "h": 1, "id":"cap_"+currScorer+"_"+i, "class" : "bar-in-chart"};
+			initGraphData.push(coords);	
+		}
 
-  bar.append("rect")
-      .attr("y", function(d) { return y(d.value); })
-      .attr("height", 10)
-      .attr("width", barWidth - 1);
-	
-	
+		var newChart = currChart.append("svg")
+			.attr("id", function() { return "chart"+item.scorer })
+			.attr("width", width)
+			.attr("y",  0 );
+
+		var allBars = newChart.append("g")
+			.attr("id", function() { return "allBars_"+item.scorer });
+
+		var yAxis = d3.svg.axis()
+		    .scale(y)
+		    .ticks(4)
+		    .tickSize((width-20), -6, 0)
+		    .orient("right")
+
+		newChart.append("g")
+		    .attr("class", "y axis")
+		    .call(yAxis)
+		    .append("text")
+		    .style("text-anchor", "end");
+
+		var barsSelected = allBars.selectAll("rect")
+	        .data(initGraphData)
+	        .enter()
+	        .append("rect");
+
+	    var newBar = barsSelected
+	 	 	.attr("x",  function (d) { return d.x; })         	
+         	.attr("width",  function (d) { return d.w; })
+         	.attr("y", function(d) { return y(d.y); })
+      		.attr("height", function(d) { return height - y(d.h); })
+         	.attr("class", function (d) { return d.class; })
+         	.attr("id", function (d) { return d.id; });
+
+ 		
+
+	  });
+
+	 sizeBars(height, barUnitH);
+	 addTitlesToCharts()
 }
 
+function addTitlesToCharts(){
+	$(".bar-chart-holder").each(function(i, e) {
+		$(e).attr("id", "bar-chart_" +i).prepend('<div class="sub-header">'+dataset[i][0].scorer+'</div>');
+	});
 
 
+}
 
 
 function numDivision(widthRef, unitRef){
 	var numOut = Math.floor(widthRef/unitRef);
+	numOut < 3 ? numOut = 3 : numOut = numOut;
 	return numOut;
-
 }
 
 function getMaxVal(arrIn,varIn){
@@ -259,6 +305,24 @@ function buildGoalsView(dataIn,filteredData){
 		});	
 	}
 	
+}
+
+
+function sizeBars(height, barUnitH){
+//cap_"+currScorer+"_"+i
+	_.each(allGoalsArr, function(item,i){
+		var currClip = $("#cap_"+item.scorer+"_"+item.capno);
+		var currH = parseInt(currClip.attr("height"));
+		currClip.attr("height", 0)
+		currClip.attr("height", (currH+barUnitH))
+		currClip.attr("y",height-currH);
+	})
+	
+
+	// if(tempGoalsArr.length == 0){
+	// 	console.log(currScorer+" 0 goals")
+	// }
+
 }
 
 function addGoalsToPitch(selectedPitch, currScorer){
@@ -415,7 +479,9 @@ function getYPos1(refIn){
 	if (numOut == undefined || numOut =="" || numOut ==null){
 		numOut+=0
 	}
+
 	return numOut
+
 }
 
 
@@ -442,9 +508,6 @@ function goalDataSort(){
 	filteredDataset.reverse();
 
 
-
-	
-
 	// _.each(filteredDataset, function(item,i){
 	// 	console.log(item[0])
 	// 		if(item[0].scorer != null){
@@ -460,9 +523,6 @@ function goalDataSort(){
 			
 						
 	// });
-
-	
-
 
 	!initViewBuilt ? buildPlayerCardsView (dataset, dataset) : buildPlayerCardsView (dataset, filteredDataset);
 	// currentIndex = 0;
