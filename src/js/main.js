@@ -27,7 +27,7 @@ iframeMessenger.enableAutoResize();
 //global vars
 var dataset = filteredDataset = globalCardArray = allMatchesArr = allGoalsArr =[], datasetRooney, datasetLineker, datasetCharlton, datasetGreaves, datasetOwen, datasetTopline, data, globalSortCategory = "A", currentIndex = 0, initViewBuilt = false, scorersArr = [];
 var goalSquaresArr = ["TL","TCL","TC","TCR","TR","CL","CCL","CC","CCR","CR","BL","BCL","BC","BCR","BR"];
-var pitchSVG ='<svg version="1.1" class="playerPitch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="320px" height="210px" viewBox="0 360 320 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"/><circle clip-path="url(#SVGID_2_)" fill="#010101" fill-opacity="0" stroke="#FFFFFF" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"/><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"/><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z"  class="svgSixYardBox"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z"  class="svgPenaltyArea"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"/><path fill="none" stroke="#FFFFFF" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"/>'
+var pitchSVG ='<svg version="1.1" class="playerPitch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="320px" height="210px" viewBox="0 360 320 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"/><circle clip-path="url(#SVGID_2_)" fill="none" fill-opacity="0" stroke="#4bc6df" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"/><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"/><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z"  class="svgSixYardBox"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z"  class="svgPenaltyArea"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"/>'
 
 //var bgSVG ='<svg version="1.1" class="playerPitch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 623.622 396.851" xml:space="preserve"><rect x="116.59" y="-226.77" fill="#008000" width="390.441" height="623.621"/><path fill="#008000" stroke="#FFFFFF" stroke-width="2" d="M127.435,85.041v284.697h368.751v-569.395H127.435V85.041l368.751,0L127.435,85.041z"/><circle fill-opacity="0" stroke="#FFFFFF" stroke-width="2" cx="311.811" cy="85.041" r="49.619"/><circle fill="#FFFFFF" stroke="#FFFFFF" cx="311.811" cy="85.041" r="1.084"/><circle fill="#FFFFFF" stroke="#FFFFFF" cx="311.811" cy="310.086" r="1.084"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M292.505,369.738v5.422h39.153v-5.422H292.505z"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M262.68,369.738v-29.826h98.804v29.826H262.68z"/><path class="penaltyBoxRect" fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M203.029,369.738v-89.477h218.106v89.477H203.029z"/><path fill="#008000" stroke="#FFFFFF" stroke-width="2" d="M272.156,280.261c16.472-21.9,47.58-26.301,69.48-9.829c3.722,2.799,7.03,6.107,9.829,9.829H272.156z"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M132.858,369.738c0-2.995-2.428-5.423-5.423-5.423v5.423H132.858z"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M496.186,364.315c-2.994,0-5.423,2.428-5.423,5.423h5.423V364.315z"/></svg>';
 //var bgSVG = '<svg version="1.1" viewBox="0 0 1260 652"><path d="M241.651,564.449 L241.651,105.137 L1014.18,105.137 L1014.18,563.342 M429.802,563.342 L429.802,380.725 L826.027,380.725 L826.027,563.342" id="Stroke-1" stroke="#FFF" stroke-width="3" fill="none"></path> <path d="M784.036,564.449 L818.578,652.254 L441.421,652.254 L489.468,564.449" id="Stroke-2" stroke="#FFF" stroke-width="7" fill="none"></path> <path d="M634.556,226.329 C634.556,229.997 631.582,232.97 627.915,232.97 C624.248,232.97 621.274,229.997 621.274,226.329 C621.274,222.661 624.248,219.689 627.915,219.689 C631.582,219.689 634.556,222.661 634.556,226.329" id="Fill-3" fill="#FFF"></path><path d="M627.682,0.084 C696.854,-1.113 776.368,39.885 816.299,104.607 M628.148,0.084 C558.975,-1.113 479.462,39.885 439.531,104.607 M0,564.449 L1260,564.449" id="Stroke-4" stroke="#FFF" stroke-width="3" fill="none"></path><path d="M699.5,626.5 L717.5,308.5" id="Line" stroke="#E6711B" stroke-width="7" stroke-linecap="square"></path></svg>';
@@ -76,25 +76,31 @@ function handleResponse(data) {
 	datasetOwen = data.sheets.Owen;
 	datasetGreaves = data.sheets.Greaves;
 	datasetTopline = data.sheets.ToplineStats;
+	datasetCopyItems = data.sheets.trophy_stats_copy;
 
 		_.each(datasetRooney, function(item){
 			item.scorer = "Rooney";
+			item.firstname = "Wayne";
 		})
 
 		_.each(datasetLineker, function(item){
 			item.scorer = "Lineker";
+			item.firstname = "Gary";
 		})
 
 		_.each(datasetCharlton, function(item){
 			item.scorer = "Charlton";
+			item.firstname = "Bobby";
 		})
 
 		_.each(datasetOwen, function(item){
 			item.scorer = "Owen";
+			item.firstname = "Michael";
 		})
 
 		_.each(datasetGreaves, function(item){
 			item.scorer = "Greaves";
+			item.firstname = "Jimmy";
 		})
 
 	dataset.push(datasetRooney);
@@ -142,7 +148,7 @@ function buildPlayerCardsView (dataIn,filteredData){
 
 	$( "#cardsHolder" ).html(" ");	
 
-	var cardString = "<div class='player-card'><div class='playerCol-left'> </div><div class='playerCol-center'></div><div class='playerCol-right'></div><div class='pitchHolder'>"+pitchSVG+"</svg></div><div class='player-card-infobox'></div></div>";
+	var cardString = "<div class='player-card'><div class='playerCol-left'> </div><div class='playerCol-center'></div><div class='playerCol-right'></div><div class='pitchHolder'>"+pitchSVG+"</svg></div></div>";
 	var graphString = "<div class='bar-chart-holder'></div>";
 	var htmlStr = "";
 	var htmlStrGraphs = ""
@@ -174,6 +180,25 @@ function buildPlayerCardsView (dataIn,filteredData){
 	initViewBuilt = true;
 	buildGoalsView(dataIn,filteredData);
 	buildBarChartView();
+	buildTrophyBoxOut();
+}
+
+function buildTrophyBoxOut(){
+	
+	var htmlStr="";
+
+	_.each(datasetCopyItems, function(item,i){
+
+		console.log(item)
+		var yearD = '<div class="trophyYear">'+item.year+'</div>'; 
+		var trophyCopy = '<div class="trophyCopy">'+item.copy+'</div>';
+		var tempStr = '<div class="trophyItem" id="trophy_'+i+'" style="background-position: '+(1600 - (i*200))*-1+'px 0px">'+yearD+' '+trophyCopy+'</div>';
+		htmlStr+=tempStr;
+	})
+
+	
+
+	$("#trophiesHolder").html(htmlStr);
 }
 
 function buildBarChartView(){
@@ -181,8 +206,6 @@ function buildBarChartView(){
 
 	var currChart;
 	var initGraphData = [];
-	// var tickXArray = [];
-	// var tickYArray = ["0","1","2","3","4",""];
 	var maxCaps = getMaxVal( datasetTopline, "totalcaps");
 	var maxGoals = 5;
 	var margin = {top: 36, right: 160, bottom: 6, left: 3};
@@ -191,33 +214,42 @@ function buildBarChartView(){
 	var barUnitH = height/maxGoals; 
 	var barWidth = numDivision(width, maxCaps);
 	
-	var x = d3.scale.linear().range([0, width]);
+	//set y axis 
 	var y = d3.scale.linear().range([height, 0]);
-
-	
-
-	x.domain([0, maxCaps]);
 	y.domain([0, maxGoals ]);
 
 	 _.each(datasetTopline, function(item,i){
+	 	// set x axis according to each number of caps
+	 	var x = d3.scale.linear().range([0, (item.totalcaps*barWidth)]);
+	 	x.domain([0,item.totalcaps]);
 	 	var currScorer = item.scorer;
 	 	var currWidth = item.totalcaps * barWidth;
 	 	initGraphData = [];
 	 	currChart = "#bar-chart_"+i;
 		currChart = d3.select(currChart)
 
+		// build an array for the graph bars
 		for(var i = 0; i<item.totalcaps; i++){
 			var coords = {"x":i * barWidth, "y": 0, "w": barWidth-1, "h": 1, "id":"cap_"+currScorer+"_"+i, "class" : "bar-in-chart"};
-			initGraphData.push(coords);	
+			initGraphData.push(coords);
 		}
 
+		// select chart
 		var newChart = currChart.append("svg")
 			.attr("id", function() { return "chart"+item.scorer })
 			.attr("width", width)
 			.attr("y",  0 );
 
+		// set up a group to add bars to
 		var allBars = newChart.append("g")
 			.attr("id", function() { return "allBars_"+item.scorer });
+
+		// set axes	
+		var xAxis = d3.svg.axis()
+		    .scale(x)
+		    .ticks(item.totalcaps/10)
+		    .tickSize(height+margin.bottom+12, 0, 0)
+		   	.orient("bottom")
 
 		var yAxis = d3.svg.axis()
 		    .scale(y)
@@ -229,23 +261,27 @@ function buildBarChartView(){
 		    .attr("class", "y axis")
 		    .call(yAxis)
 		    .append("text")
+		    .style("text-anchor", "end")
+
+		newChart.append("g")
+		    .attr("class", "x axis")
+		    .call(xAxis)
+		    .append("text")
 		    .style("text-anchor", "end");
 
+		 
 		var barsSelected = allBars.selectAll("rect")
 	        .data(initGraphData)
 	        .enter()
 	        .append("rect");
-
+		// loop through data to add bars   
 	    var newBar = barsSelected
 	 	 	.attr("x",  function (d) { return d.x; })         	
          	.attr("width",  function (d) { return d.w; })
          	.attr("y", function(d) { return y(d.y); })
-      		.attr("height", function(d) { return height - y(d.h); })
+      		.attr("height", function(d) { return height - y(d.h); }) // make the height reference y(d.h)
          	.attr("class", function (d) { return d.class; })
          	.attr("id", function (d) { return d.id; });
-
- 		
-
 	  });
 
 	 sizeBars(height, barUnitH);
@@ -254,7 +290,7 @@ function buildBarChartView(){
 
 function addTitlesToCharts(){
 	$(".bar-chart-holder").each(function(i, e) {
-		$(e).attr("id", "bar-chart_" +i).prepend('<div class="sub-header">'+dataset[i][0].scorer+'</div>');
+		$(e).attr("id", "bar-chart_" +i).prepend('<div class="sub-header">'+dataset[i][0].firstname+' '+dataset[i][0].scorer+'</div>');
 	});
 
 
@@ -293,12 +329,13 @@ function buildGoalsView(dataIn,filteredData){
 			svgContainer = d3.select(selectedPitch);
 			targetClipNameColRight = currCard+" .playerCol-right";
 			updatePlayerText(item,i);
+			$(targetClipNameColRight).css("background-position", getNewBGPos(item[0].scorer)+"px 0px");
 			var scorer = item[0].scorer;
 				if(item[0].scorer==undefined){
 					console.log(scorer)
 				}
 				if(item[0].scorer != undefined){
-					$(targetClipNameColRight).css("background-image", "url(images/"+item[0].scorer.replace(/ /g,"_")+".jpg)");
+					
 					addGoalsToPitch(selectedPitch, scorer);
 				}
 						
@@ -307,6 +344,19 @@ function buildGoalsView(dataIn,filteredData){
 	
 }
 
+
+function getNewBGPos(scorer){
+
+	var numOut;
+
+	if(scorer=="Rooney"){ numOut = 0; }
+	if(scorer=="Charlton"){ numOut = -200; }
+	if(scorer=="Lineker"){ numOut = -400; }
+	if(scorer=="Greaves"){ numOut = -600; }
+	if(scorer=="Owen"){ numOut = -800; }
+
+	return numOut;
+}
 
 function sizeBars(height, barUnitH){
 //cap_"+currScorer+"_"+i
@@ -590,7 +640,6 @@ function upDatePosition(numIn){
 }
 
 function expandCard(currClip){
-	$(".player-card-selected .player-card-infobox").html(" ")
 	$(".player-card-selected").removeClass("player-card-selected").addClass("player-selected");
 	$(currClip).addClass("player-card-selected");
 
@@ -598,15 +647,6 @@ function expandCard(currClip){
 	upDateInfoBox(dataArr)
 	globalCardArray = dataArr;
 }
-
-
-function upDateInfoBox(dataArr){
-	var newItem = dataArr[0];
-	htmlStr = "Goal 1 of "+dataArr.length+"<br/>"+newItem.opposition+" "+newItem.comp+"</br>";
-
-	$(".player-card-selected .player-card-infobox").html(htmlStr);
-}
-
 
 function getCardData(currClip){
 	var idStr = ($(currClip).attr("id")).split("_");
@@ -673,7 +713,7 @@ function setCenterColTxt(finalTally, item){
 	if(finalTally==undefined){
 		strOut = "Greaves<br/>0 Goals in XX matches";
 	}else{
-		strOut = finalTally.scorer+"<br/>Goals in "+getGameTypeStr()+" "+capsNum+" matches";
+		strOut = finalTally.firstname+" "+finalTally.scorer+"<br/>Goals in "+getGameTypeStr()+" "+capsNum+" matches";
 	}
 	
 	

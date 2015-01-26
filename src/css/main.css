@@ -41,10 +41,8 @@ html, body {
 #drop-down-holder{
 	position:relative;
 	width:100%;
-	height:auto;
-	padding:36px 0 12px; 0;	
-	float:left;
-	clear:right;
+	margin:36px 0 12px; 0;	
+
 }
 
 #top-header{
@@ -66,8 +64,6 @@ html, body {
 
 .sub-header{
 	position:relative;
-	float:left;
-	clear:right;
 	left:0px;
 	top:0px;
 	width:100%;
@@ -77,37 +73,22 @@ html, body {
 	line-height: 1.2em;
 	font-weight:200;
 	text-align:left;
-	color: #bdbdbd;
-	padding-bottom:3px 0 12px 0;
-	border-top: 1px solid #4bc6df;
+	color: #767676;
+	padding:1px 0 0 0;
+	border-top: 1px dotted #dcdcdc;
 }
 
-.drop-down-text-title{
-	postion: relative;
-	left: 0px;
-	top:24px;
-	float: left;
-    font-family: "Guardian Egyptian Headline",Georgia,serif;
-    font-size: 1.8em;
-    font-weight: 500;
-    color:#005689;
-    padding:0 12px 0 0;
-}
-
-#cardsHolder{
-	width: 100%;
-	height: auto;
-}
 
 #allBarChartsHolder{
 	width: 100%;
 	height: auto;
 }
 .bar-chart-holder{
+	display:block;
 	width: auto;
 	height: 120px;
 	background-color: #FFF;
-	padding: 12px 0 0 0;
+	padding: 12px 0;
 }
 
 
@@ -137,8 +118,12 @@ html, body {
 	}
 
 #cardsHolder{
+	display: inline-block;
 	width: 100%;
 	height: auto;
+	float: left;
+	clear: right;
+	padding: 0 0 36px 0;
 }
 
 .player-card{
@@ -148,7 +133,7 @@ html, body {
 	float:left;
 	padding-top: 3px;
 	cursor:pointer;
-	background-color:#484848;
+	background-color:none;
 }
 
 .player-card-selected{
@@ -173,13 +158,13 @@ html, body {
 }
 
 .playerCol-right{ 
-	float: right; 
-	width: 60px;  
-	height:60px; 
-	border-radius:50%;
-	background-image: url("../images/Gary_Lineker.jpg");
-	background-size: 60px 60px;
-    background-repeat: no-repeat;
+	position: absolute;
+	top:0px;
+	right:0px;
+	width: 200px;  
+	height:240px; 
+	background:url("../images/cutouts.png");
+	
 }
 
 .playerCol-center{ 
@@ -201,6 +186,97 @@ html, body {
 	color:#FFF;
 }
 
+#trophiesHolder{
+	background-color:#EFEFEF;
+}
+
+.trophyItem{
+	height: 240px;
+	background: url("../images/cutouts.png");
+}
+.trophyYear{
+	float: left; 
+	width: 100%;
+	height: auto;
+	margin-left: 200px;
+	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-weight: 200;
+	font-size: 4.8em;
+	color: #767676;
+	background-color:#EFEFEF;
+}
+
+.trophyCopy{
+	float: left; 
+	width: 100%;
+	height: 100%;
+	margin-left: 200px;
+	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-weight: 200;
+	font-size: 1.8em;
+	color: #767676;
+	background-color:#EFEFEF;
+}
+
+
+/* drop down  - see media queries too */
+
+
+.styled-select {
+	float:right;
+	width:240px;
+	height:34px;
+	padding-left:10px;
+	overflow:hidden;
+	background:url(../images/dropdown.png) no-repeat 218px #fff;
+	border:1px solid #CCC;
+	border-radius:17px
+}
+
+.styled-select:hover {
+	background:url(../images/dropdown-white.png) no-repeat 218px #767676
+}
+
+.styled-select:hover #filter-dropdown {
+	color:#fff
+}
+
+.drop-down-text-title{
+	postion: relative;
+
+	top:24px;
+	float: right;
+    font-family: "Guardian Egyptian Headline",Georgia,serif;
+    font-size: 1.8em;
+    font-weight: 500;
+    color:#005689;
+    padding:0 12px 0 0;
+}
+
+#filter-dropdown {
+	background:transparent;
+	width:240px;
+	padding: 5px 5px 5px 2px;
+	font-size:16px;
+	line-height:1;
+	border:0;
+	border-radius:0;
+	height:34px;
+	-webkit-appearance:none;
+	font-family:"Guardian Agate Sans",Arial,sans-serif;
+	line-height:1.3em;
+	color:#767676;
+	font-weight:600;
+	cursor:pointer
+}
+
+#filter-dropdown option {
+	padding:10px;
+	border-bottom:1px solid #767676;
+	font-weight:400;
+	color:#767676;
+	background:#fff
+}
 
 /* *********** type *************** */
 
@@ -241,7 +317,7 @@ h2{
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 400;
 	font-size: 3em;
-	line-height: 1.2em;
+	line-height: 1em;
 	color: #333;
 }
 
@@ -296,6 +372,38 @@ h6{
 	stroke-width: 1;
     stroke: #4bc6df;
 }
+
+#graphsHolder{
+
+}
+
+.section-header{
+	width:100%;
+	max-width:1260px;
+	border-top: 2px solid #4bc6df;
+}
+
+.section-header h2{
+	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-weight: 200;
+	font-size: 2.4em;
+	line-height: 1.05em;
+	color: #333;
+	padding: 0px;
+	margin: 3px 0 0 0;
+	}
+
+.section-header p{
+	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-weight: 300;
+	font-size: 1.5em;
+	text-align:left;
+	line-height: 1.2em;
+	margin:0px;
+	width:100%;
+	max-width:600px;
+	color:#767676;
+	}
 
 
 
