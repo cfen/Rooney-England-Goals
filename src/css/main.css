@@ -37,14 +37,6 @@ html, body {
 	background-color:#4bc6df;
 }
 
-
-#drop-down-holder{
-	position:relative;
-	width:100%;
-	margin:36px 0 12px; 0;	
-
-}
-
 #top-header{
 	position:relative;
 	float:left;
@@ -75,7 +67,6 @@ html, body {
 	text-align:left;
 	color: #767676;
 	padding:1px 0 0 0;
-	border-top: 1px dotted #dcdcdc;
 }
 
 
@@ -88,7 +79,7 @@ html, body {
 	width: auto;
 	height: 120px;
 	background-color: #FFF;
-	padding: 12px 0;
+	padding: 12px 0 24px 0;
 }
 
 
@@ -117,16 +108,14 @@ html, body {
 	  text-anchor: end;
 	}
 
-#cardsHolder{
+.cards-holder{
 	display: inline-block;
 	width: 100%;
-	height: auto;
-	float: left;
-	clear: right;
-	padding: 0 0 36px 0;
+	margin:0px;
+	padding: 12px 0 0 0;
 }
 
-.player-card{
+.player-card, .player-card-static{
 	position: relative;
 	width: 320px;
 	height: auto;
@@ -177,6 +166,7 @@ html, body {
 	height:100px;
 	background-color:none; 
 	color:#4bc6df;
+	padding: 3px 0 0 0;
 }
 
 .player-card-infobox{
@@ -187,43 +177,53 @@ html, body {
 }
 
 #trophiesHolder{
-	background-color:#EFEFEF;
+	background-color: #edf9fc;
+	width: 100%;
+	max-width: 1260px;
 }
 
 .trophyItem{
-	height: 240px;
-	background: url("../images/cutouts.png");
+	height: 180px;
+	background: url("../images/trophies.svg");
+	background-repeat: no-repeat;
+	border-bottom: 1px dotted #767676;
 }
 .trophyYear{
 	float: left; 
 	width: 100%;
-	height: auto;
-	margin-left: 200px;
+	height: 48px;
+	margin-left: 92px;
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 200;
 	font-size: 4.8em;
 	color: #767676;
-	background-color:#EFEFEF;
 }
 
 .trophyCopy{
 	float: left; 
 	width: 100%;
-	height: 100%;
-	margin-left: 200px;
+	max-width:460px;
+	height: 132px;
+	margin-left: 92px;
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 200;
-	font-size: 1.8em;
+	font-size: 1.5em;
+	line-height: 1.2em;
 	color: #767676;
-	background-color:#EFEFEF;
 }
 
 
 /* drop down  - see media queries too */
 
+#drop-down-holder{
+	position:relative;
+	width:100%;
+	margin:0;	
+
+}
 
 .styled-select {
-	float:right;
+	float:left;
 	width:240px;
 	height:34px;
 	padding-left:10px;
@@ -241,16 +241,16 @@ html, body {
 	color:#fff
 }
 
-.drop-down-text-title{
-	postion: relative;
 
-	top:24px;
-	float: right;
-    font-family: "Guardian Egyptian Headline",Georgia,serif;
-    font-size: 1.8em;
-    font-weight: 500;
-    color:#005689;
-    padding:0 12px 0 0;
+
+.drop-down-text-title{
+	position: relative;
+	float:left;
+	font-family: "Guardian Egyptian Headline",Georgia,serif;
+	font-size: 1.8em;
+	font-weight: 500;
+	color: #005689;
+	padding: 10px 12px 0 0;
 }
 
 #filter-dropdown {
@@ -374,16 +374,25 @@ h6{
 }
 
 #graphsHolder{
-
+	padding-bottom:36px;
 }
 
 .section-header{
 	width:100%;
 	max-width:1260px;
-	border-top: 2px solid #4bc6df;
+	/*border-top: 2px solid #4bc6df;*/
+	padding-bottom:36px;
 }
 
-.section-header h2{
+.section-header-box-out{
+	width:100%;
+	max-width:1260px;
+	border-top: 2px solid #4bc6df;
+	padding:0 0 36px 3px;
+	background-color: #edf9fc;
+}
+
+.section-header h2, .section-header-box-out h2{
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 200;
 	font-size: 2.4em;
@@ -391,9 +400,10 @@ h6{
 	color: #333;
 	padding: 0px;
 	margin: 3px 0 0 0;
+
 	}
 
-.section-header p{
+.section-header p, .section-header-box-out p{
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 300;
 	font-size: 1.5em;

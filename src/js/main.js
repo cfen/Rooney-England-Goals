@@ -189,14 +189,23 @@ function buildTrophyBoxOut(){
 
 	_.each(datasetCopyItems, function(item,i){
 
-		console.log(item)
+		var newBGPos = checkTrophyPos(item.trophy);
 		var yearD = '<div class="trophyYear">'+item.year+'</div>'; 
 		var trophyCopy = '<div class="trophyCopy">'+item.copy+'</div>';
-		var tempStr = '<div class="trophyItem" id="trophy_'+i+'" style="background-position: '+(1600 - (i*200))*-1+'px 0px">'+yearD+' '+trophyCopy+'</div>';
+		var tempStr = '<div class="trophyItem" id="trophy_'+i+'" style="background-position: 0px '+newBGPos+'px">'+yearD+' '+trophyCopy+'</div>';
 		htmlStr+=tempStr;
 	})
 
-	
+	function checkTrophyPos(trophyStr){
+		var newPos = 0;
+
+		if(trophyStr == "Euros"){ newPos = 6; }
+		if(trophyStr == "Jules Rimet"){ newPos = -174; }
+		if(trophyStr == "World Cup"){ newPos = -352; }
+
+		return newPos;
+		
+	}
 
 	$("#trophiesHolder").html(htmlStr);
 }
@@ -220,7 +229,7 @@ function buildBarChartView(){
 
 	 _.each(datasetTopline, function(item,i){
 	 	// set x axis according to each number of caps
-	 	var x = d3.scale.linear().range([0, (item.totalcaps*barWidth)]);
+	 	var x = d3.scale.linear().range([margin.left, (item.totalcaps*barWidth)+margin.left]);
 	 	x.domain([0,item.totalcaps]);
 	 	var currScorer = item.scorer;
 	 	var currWidth = item.totalcaps * barWidth;
