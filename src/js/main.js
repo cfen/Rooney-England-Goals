@@ -25,7 +25,7 @@ iframeMessenger.enableAutoResize();
 
 
 //global vars
-var dataset = filteredDataset = globalCardArray = allMatchesArr = allGoalsArr =[], datasetRooney, datasetLineker, datasetCharlton, datasetGreaves, datasetOwen, datasetTopline, data, globalSortCategory = "A", currentIndex = 0, initViewBuilt = false, scorersArr = [];
+var dataset = filteredDataset = globalCardArray = allMatchesArr = allGoalsArr =[], datasetRooney, datasetLineker, isMobile, winW, datasetCharlton, datasetGreaves, datasetOwen, datasetTopline, data, globalSortCategory = "A", currentIndex = 0, initViewBuilt = false, scorersArr = [];
 var goalSquaresArr = ["TL","TCL","TC","TCR","TR","CL","CCL","CC","CCR","CR","BL","BCL","BC","BCR","BR"];
 var pitchSVG = '<svg  class="playerPitch" width="280px" height="226px" viewBox="0 0 280 226" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><title>pitch</title><desc>Chris Fenn</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="pitch-svg" sketch:type="MSLayerGroup" transform="translate(1.000000, 1.000000)" stroke="#4BC6DF"><path d="M0.65482392,216.531467 L277.731236,216.531467 L277.731236,0.353733333 L0.65482392,0.353733333 L277.731236,0.353733333 L0.65482392,0.353733333 L0.65482392,216.531467 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M102.250253,0.354666667 C102.250253,21.1624733 118.997827,38.0305333 139.657007,38.0305333 C160.316186,38.0305333 177.06376,21.1624733 177.06376,0.354666667" id="Oval" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><ellipse id="Oval" stroke-width="1.2204" fill="#4BC6DF" sketch:type="MSShapeGroup" cx="138.471708" cy="0.88667806" rx="0.69269103" ry="0.7"></ellipse><ellipse id="Oval" stroke-width="0.8136" fill="#4BC6DF" sketch:type="MSShapeGroup" cx="139.192106" cy="171.235867" rx="0.813681063" ry="0.822266667"></ellipse><path d="M124.687156,216.531467 L121.835116,223.786267 L156.388392,223.786267 L154.106206,216.531467 L124.687156,216.531467 L124.687156,216.531467 Z" id="goal-frame" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M102.276292,216.531467 L102.276292,193.8832 L176.517993,193.8832 L176.517993,216.531467 L102.276292,216.531467 L102.276292,216.531467 Z" id="six-yard-area" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M57.4545648,216.531467 L57.4545648,148.5876 L221.337874,148.5876 L221.337874,216.531467 L57.4545648,216.531467 L57.4545648,216.531467 Z" id="penalty-area" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M109.397156,148.5876 C121.773236,131.960267 145.147402,128.618 161.60297,141.124667 C164.399595,143.249867 166.885894,145.763333 168.988904,148.5876 L109.397156,148.5876 L109.397156,148.5876 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M4.72969435,216.531467 C4.72969435,214.254133 2.90468439,212.412667 0.655747508,212.412667 L0.655747508,216.531467 L4.72969435,216.531467 L4.72969435,216.531467 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M277.731236,212.414533 C275.483223,212.414533 273.655442,214.254133 273.655442,216.531467 L277.731236,216.531467 L277.731236,212.414533 L277.731236,212.414533 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path></g></g></svg>'
 //var pitchSVG ='<svg class="playerPitch" width="300px" height="242px" viewBox="0 0 300 242" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="pitch-svg" transform="translate(1.000000, 1.000000)" stroke="#4BC6DF"><path d="M0.701933555,231.031342 L297.7119,231.031342 L297.7119,0.377420833 L0.701933555,0.377420833 L297.7119,0.377420833 L0.701933555,0.377420833 L0.701933555,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path d="M109.606387,0.378416667 C109.606387,22.5796032 127.558822,40.5772208 149.704273,40.5772208 C171.849725,40.5772208 189.80216,22.5796032 189.80216,0.378416667" id="Oval" stroke-width="1.6271"></path><ellipse id="Oval" stroke-width="1.2204" fill="#4BC6DF" cx="148.433701" cy="0.946053823" rx="0.742524917" ry="0.746875"></ellipse><ellipse id="Oval" stroke-width="0.8136" fill="#4BC6DF" cx="149.205927" cy="182.702554" rx="0.872219269" ry="0.877329167"></ellipse><path class="goal-frame" d="M133.657455,231.031342 L130.600233,238.771954 L167.639355,238.771954 L165.192983,231.031342 L133.657455,231.031342 L133.657455,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path class="six-yard-box" d="M109.634299,231.031342 L109.634299,206.86645 L189.21713,206.86645 L189.21713,231.031342 L109.634299,231.031342 L109.634299,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path class="penalty-area" d="M61.5879867,231.031342 L61.5879867,158.537663 L237.261462,158.537663 L237.261462,231.031342 L61.5879867,231.031342 L61.5879867,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path d="M117.267455,158.537663 C130.5339,140.796892 155.589661,137.230813 173.229083,150.574979 C176.226904,152.842492 178.892073,155.524271 181.146379,158.537663 L117.267455,158.537663 L117.267455,158.537663 Z" id="Shape" stroke-width="1.6271"></path><path d="M5.06996013,231.031342 C5.06996013,228.601508 3.11365449,226.636729 0.702923588,226.636729 L0.702923588,231.031342 L5.06996013,231.031342 L5.06996013,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path d="M297.7119,226.638721 C295.302159,226.638721 293.342884,228.601508 293.342884,231.031342 L297.7119,231.031342 L297.7119,226.638721 L297.7119,226.638721 Z" id="Shape" stroke-width="1.6271"></path></g></g></svg>'
@@ -37,6 +37,9 @@ $(function() {
 
 	$(document).ready(function() {
 		initData();
+
+		winW = $(window).width();
+		checkWin();
 	})	
 
 	if(!Array.indexOf) {// IE fix
@@ -52,7 +55,11 @@ $(function() {
 	}
 });
 
+function checkWin() {
+	winW > 739 ? isMobile = false : isMobile = true;
 
+	console.log("isMobile = "+isMobile)
+}
 
 function initData() {
 	"use strict";
@@ -217,11 +224,14 @@ function buildBarChartView(){
 	var initGraphData = [];
 	var maxCaps = getMaxVal( datasetTopline, "totalcaps");
 	var maxGoals = 5;
-	var margin = {top: 36, right: 160, bottom: 6, left: 3};
+	var margin;
+
+	isMobile ?  margin = {top: 36, right: 20, bottom: 6, left: 3} : margin = {top: 36, right: 140, bottom: 6, left: 3};
+
 	var width = $("#bar-chart_0").width() - margin.left - margin.right;
     var height = $("#bar-chart_0").height() - (margin.top*1.5) - margin.bottom;
 	var barUnitH = height/maxGoals; 
-	var barWidth = numDivision(width, maxCaps);
+	var barWidth = numDivision(width-margin.right, maxCaps);
 	
 	//set y axis 
 	var y = d3.scale.linear().range([height, 0]);
@@ -235,7 +245,10 @@ function buildBarChartView(){
 	 	var currWidth = item.totalcaps * barWidth;
 	 	initGraphData = [];
 	 	currChart = "#bar-chart_"+i;
+	 	$(currChart).css("background-position", getNewBGPos(currScorer)+"px 0px");
 		currChart = d3.select(currChart)
+
+
 
 		// build an array for the graph bars
 		for(var i = 0; i<item.totalcaps; i++){
@@ -247,10 +260,15 @@ function buildBarChartView(){
 		var newChart = currChart.append("svg")
 			.attr("id", function() { return "chart"+item.scorer })
 			.attr("width", width)
-			.attr("y",  0 );
+			
+
+		var newChartContainer = newChart.append("g")
+			.attr("id", function() { return "chart_inner"+item.scorer })
+			.attr("width", width-margin.right)
+			.attr("transform","translate("+margin.right+",0)")
 
 		// set up a group to add bars to
-		var allBars = newChart.append("g")
+		var allBars = newChartContainer.append("g")
 			.attr("id", function() { return "allBars_"+item.scorer });
 
 		// set axes	
@@ -263,20 +281,32 @@ function buildBarChartView(){
 		var yAxis = d3.svg.axis()
 		    .scale(y)
 		    .ticks(4)
-		    .tickSize((width-20), -6, 0)
+		    .tickSize((width-margin.right), -6, 0)
 		    .orient("right")
 
-		newChart.append("g")
+		newChartContainer.append("g")
 		    .attr("class", "y axis")
 		    .call(yAxis)
 		    .append("text")
 		    .style("text-anchor", "end")
 
-		newChart.append("g")
+		newChartContainer.append("g")
 		    .attr("class", "x axis")
 		    .call(xAxis)
 		    .append("text")
-		    .style("text-anchor", "end");
+		    .style("text-anchor", "end")
+
+		newChartContainer.append("text")
+            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+            .attr("transform", "translate("+ (currWidth-barWidth) +","+height/4.5+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
+            .attr("class", "axis-label")
+            .text("goals");
+
+        newChartContainer.append("text")
+            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+            .attr("transform", "translate("+ ((width-margin.left-margin.right)/2) +","+(height+(height*0.66))+")")  // centre below axis
+            .attr("class", "axis-label")
+            .text("appearance number");    ;
 
 		 
 		var barsSelected = allBars.selectAll("rect")
@@ -291,6 +321,9 @@ function buildBarChartView(){
       		.attr("height", function(d) { return height - y(d.h); }) // make the height reference y(d.h)
          	.attr("class", function (d) { return d.class; })
          	.attr("id", function (d) { return d.id; });
+
+       
+
 	  });
 
 	 sizeBars(height, barUnitH);
@@ -377,6 +410,7 @@ function sizeBars(height, barUnitH){
 		var currH = parseInt(currClip.attr("height"));
 		currClip.attr("height", 0)
 		currClip.attr("height", (currH+barUnitH))
+		currClip.attr("class","bar-in-chart-goal")
 		currClip.attr("y",height-currH);
 	})
 	

@@ -7,8 +7,9 @@
 		<!-- CSS_START -->
 		<!--  <link rel="stylesheet" href="css/local-fonts.css"/> -->
 		<link rel="stylesheet" href="http://pasteup.guim.co.uk/0.0.5/css/fonts.pasteup.min.css"/>
+		<link rel="stylesheet" href="css/factbox.css"/>
 		<link rel="stylesheet" href="css/main.css"/>
-
+		
 
 		<!-- CSS_END -->
 		<!-- JS_START -->
@@ -21,16 +22,21 @@
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
 		<script src="js/libs/datejs/date-en-GB.js"></script>
 		
-		<!--  USE THIS REMOTELY -->
-		<!--<script src="//interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>-->
-		<!--  USE THIS LOCALLY -->
 		
+		<!--<script src="//interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>-->
+			
 		<script src="http://interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>
 		
 		<title>Rooney goals</title>
 
 		</head>
 	<body>
+
+		<header id="interactiveHeader">
+        <div class="headerContent">
+            <h1>Rooney breaks the record</h1>
+            <h2>Copy here here copy here  here here copy here here here copy here here here copy here here here copy here</h2>
+ </header>
 
 		<div id='player-container'>
 			<div id="topArea">	
@@ -49,82 +55,199 @@
 
 			</div>
 
-			<div id="sectionHeader2" class="section-header">
-					<h2>Chip off the old block?</h2>
-					<p>Neither man could be described as an orthodox predatory goalscorer and there are other career similarities between Wayne Rooney and the man he replaces as England's top goalscorer.</p>
+			<div id="heatmap-key">
+				<div class="key-item-title">Key</div>
+				<div class="key-item" id="key-item-1"><div class="key-item-color-one"></div>Scored</div>
+				<div class="key-item" id="key-item-2"><div class="key-item-color-two"></div>Didn't score</div>
+				<!-- <div class="key-item-short" id="key-item-3"><div class="key-item-color-three"></div>Imports</div>
+				<div class="key-item-short" id="key-item-4"><div class="key-item-color-four"></div>Exports</div> -->
+				
 			</div>
-			<div class="cards-holder">
-				<div class="player-card-static">
-					<div class="playerCol-left">45</div>
-					<div class="playerCol-center">Wayne Rooney<br>Goals in all 101 matches</div>
-					<div class="playerCol-right" style="background-position: 0px 0px;"></div>
-					<div class="pitchHolderStatic">
-						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="320px" height="210px" viewBox="0 360 320 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"></path><circle clip-path="url(#SVGID_2_)" fill="none" fill-opacity="0" stroke="#4bc6df" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"></circle><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z" class="svgSixYardBox"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z" class="svgPenaltyArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"></path><g id="unselectedLines"><line x1="149" y1="530" x2="156.87397971733316" y2="485" class="goal-line-marker" id="goal_Rooney_0"></line><line x1="173" y1="530" x2="181.81634903542326" y2="505" class="goal-line-marker" id="goal_Rooney_1"></line><line x1="149" y1="536" x2="145.06301014133342" y2="491" class="goal-line-marker" id="goal_Rooney_2"></line><line x1="167" y1="530" x2="137" y2="500" class="goal-line-marker" id="goal_Rooney_3"></line><line x1="140" y1="533" x2="262.5363191866992" y2="445.5" class="goal-line-marker" id="goal_Rooney_4"></line><line x1="158" y1="536" x2="140.12369611108684" y2="521" class="goal-line-marker" id="goal_Rooney_5"></line><line x1="158" y1="530" x2="233" y2="492.5" class="goal-line-marker" id="goal_Rooney_6"></line><line x1="173" y1="533" x2="120.48443463427176" y2="458" class="goal-line-marker" id="goal_Rooney_7"></line><line x1="167" y1="530" x2="146.01615538302505" y2="485" class="goal-line-marker" id="goal_Rooney_8"></line><line x1="167" y1="530" x2="119.3298562962316" y2="490" class="goal-line-marker" id="goal_Rooney_9"></line><line x1="140" y1="530" x2="151.46125374605023" y2="497.5" class="goal-line-marker" id="goal_Rooney_10"></line><line x1="140" y1="536" x2="125" y2="521" class="goal-line-marker" id="goal_Rooney_11"></line><line x1="173" y1="530" x2="137.3382656749656" y2="487.5" class="goal-line-marker" id="goal_Rooney_12"></line><line x1="149" y1="533" x2="178.24277266096158" y2="488" class="goal-line-marker" id="goal_Rooney_13"></line><line x1="149" y1="530" x2="180.90256589968874" y2="500" class="goal-line-marker" id="goal_Rooney_14"></line><line x1="173" y1="530" x2="142.68911086754463" y2="512.5" class="goal-line-marker" id="goal_Rooney_15"></line><line x1="167" y1="530" x2="146.39391935409034" y2="522.5" class="goal-line-marker" id="goal_Rooney_16"></line><line x1="167" y1="530" x2="218.96152422706632" y2="515" class="goal-line-marker" id="goal_Rooney_17"></line><line x1="158" y1="536" x2="136.55262579950636" y2="516" class="goal-line-marker" id="goal_Rooney_18"></line><line x1="173" y1="536" x2="155.74447389168486" y2="521" class="goal-line-marker" id="goal_Rooney_19"></line><line x1="167" y1="536" x2="188.73216844540568" y2="523.5" class="goal-line-marker" id="goal_Rooney_20"></line><line x1="140" y1="536" x2="232.3305061152576" y2="521" class="goal-line-marker" id="goal_Rooney_21"></line><line x1="158" y1="530" x2="233.22905861385328" y2="510" class="goal-line-marker" id="goal_Rooney_22"></line><line x1="140" y1="533" x2="167.3449969277351" y2="515.5" class="goal-line-marker" id="goal_Rooney_23"></line><line x1="140" y1="530" x2="167.54620906317322" y2="490" class="goal-line-marker" id="goal_Rooney_24"></line><line x1="149" y1="530" x2="186.04691469605154" y2="515" class="goal-line-marker" id="goal_Rooney_25"></line><line x1="167" y1="536" x2="176.1719204437598" y2="521" class="goal-line-marker" id="goal_Rooney_26"></line><line x1="167" y1="530" x2="201.64101615137756" y2="520" class="goal-line-marker" id="goal_Rooney_27"></line><line x1="167" y1="533" x2="166.78127834118519" y2="530.5" class="goal-line-marker" id="goal_Rooney_28"></line><line x1="167" y1="536" x2="188.83821405597214" y2="506" class="goal-line-marker" id="goal_Rooney_29"></line><line x1="173" y1="530" x2="150.0713547727507" y2="485" class="goal-line-marker" id="goal_Rooney_30"></line><line x1="140" y1="536" x2="175.7526077778263" y2="521" class="goal-line-marker" id="goal_Rooney_31"></line><line x1="173" y1="530" x2="246.4627330759085" y2="447.5" class="goal-line-marker" id="goal_Rooney_32"></line><line x1="149" y1="530" x2="145.28026017077462" y2="512.5" class="goal-line-marker" id="goal_Rooney_33"></line><line x1="140" y1="536" x2="215.05553499465134" y2="471" class="goal-line-marker" id="goal_Rooney_34"></line><line x1="140" y1="533" x2="137.35509528937303" y2="518" class="goal-line-marker" id="goal_Rooney_35"></line><line x1="140" y1="530" x2="165.17298893531841" y2="515" class="goal-line-marker" id="goal_Rooney_36"></line><line x1="173" y1="530" x2="181.3909963117728" y2="525" class="goal-line-marker" id="goal_Rooney_37"></line><line x1="167" y1="530" x2="177.91910702798606" y2="515" class="goal-line-marker" id="goal_Rooney_38"></line><line x1="173" y1="536" x2="170.37534009422228" y2="506" class="goal-line-marker" id="goal_Rooney_39"></line><line x1="140" y1="536" x2="167.97845948929992" y2="506" class="goal-line-marker" id="goal_Rooney_40"></line><line x1="167" y1="533" x2="128.1916420580508" y2="486.75" class="goal-line-marker" id="goal_Rooney_41"></line><line x1="167" y1="533" x2="177.5796188425079" y2="503" class="goal-line-marker" id="goal_Rooney_42"></line><line x1="173" y1="530" x2="162.89637028918156" y2="512.5" class="goal-line-marker" id="goal_Rooney_43"></line><line x1="149" y1="533" x2="146.35509528937303" y2="518" class="goal-line-marker" id="goal_Rooney_44"></line></g><g id="selectedLines"></g></svg>
-					</div>
+			
+
+			<div class="factbox-holder" id="fact-box-holder-1">
+				<div class="factbox-holder-col-left" id="col1">
+					<div class="small-col-header" id="factBoxHead1">Chip off the old block?</div><div class="time-stamp" id="factBoxCap1">Neither man could be described as an orthodox predatory goalscorer and there are other career similarities between Wayne Rooney and the man he replaces as England's top goalscorer.</div>
+					
 				</div>
 
+					<div class="factbox-holder-col-center-left" id="factbox1Col2">
+						
+							<div class="number-caption" id="factbox1Col2Caption">Wayne Rooney</div>
+									<!-- <div class="large-number" id="col-3-number">50 goals</div> -->
+									<div id="graphHolder">
+										<div id="graphBarHolder" class="graphBarHolder">	
+											<div class="graphBarCountry" id="bar_Value" style="width: 135.818495117748px;"></div>
 
-				<div class="player-card-static">
-					<div class="playerCol-left">49</div>
-					<div class="playerCol-center">Bobby Charlton<br>Goals in 106 matches</div>
-					<div class="playerCol-right" style="background-position: -200px 0px;"></div>
-					<div class="pitchHolderStatic">
-						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="320px" height="210px" viewBox="0 360 320 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"></path><circle clip-path="url(#SVGID_2_)" fill="none" fill-opacity="0" stroke="#4bc6df" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"></circle><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z" class="svgSixYardBox"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z" class="svgPenaltyArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"></path><g id="unselectedLines"><line x1="149" y1="530" x2="156.87397971733316" y2="485" class="goal-line-marker" id="goal_Rooney_0"></line><line x1="173" y1="530" x2="181.81634903542326" y2="505" class="goal-line-marker" id="goal_Rooney_1"></line><line x1="149" y1="536" x2="145.06301014133342" y2="491" class="goal-line-marker" id="goal_Rooney_2"></line><line x1="167" y1="530" x2="137" y2="500" class="goal-line-marker" id="goal_Rooney_3"></line><line x1="140" y1="533" x2="262.5363191866992" y2="445.5" class="goal-line-marker" id="goal_Rooney_4"></line><line x1="158" y1="536" x2="140.12369611108684" y2="521" class="goal-line-marker" id="goal_Rooney_5"></line><line x1="158" y1="530" x2="233" y2="492.5" class="goal-line-marker" id="goal_Rooney_6"></line><line x1="173" y1="533" x2="120.48443463427176" y2="458" class="goal-line-marker" id="goal_Rooney_7"></line><line x1="167" y1="530" x2="146.01615538302505" y2="485" class="goal-line-marker" id="goal_Rooney_8"></line><line x1="167" y1="530" x2="119.3298562962316" y2="490" class="goal-line-marker" id="goal_Rooney_9"></line><line x1="140" y1="530" x2="151.46125374605023" y2="497.5" class="goal-line-marker" id="goal_Rooney_10"></line><line x1="140" y1="536" x2="125" y2="521" class="goal-line-marker" id="goal_Rooney_11"></line><line x1="173" y1="530" x2="137.3382656749656" y2="487.5" class="goal-line-marker" id="goal_Rooney_12"></line><line x1="149" y1="533" x2="178.24277266096158" y2="488" class="goal-line-marker" id="goal_Rooney_13"></line><line x1="149" y1="530" x2="180.90256589968874" y2="500" class="goal-line-marker" id="goal_Rooney_14"></line><line x1="173" y1="530" x2="142.68911086754463" y2="512.5" class="goal-line-marker" id="goal_Rooney_15"></line><line x1="167" y1="530" x2="146.39391935409034" y2="522.5" class="goal-line-marker" id="goal_Rooney_16"></line><line x1="167" y1="530" x2="218.96152422706632" y2="515" class="goal-line-marker" id="goal_Rooney_17"></line><line x1="158" y1="536" x2="136.55262579950636" y2="516" class="goal-line-marker" id="goal_Rooney_18"></line><line x1="173" y1="536" x2="155.74447389168486" y2="521" class="goal-line-marker" id="goal_Rooney_19"></line><line x1="167" y1="536" x2="188.73216844540568" y2="523.5" class="goal-line-marker" id="goal_Rooney_20"></line><line x1="140" y1="536" x2="232.3305061152576" y2="521" class="goal-line-marker" id="goal_Rooney_21"></line><line x1="158" y1="530" x2="233.22905861385328" y2="510" class="goal-line-marker" id="goal_Rooney_22"></line><line x1="140" y1="533" x2="167.3449969277351" y2="515.5" class="goal-line-marker" id="goal_Rooney_23"></line><line x1="140" y1="530" x2="167.54620906317322" y2="490" class="goal-line-marker" id="goal_Rooney_24"></line><line x1="149" y1="530" x2="186.04691469605154" y2="515" class="goal-line-marker" id="goal_Rooney_25"></line><line x1="167" y1="536" x2="176.1719204437598" y2="521" class="goal-line-marker" id="goal_Rooney_26"></line><line x1="167" y1="530" x2="201.64101615137756" y2="520" class="goal-line-marker" id="goal_Rooney_27"></line><line x1="167" y1="533" x2="166.78127834118519" y2="530.5" class="goal-line-marker" id="goal_Rooney_28"></line><line x1="167" y1="536" x2="188.83821405597214" y2="506" class="goal-line-marker" id="goal_Rooney_29"></line><line x1="173" y1="530" x2="150.0713547727507" y2="485" class="goal-line-marker" id="goal_Rooney_30"></line><line x1="140" y1="536" x2="175.7526077778263" y2="521" class="goal-line-marker" id="goal_Rooney_31"></line><line x1="173" y1="530" x2="246.4627330759085" y2="447.5" class="goal-line-marker" id="goal_Rooney_32"></line><line x1="149" y1="530" x2="145.28026017077462" y2="512.5" class="goal-line-marker" id="goal_Rooney_33"></line><line x1="140" y1="536" x2="215.05553499465134" y2="471" class="goal-line-marker" id="goal_Rooney_34"></line><line x1="140" y1="533" x2="137.35509528937303" y2="518" class="goal-line-marker" id="goal_Rooney_35"></line><line x1="140" y1="530" x2="165.17298893531841" y2="515" class="goal-line-marker" id="goal_Rooney_36"></line><line x1="173" y1="530" x2="181.3909963117728" y2="525" class="goal-line-marker" id="goal_Rooney_37"></line><line x1="167" y1="530" x2="177.91910702798606" y2="515" class="goal-line-marker" id="goal_Rooney_38"></line><line x1="173" y1="536" x2="170.37534009422228" y2="506" class="goal-line-marker" id="goal_Rooney_39"></line><line x1="140" y1="536" x2="167.97845948929992" y2="506" class="goal-line-marker" id="goal_Rooney_40"></line><line x1="167" y1="533" x2="128.1916420580508" y2="486.75" class="goal-line-marker" id="goal_Rooney_41"></line><line x1="167" y1="533" x2="177.5796188425079" y2="503" class="goal-line-marker" id="goal_Rooney_42"></line><line x1="173" y1="530" x2="162.89637028918156" y2="512.5" class="goal-line-marker" id="goal_Rooney_43"></line><line x1="149" y1="533" x2="146.35509528937303" y2="518" class="goal-line-marker" id="goal_Rooney_44"></line></g><g id="selectedLines"></g><g id="unselectedLines"><line x1="149" y1="533" x2="134.56624327025935" y2="508" class="goal-line-marker" id="goal_Charlton_0"></line><line x1="167" y1="533" x2="136.57496417643208" y2="498" class="goal-line-marker" id="goal_Charlton_1"></line><line x1="167" y1="536" x2="117.07161552948446" y2="506" class="goal-line-marker" id="goal_Charlton_2"></line><line x1="158" y1="530" x2="95.05523168570784" y2="462.5" class="goal-line-marker" id="goal_Charlton_3"></line><line x1="167" y1="533" x2="185.69960021323854" y2="495.5" class="goal-line-marker" id="goal_Charlton_4"></line><line x1="158" y1="536" x2="57.87627445249049" y2="493.5" class="goal-line-marker" id="goal_Charlton_5"></line><line x1="158" y1="533" x2="161.0573068145866" y2="528" class="goal-line-marker" id="goal_Charlton_6"></line><line x1="140" y1="533" x2="177.3046126523999" y2="493" class="goal-line-marker" id="goal_Charlton_7"></line><line x1="149" y1="533" x2="19.05794019564445" y2="480.5" class="goal-line-marker" id="goal_Charlton_8"></line><line x1="173" y1="533" x2="77.54343710907082" y2="490.5" class="goal-line-marker" id="goal_Charlton_9"></line><line x1="158" y1="533" x2="154.81165157494968" y2="518" class="goal-line-marker" id="goal_Charlton_10"></line><line x1="167" y1="536" x2="24.692605552315825" y2="516" class="goal-line-marker" id="goal_Charlton_11"></line><line x1="158" y1="536" x2="155.64164993226314" y2="491" class="goal-line-marker" id="goal_Charlton_12"></line><line x1="158" y1="530" x2="155.89188747946412" y2="515" class="goal-line-marker" id="goal_Charlton_13"></line><line x1="173" y1="530" x2="157.37826620226681" y2="505" class="goal-line-marker" id="goal_Charlton_14"></line><line x1="149" y1="533" x2="143.75068018844456" y2="473" class="goal-line-marker" id="goal_Charlton_15"></line><line x1="140" y1="530" x2="126.64313944074391" y2="500" class="goal-line-marker" id="goal_Charlton_16"></line><line x1="173" y1="533" x2="311.5640646055102" y2="493" class="goal-line-marker" id="goal_Charlton_17"></line><line x1="173" y1="536" x2="511.5451890892779" y2="481" class="goal-line-marker" id="goal_Charlton_18"></line><line x1="140" y1="533" x2="119.14431212960133" y2="515.5" class="goal-line-marker" id="goal_Charlton_19"></line><line x1="158" y1="533" x2="156.04678593373322" y2="530.5" class="goal-line-marker" id="goal_Charlton_20"></line><line x1="140" y1="530" x2="142.6276058816419" y2="517.5" class="goal-line-marker" id="goal_Charlton_21"></line><line x1="149" y1="536" x2="144.53307000120876" y2="493.5" class="goal-line-marker" id="goal_Charlton_22"></line><line x1="149" y1="533" x2="136.13861496007422" y2="530.5" class="goal-line-marker" id="goal_Charlton_23"></line><line x1="158" y1="533" x2="156.84565904437218" y2="528" class="goal-line-marker" id="goal_Charlton_24"></line><line x1="158" y1="533" x2="176.65030172275323" y2="523" class="goal-line-marker" id="goal_Charlton_25"></line><line x1="149" y1="533" x2="462.8672999456818" y2="488" class="goal-line-marker" id="goal_Charlton_26"></line><line x1="140" y1="530" x2="356.04516142054183" y2="462.5" class="goal-line-marker" id="goal_Charlton_27"></line><line x1="167" y1="533" x2="-1408.4739448458843" y2="505.5" class="goal-line-marker" id="goal_Charlton_28"></line><line x1="167" y1="533" x2="333.71111613223195" y2="465.5" class="goal-line-marker" id="goal_Charlton_29"></line><line x1="149" y1="533" x2="122.61215801570033" y2="460.5" class="goal-line-marker" id="goal_Charlton_30"></line><line x1="167" y1="536" x2="352.3201210640926" y2="473.5" class="goal-line-marker" id="goal_Charlton_31"></line><line x1="158" y1="530" x2="112.3624462646481" y2="477.5" class="goal-line-marker" id="goal_Charlton_32"></line><line x1="167" y1="536" x2="-135.40321320132887" y2="493.5" class="goal-line-marker" id="goal_Charlton_33"></line><line x1="140" y1="536" x2="157.80914741234145" y2="516" class="goal-line-marker" id="goal_Charlton_34"></line><line x1="173" y1="533" x2="294.3925805730797" y2="490.5" class="goal-line-marker" id="goal_Charlton_35"></line><line x1="167" y1="533" x2="339.55526108315144" y2="458" class="goal-line-marker" id="goal_Charlton_36"></line><line x1="167" y1="530" x2="190.52315054739228" y2="527.5" class="goal-line-marker" id="goal_Charlton_37"></line><line x1="167" y1="533" x2="428.378978990824" y2="488" class="goal-line-marker" id="goal_Charlton_38"></line><line x1="149" y1="530" x2="218.74828887681818" y2="520" class="goal-line-marker" id="goal_Charlton_39"></line><line x1="167" y1="533" x2="149.49481154475725" y2="508" class="goal-line-marker" id="goal_Charlton_40"></line><line x1="173" y1="530" x2="-218.34533473113152" y2="475" class="goal-line-marker" id="goal_Charlton_41"></line><line x1="140" y1="530" x2="252.79880983773484" y2="487.5" class="goal-line-marker" id="goal_Charlton_42"></line><line x1="149" y1="530" x2="129.51777220407467" y2="500" class="goal-line-marker" id="goal_Charlton_43"></line><line x1="173" y1="536" x2="-169.90156908284035" y2="506" class="goal-line-marker" id="goal_Charlton_44"></line><line x1="149" y1="533" x2="135.77547644686513" y2="458" class="goal-line-marker" id="goal_Charlton_45"></line><line x1="158" y1="533" x2="121.0594049116539" y2="460.5" class="goal-line-marker" id="goal_Charlton_46"></line><line x1="149" y1="536" x2="137.19610095525752" y2="518.5" class="goal-line-marker" id="goal_Charlton_47"></line><line x1="158" y1="533" x2="152.9411861236818" y2="525.5" class="goal-line-marker" id="goal_Charlton_48"></line></g></svg>
+											<div class="graphBarCaptionTopStack" id="cap_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England career goals</div>
+
+											<div class="graphBarCaptionBottomStack" id="bar_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">50</div>
+										</div>	
+										<div id="graphBarHolderAll" class="graphBarHolder">
+											<div class="graphBarAll" id="bar_Value_C"></div>
+
+											<div class="graphBarCaptionTopStack" id="all_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England total appearances</div>
+
+											<div class="graphBarCaptionBottomStack" id="all_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">106</div>
+										</div>	
+									</div>	
+					
 					</div>
-				</div>
-			</div>
 
-			<div id="sectionHeader3" class="section-header">
-					<h2>Tournament head-to-head</h2>
-					<p>How does Rooney's goalscoring record compare with England's other leading marksmen across three types of match - tournament, qualifying and international.</p>
-			</div>
+					<div class="factbox-holder-col-center-right" id="col3">
 
-			<div class="cards-holder">
-				<div class="player-card-static">
-					<div class="playerCol-left">10</div>
-					<div class="playerCol-center">Gary Lineker<br>Goals in 18 matches</div>
-					<div class="playerCol-right" style="background-position: -400px 0px;"></div>
-					<div class="pitchHolderStatic">
-						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="320px" height="210px" viewBox="0 360 320 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"></path><circle clip-path="url(#SVGID_2_)" fill="none" fill-opacity="0" stroke="#4bc6df" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"></circle><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z" class="svgSixYardBox"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z" class="svgPenaltyArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"></path><g id="unselectedLines"><line x1="149" y1="530" x2="156.87397971733316" y2="485" class="goal-line-marker" id="goal_Rooney_0"></line><line x1="173" y1="530" x2="181.81634903542326" y2="505" class="goal-line-marker" id="goal_Rooney_1"></line><line x1="149" y1="536" x2="145.06301014133342" y2="491" class="goal-line-marker" id="goal_Rooney_2"></line><line x1="167" y1="530" x2="137" y2="500" class="goal-line-marker" id="goal_Rooney_3"></line><line x1="140" y1="533" x2="262.5363191866992" y2="445.5" class="goal-line-marker" id="goal_Rooney_4"></line><line x1="158" y1="536" x2="140.12369611108684" y2="521" class="goal-line-marker" id="goal_Rooney_5"></line><line x1="158" y1="530" x2="233" y2="492.5" class="goal-line-marker" id="goal_Rooney_6"></line><line x1="173" y1="533" x2="120.48443463427176" y2="458" class="goal-line-marker" id="goal_Rooney_7"></line><line x1="167" y1="530" x2="146.01615538302505" y2="485" class="goal-line-marker" id="goal_Rooney_8"></line><line x1="167" y1="530" x2="119.3298562962316" y2="490" class="goal-line-marker" id="goal_Rooney_9"></line><line x1="140" y1="530" x2="151.46125374605023" y2="497.5" class="goal-line-marker" id="goal_Rooney_10"></line></g><g id="selectedLines"></g></svg>
+						<div class="number-caption" id="col-2-caption">Bobby Charlton</div>
+
+										<!-- <div class="large-number" id="col-2-number">&nbsp;</div> -->
+
+									<div id="graphHolder">
+										<div id="graphBarHolder" class="graphBarHolder">	
+											<div class="graphBarCountry" id="bar_Value" style="width: 135.818495117748px;"></div>
+
+											<div class="graphBarCaptionTopStack" id="cap_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England career goals</div>
+
+											<div class="graphBarCaptionBottomStack" id="bar_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">49</div>
+										</div>	
+										<div id="graphBarHolderAll" class="graphBarHolder">
+											<div class="graphBarAll" id="bar_Value_C"></div>
+
+											<div class="graphBarCaptionTopStack" id="all_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England total appearances</div>
+
+											<div class="graphBarCaptionBottomStack" id="all_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">106</div>
+										</div>	
+									</div>	
 					</div>
-				</div>
 
 
-				<div class="player-card-static">
-					<div class="playerCol-left">5</div>
-					<div class="playerCol-center">Wayne Rooney<br>Goals in 17 matches</div>
-					<div class="playerCol-right" style="background-position: 0px 0px;"></div>
-					<div class="pitchHolderStatic">
-						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="320px" height="210px" viewBox="0 360 320 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"></path><circle clip-path="url(#SVGID_2_)" fill="none" fill-opacity="0" stroke="#4bc6df" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"></circle><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z" class="svgSixYardBox"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z" class="svgPenaltyArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"></path><g id="unselectedLines"><line x1="149" y1="530" x2="156.87397971733316" y2="485" class="goal-line-marker" id="goal_Rooney_0"></line></line><line x1="149" y1="530" x2="129.51777220407467" y2="500" class="goal-line-marker" id="goal_Charlton_43"></line><line x1="173" y1="536" x2="-169.90156908284035" y2="506" class="goal-line-marker" id="goal_Charlton_44"></line><line x1="149" y1="533" x2="135.77547644686513" y2="458" class="goal-line-marker" id="goal_Charlton_45"></line><line x1="158" y1="533" x2="121.0594049116539" y2="460.5" class="goal-line-marker" id="goal_Charlton_46"></line><line x1="149" y1="536" x2="137.19610095525752" y2="518.5" class="goal-line-marker" id="goal_Charlton_47"></line><line x1="158" y1="533" x2="152.9411861236818" y2="525.5" class="goal-line-marker" id="goal_Charlton_48"></line></g></svg>
+			<!-- <div id="backToTopButton">Back to top</div> -->
+
+
+		</div>
+
+
+
+		<div class="factbox-holder" id="fact-box-holder-2">
+				<div class="factbox-holder-col-left" id="col1">
+					<div class="small-col-header" id="factBoxHead1">Tournament head-to-head</div><div class="time-stamp" id="factBoxCap1">How does Rooney's goalscoring record compare with England's other leading marksmen across three types of match - tournament, qualifying and international.
 					</div>
+					
 				</div>
-			</div>
 
+					<div class="factbox-holder-col-center-left" id="factbox1Col2">
+						
+							<div class="number-caption" id="factbox1Col2Caption">Gary Lineker</div>
+									<!-- <div class="large-number" id="col-3-number">50 goals</div> -->
+									<div id="graphHolder">
+										<div id="graphBarHolder" class="graphBarHolder">	
+											<div class="graphBarCountry" id="bar_Value" style="width: 135.818495117748px;"></div>
 
-			<div id="sectionHeader2" class="section-header">
-					<h2>Qualifiers head-to-head</h2>
-					<p>Neither man could be described as an orthodox predatory goalscorer and there are other career similarities between Wayne Rooney and the man he replaces as England's top goalscorer.</p>
-			</div>
-			<div class="cards-holder">
-				<div class="player-card-static">
-					<div class="playerCol-left">30</div>
-					<div class="playerCol-center">Wayne Rooney<br>Goals in all 45 matches</div>
-					<div class="playerCol-right" style="background-position: 0px 0px;"></div>
-					<div class="pitchHolderStatic">
-						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="320px" height="210px" viewBox="0 360 320 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"></path><circle clip-path="url(#SVGID_2_)" fill="none" fill-opacity="0" stroke="#4bc6df" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"></circle><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z" class="svgSixYardBox"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z" class="svgPenaltyArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"></path><g id="unselectedLines"><line x1="149" y1="530" x2="156.87397971733316" y2="485" class="goal-line-marker" id="goal_Rooney_0"></line><line x1="173" y1="530" x2="181.81634903542326" y2="505" class="goal-line-marker" id="goal_Rooney_1"></line><line x1="149" y1="536" x2="145.06301014133342" y2="491" class="goal-line-marker" id="goal_Rooney_2"></line><line x1="167" y1="530" x2="137" y2="500" class="goal-line-marker" id="goal_Rooney_3"></line><line x1="140" y1="533" x2="262.5363191866992" y2="445.5" class="goal-line-marker" id="goal_Rooney_4"></line><line x1="158" y1="536" x2="140.12369611108684" y2="521" class="goal-line-marker" id="goal_Rooney_5"></line><line x1="158" y1="530" x2="233" y2="492.5" class="goal-line-marker" id="goal_Rooney_6"></line><line x1="173" y1="533" x2="120.48443463427176" y2="458" class="goal-line-marker" id="goal_Rooney_7"></line><line x1="167" y1="530" x2="146.01615538302505" y2="485" class="goal-line-marker" id="goal_Rooney_8"></line><line x1="167" y1="530" x2="119.3298562962316" y2="490" class="goal-line-marker" id="goal_Rooney_9"></line><line x1="140" y1="530" x2="151.46125374605023" y2="497.5" class="goal-line-marker" id="goal_Rooney_10"></line><line x1="140" y1="536" x2="125" y2="521" class="goal-line-marker" id="goal_Rooney_11"></line><line x1="173" y1="530" x2="137.3382656749656" y2="487.5" class="goal-line-marker" id="goal_Rooney_12"></line><line x1="149" y1="533" x2="178.24277266096158" y2="488" class="goal-line-marker" id="goal_Rooney_13"></line><line x1="149" y1="530" x2="180.90256589968874" y2="500" class="goal-line-marker" id="goal_Rooney_14"></line><line x1="173" y1="530" x2="142.68911086754463" y2="512.5" class="goal-line-marker" id="goal_Rooney_15"></line><line x1="167" y1="530" x2="146.39391935409034" y2="522.5" class="goal-line-marker" id="goal_Rooney_16"></line><line x1="167" y1="530" x2="218.96152422706632" y2="515" class="goal-line-marker" id="goal_Rooney_17"></line><line x1="158" y1="536" x2="136.55262579950636" y2="516" class="goal-line-marker" id="goal_Rooney_18"></line><line x1="173" y1="536" x2="155.74447389168486" y2="521" class="goal-line-marker" id="goal_Rooney_19"></line><line x1="167" y1="536" x2="188.73216844540568" y2="523.5" class="goal-line-marker" id="goal_Rooney_20"></line><line x1="140" y1="536" x2="232.3305061152576" y2="521" class="goal-line-marker" id="goal_Rooney_21"></line><line x1="158" y1="530" x2="233.22905861385328" y2="510" class="goal-line-marker" id="goal_Rooney_22"></line><line x1="140" y1="533" x2="167.3449969277351" y2="515.5" class="goal-line-marker" id="goal_Rooney_23"></line><line x1="140" y1="530" x2="167.54620906317322" y2="490" class="goal-line-marker" id="goal_Rooney_24"></line><line x1="149" y1="530" x2="186.04691469605154" y2="515" class="goal-line-marker" id="goal_Rooney_25"></line><line x1="167" y1="536" x2="176.1719204437598" y2="521" class="goal-line-marker" id="goal_Rooney_26"></line><line x1="167" y1="530" x2="201.64101615137756" y2="520" class="goal-line-marker" id="goal_Rooney_27"></line><line x1="167" y1="533" x2="166.78127834118519" y2="530.5" class="goal-line-marker" id="goal_Rooney_28"></line><line x1="167" y1="536" x2="188.83821405597214" y2="506" class="goal-line-marker" id="goal_Rooney_29"></line><line x1="173" y1="530" x2="150.0713547727507" y2="485" class="goal-line-marker" id="goal_Rooney_30"></line></g><g id="selectedLines"></g></svg>
+											<div class="graphBarCaptionTopStack" id="cap_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England career goals</div>
+
+											<div class="graphBarCaptionBottomStack" id="bar_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">50</div>
+										</div>	
+										<div id="graphBarHolderAll" class="graphBarHolder">
+											<div class="graphBarAll" id="bar_Value_C"></div>
+
+											<div class="graphBarCaptionTopStack" id="all_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England total appearances</div>
+
+											<div class="graphBarCaptionBottomStack" id="all_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">106</div>
+										</div>	
+									</div>	
+					
 					</div>
-				</div>
 
+					<div class="factbox-holder-col-center-right" id="col3">
 
-				<div class="player-card-static">
-					<div class="playerCol-left">20</div>
-					<div class="playerCol-center">Michael Owen<br>Goals in 34 matches</div>
-					<div class="playerCol-right" style="background-position: -800px 0px;"></div>
-					<div class="pitchHolderStatic">
-						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="320px" height="210px" viewBox="0 360 320 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"></path><circle clip-path="url(#SVGID_2_)" fill="none" fill-opacity="0" stroke="#4bc6df" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"></circle><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"></circle><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z" class="svgSixYardBox"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z" class="svgPenaltyArea"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"></path><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"></path><g id="unselectedLines"><line x1="149" y1="530" x2="156.87397971733316" y2="485" class="goal-line-marker" id="goal_Rooney_0"></line><line x1="173" y1="530" x2="181.81634903542326" y2="505" class="goal-line-marker" id="goal_Rooney_1"></line><line x1="149" y1="536" x2="145.06301014133342" y2="491" class="goal-line-marker" id="goal_Rooney_2"></line><line x1="167" y1="530" x2="137" y2="500" class="goal-line-marker" id="goal_Rooney_3"></line><line x1="140" y1="533" x2="262.5363191866992" y2="445.5" class="goal-line-marker" id="goal_Rooney_4"></line><line x1="158" y1="536" x2="140.12369611108684" y2="521" class="goal-line-marker" id="goal_Rooney_5"></line><line x1="158" y1="530" x2="233" y2="492.5" class="goal-line-marker" id="goal_Rooney_6"></line><line x1="173" y1="533" x2="120.48443463427176" y2="458" class="goal-line-marker" id="goal_Rooney_7"></line><line x1="167" y1="530" x2="146.01615538302505" y2="485" class="goal-line-marker" id="goal_Rooney_8"></line><line x1="167" y1="530" x2="119.3298562962316" y2="490" class="goal-line-marker" id="goal_Rooney_9"></line><line x1="140" y1="530" x2="151.46125374605023" y2="497.5" class="goal-line-marker" id="goal_Rooney_10"></line><line x1="140" y1="536" x2="125" y2="521" class="goal-line-marker" id="goal_Rooney_11"></line><line x1="173" y1="530" x2="137.3382656749656" y2="487.5" class="goal-line-marker" id="goal_Rooney_12"></line><line x1="149" y1="533" x2="178.24277266096158" y2="488" class="goal-line-marker" id="goal_Rooney_13"></line><line x1="149" y1="530" x2="180.90256589968874" y2="500" class="goal-line-marker" id="goal_Rooney_14"></line><line x1="173" y1="530" x2="142.68911086754463" y2="512.5" class="goal-line-marker" id="goal_Rooney_15"></line><line x1="167" y1="530" x2="146.39391935409034" y2="522.5" class="goal-line-marker" id="goal_Rooney_16"></line><line x1="167" y1="530" x2="218.96152422706632" y2="515" class="goal-line-marker" id="goal_Rooney_17"></line><line x1="158" y1="536" x2="136.55262579950636" y2="516" class="goal-line-marker" id="goal_Rooney_18"></line><line x1="173" y1="536" x2="155.74447389168486" y2="521" class="goal-line-marker" id="goal_Rooney_19"></line><line x1="167" y1="536" x2="188.73216844540568" y2="523.5" class="goal-line-marker" id="goal_Rooney_20"></line></g></svg>
+						<div class="number-caption" id="col-2-caption">Wayne Rooney</div>
+
+										<!-- <div class="large-number" id="col-2-number">&nbsp;</div> -->
+
+									<div id="graphHolder">
+										<div id="graphBarHolder" class="graphBarHolder">	
+											<div class="graphBarCountry" id="bar_Value" style="width: 135.818495117748px;"></div>
+
+											<div class="graphBarCaptionTopStack" id="cap_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England career goals</div>
+
+											<div class="graphBarCaptionBottomStack" id="bar_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">49</div>
+										</div>	
+										<div id="graphBarHolderAll" class="graphBarHolder">
+											<div class="graphBarAll" id="bar_Value_C"></div>
+
+											<div class="graphBarCaptionTopStack" id="all_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England total appearances</div>
+
+											<div class="graphBarCaptionBottomStack" id="all_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">106</div>
+										</div>	
+									</div>	
 					</div>
+
+
+			<!-- <div id="backToTopButton">Back to top</div> -->
+
+			
+		</div>
+
+			
+			
+
+		<div class="factbox-holder" id="fact-box-holder-2">
+				<div class="factbox-holder-col-left" id="col1">
+					<div class="small-col-header" id="factBoxHead1">Qualifiers</div><div class="time-stamp" id="factBoxCap1">How does Rooney's goalscoring record compare with England's other leading marksmen across three types of match - tournament, qualifying and international.
+					</div>
+					
 				</div>
-			</div>
+
+					<div class="factbox-holder-col-center-left" id="factbox1Col2">
+						
+							<div class="number-caption" id="factbox1Col2Caption">Wayne Rooney</div>
+									<!-- <div class="large-number" id="col-3-number">50 goals</div> -->
+									<div id="graphHolder">
+										<div id="graphBarHolder" class="graphBarHolder">	
+											<div class="graphBarCountry" id="bar_Value" style="width: 135.818495117748px;"></div>
+
+											<div class="graphBarCaptionTopStack" id="cap_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England career goals</div>
+
+											<div class="graphBarCaptionBottomStack" id="bar_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">50</div>
+										</div>	
+										<div id="graphBarHolderAll" class="graphBarHolder">
+											<div class="graphBarAll" id="bar_Value_C"></div>
+
+											<div class="graphBarCaptionTopStack" id="all_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England total appearances</div>
+
+											<div class="graphBarCaptionBottomStack" id="all_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">106</div>
+										</div>	
+									</div>	
+					
+					</div>
+
+					<div class="factbox-holder-col-center-right" id="col3">
+
+						<div class="number-caption" id="col-2-caption">Michael Owen</div>
+
+										<!-- <div class="large-number" id="col-2-number">&nbsp;</div> -->
+
+									<div id="graphHolder">
+										<div id="graphBarHolder" class="graphBarHolder">	
+											<div class="graphBarCountry" id="bar_Value" style="width: 135.818495117748px;"></div>
+
+											<div class="graphBarCaptionTopStack" id="cap_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England career goals</div>
+
+											<div class="graphBarCaptionBottomStack" id="bar_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">49</div>
+										</div>	
+										<div id="graphBarHolderAll" class="graphBarHolder">
+											<div class="graphBarAll" id="bar_Value_C"></div>
+
+											<div class="graphBarCaptionTopStack" id="all_Value" style="margin-left: 3px; color: rgb(255, 255, 255);">England total appearances</div>
+
+											<div class="graphBarCaptionBottomStack" id="all_Value_B" style="margin-left: 3px; color: rgb(255, 255, 255);">106</div>
+										</div>	
+									</div>	
+					</div>
+
+
+			<!-- <div id="backToTopButton">Back to top</div> -->
+
+			
+		</div>
 
 			<div id="sectionHeader4" class="section-header">
 					<h2>Explore the data</h2>
