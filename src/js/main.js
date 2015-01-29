@@ -27,11 +27,11 @@ iframeMessenger.enableAutoResize();
 //global vars
 var dataset = filteredDataset = globalCardArray = allMatchesArr = allGoalsArr =[], datasetRooney, datasetLineker, datasetCharlton, datasetGreaves, datasetOwen, datasetTopline, data, globalSortCategory = "A", currentIndex = 0, initViewBuilt = false, scorersArr = [];
 var goalSquaresArr = ["TL","TCL","TC","TCR","TR","CL","CCL","CC","CCR","CR","BL","BCL","BC","BCR","BR"];
-var pitchSVG ='<svg version="1.1" class="playerPitch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="320px" height="210px" viewBox="0 360 320 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"/><circle clip-path="url(#SVGID_2_)" fill="none" fill-opacity="0" stroke="#4bc6df" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"/><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"/><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z"  class="svgSixYardBox"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z"  class="svgPenaltyArea"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"/>'
+var pitchSVG = '<svg  class="playerPitch" width="280px" height="226px" viewBox="0 0 280 226" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><title>pitch</title><desc>Chris Fenn</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="pitch-svg" sketch:type="MSLayerGroup" transform="translate(1.000000, 1.000000)" stroke="#4BC6DF"><path d="M0.65482392,216.531467 L277.731236,216.531467 L277.731236,0.353733333 L0.65482392,0.353733333 L277.731236,0.353733333 L0.65482392,0.353733333 L0.65482392,216.531467 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M102.250253,0.354666667 C102.250253,21.1624733 118.997827,38.0305333 139.657007,38.0305333 C160.316186,38.0305333 177.06376,21.1624733 177.06376,0.354666667" id="Oval" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><ellipse id="Oval" stroke-width="1.2204" fill="#4BC6DF" sketch:type="MSShapeGroup" cx="138.471708" cy="0.88667806" rx="0.69269103" ry="0.7"></ellipse><ellipse id="Oval" stroke-width="0.8136" fill="#4BC6DF" sketch:type="MSShapeGroup" cx="139.192106" cy="171.235867" rx="0.813681063" ry="0.822266667"></ellipse><path d="M124.687156,216.531467 L121.835116,223.786267 L156.388392,223.786267 L154.106206,216.531467 L124.687156,216.531467 L124.687156,216.531467 Z" id="goal-frame" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M102.276292,216.531467 L102.276292,193.8832 L176.517993,193.8832 L176.517993,216.531467 L102.276292,216.531467 L102.276292,216.531467 Z" id="six-yard-area" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M57.4545648,216.531467 L57.4545648,148.5876 L221.337874,148.5876 L221.337874,216.531467 L57.4545648,216.531467 L57.4545648,216.531467 Z" id="penalty-area" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M109.397156,148.5876 C121.773236,131.960267 145.147402,128.618 161.60297,141.124667 C164.399595,143.249867 166.885894,145.763333 168.988904,148.5876 L109.397156,148.5876 L109.397156,148.5876 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M4.72969435,216.531467 C4.72969435,214.254133 2.90468439,212.412667 0.655747508,212.412667 L0.655747508,216.531467 L4.72969435,216.531467 L4.72969435,216.531467 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M277.731236,212.414533 C275.483223,212.414533 273.655442,214.254133 273.655442,216.531467 L277.731236,216.531467 L277.731236,212.414533 L277.731236,212.414533 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path></g></g></svg>'
+//var pitchSVG ='<svg class="playerPitch" width="300px" height="242px" viewBox="0 0 300 242" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="pitch-svg" transform="translate(1.000000, 1.000000)" stroke="#4BC6DF"><path d="M0.701933555,231.031342 L297.7119,231.031342 L297.7119,0.377420833 L0.701933555,0.377420833 L297.7119,0.377420833 L0.701933555,0.377420833 L0.701933555,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path d="M109.606387,0.378416667 C109.606387,22.5796032 127.558822,40.5772208 149.704273,40.5772208 C171.849725,40.5772208 189.80216,22.5796032 189.80216,0.378416667" id="Oval" stroke-width="1.6271"></path><ellipse id="Oval" stroke-width="1.2204" fill="#4BC6DF" cx="148.433701" cy="0.946053823" rx="0.742524917" ry="0.746875"></ellipse><ellipse id="Oval" stroke-width="0.8136" fill="#4BC6DF" cx="149.205927" cy="182.702554" rx="0.872219269" ry="0.877329167"></ellipse><path class="goal-frame" d="M133.657455,231.031342 L130.600233,238.771954 L167.639355,238.771954 L165.192983,231.031342 L133.657455,231.031342 L133.657455,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path class="six-yard-box" d="M109.634299,231.031342 L109.634299,206.86645 L189.21713,206.86645 L189.21713,231.031342 L109.634299,231.031342 L109.634299,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path class="penalty-area" d="M61.5879867,231.031342 L61.5879867,158.537663 L237.261462,158.537663 L237.261462,231.031342 L61.5879867,231.031342 L61.5879867,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path d="M117.267455,158.537663 C130.5339,140.796892 155.589661,137.230813 173.229083,150.574979 C176.226904,152.842492 178.892073,155.524271 181.146379,158.537663 L117.267455,158.537663 L117.267455,158.537663 Z" id="Shape" stroke-width="1.6271"></path><path d="M5.06996013,231.031342 C5.06996013,228.601508 3.11365449,226.636729 0.702923588,226.636729 L0.702923588,231.031342 L5.06996013,231.031342 L5.06996013,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path d="M297.7119,226.638721 C295.302159,226.638721 293.342884,228.601508 293.342884,231.031342 L297.7119,231.031342 L297.7119,226.638721 L297.7119,226.638721 Z" id="Shape" stroke-width="1.6271"></path></g></g></svg>'
+//var pitchSVG ='<svg version="1.1" class="playerPitch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="240px" height="242px" viewBox="0 300 300 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"/><circle clip-path="url(#SVGID_2_)" fill="none" fill-opacity="0" stroke="#4bc6df" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"/><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"/><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z"  class="svgSixYardBox"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z"  class="svgPenaltyArea"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"/>'
 
-//var bgSVG ='<svg version="1.1" class="playerPitch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 623.622 396.851" xml:space="preserve"><rect x="116.59" y="-226.77" fill="#008000" width="390.441" height="623.621"/><path fill="#008000" stroke="#FFFFFF" stroke-width="2" d="M127.435,85.041v284.697h368.751v-569.395H127.435V85.041l368.751,0L127.435,85.041z"/><circle fill-opacity="0" stroke="#FFFFFF" stroke-width="2" cx="311.811" cy="85.041" r="49.619"/><circle fill="#FFFFFF" stroke="#FFFFFF" cx="311.811" cy="85.041" r="1.084"/><circle fill="#FFFFFF" stroke="#FFFFFF" cx="311.811" cy="310.086" r="1.084"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M292.505,369.738v5.422h39.153v-5.422H292.505z"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M262.68,369.738v-29.826h98.804v29.826H262.68z"/><path class="penaltyBoxRect" fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M203.029,369.738v-89.477h218.106v89.477H203.029z"/><path fill="#008000" stroke="#FFFFFF" stroke-width="2" d="M272.156,280.261c16.472-21.9,47.58-26.301,69.48-9.829c3.722,2.799,7.03,6.107,9.829,9.829H272.156z"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M132.858,369.738c0-2.995-2.428-5.423-5.423-5.423v5.423H132.858z"/><path fill-opacity="0" stroke="#FFFFFF" stroke-width="2" d="M496.186,364.315c-2.994,0-5.423,2.428-5.423,5.423h5.423V364.315z"/></svg>';
-//var bgSVG = '<svg version="1.1" viewBox="0 0 1260 652"><path d="M241.651,564.449 L241.651,105.137 L1014.18,105.137 L1014.18,563.342 M429.802,563.342 L429.802,380.725 L826.027,380.725 L826.027,563.342" id="Stroke-1" stroke="#FFF" stroke-width="3" fill="none"></path> <path d="M784.036,564.449 L818.578,652.254 L441.421,652.254 L489.468,564.449" id="Stroke-2" stroke="#FFF" stroke-width="7" fill="none"></path> <path d="M634.556,226.329 C634.556,229.997 631.582,232.97 627.915,232.97 C624.248,232.97 621.274,229.997 621.274,226.329 C621.274,222.661 624.248,219.689 627.915,219.689 C631.582,219.689 634.556,222.661 634.556,226.329" id="Fill-3" fill="#FFF"></path><path d="M627.682,0.084 C696.854,-1.113 776.368,39.885 816.299,104.607 M628.148,0.084 C558.975,-1.113 479.462,39.885 439.531,104.607 M0,564.449 L1260,564.449" id="Stroke-4" stroke="#FFF" stroke-width="3" fill="none"></path><path d="M699.5,626.5 L717.5,308.5" id="Line" stroke="#E6711B" stroke-width="7" stroke-linecap="square"></path></svg>';
-//var pitchSVG ='<svg viewBox="0 0 1128 583" width="1128px" height="583px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"> <title>pitch</title> <desc>Created with Sketch.</desc> <defs></defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Imported-Layers" sketch:type="MSLayerGroup" transform="translate(-6.000000, -6.000000)"> <path d="M217.896,510 L217.896,95 L915.896,95 L915.896,509 M387.896,509 L387.896,344 L745.896,344 L745.896,509" id="Stroke-1" stroke="#005689" stroke-width="3" sketch:type="MSShapeGroup"></path> <path d="M707.956,510 L739.166,589.334 L398.394,589.334 L441.806,510" id="Stroke-2" stroke="#005689" stroke-width="7" sketch:type="MSShapeGroup"></path> <path d="M572.896,204.5 C572.896,207.814 570.21,210.5 566.896,210.5 C563.583,210.5 560.896,207.814 560.896,204.5 C560.896,201.186 563.583,198.5 566.896,198.5 C570.21,198.5 572.896,201.186 572.896,204.5" id="Fill-3" fill="#005689" sketch:type="MSShapeGroup"></path> <path d="M566.685,0.082 C629.185,-1 701.027,36.043 737.106,94.521 M567.107,0.082 C504.607,-1 432.766,36.043 396.686,94.521 M-0.441,510 L1138.002,510" id="Stroke-4" stroke="#005689" stroke-width="3" sketch:type="MSShapeGroup"></path> </g> </g></svg>'
+
 
 $(function() {
 
@@ -176,7 +176,7 @@ function buildPlayerCardsView (dataIn,filteredData){
 	});
 
 	addPrevNextListeners();
-	addCardListeners();	
+	//addCardListeners();	
 	initViewBuilt = true;
 	buildGoalsView(dataIn,filteredData);
 	buildBarChartView();
@@ -334,7 +334,10 @@ function buildGoalsView(dataIn,filteredData){
 	if(filteredData.length != 0){
 		_.each(filteredData, function(item,i){
 			currCard =("#card_"+i);
-			selectedPitch =d3.select("#pitch_"+i);
+
+			selectedPitch = d3.select("#pitch_"+i);
+
+			//selectedPitch[0][0].currentScale = 0.5;
 			svgContainer = d3.select(selectedPitch);
 			targetClipNameColRight = currCard+" .playerCol-right";
 			updatePlayerText(item,i);
@@ -407,10 +410,11 @@ function plotGoals(selectedPitch, tempArr){
 	var lineDataUnselected = [];
 	var lineDataSelected = [];
 	_.each(tempArr, function(item,i){
-		//var penBox = d3.select(".svgPenaltyArea");
+		var penBox = d3.select("#penalty-area");
+		console.log(penBox[0])
 			
 			var matchCat = item.matchcategory;
-			var goalDistance = item.goaldistance*2.5;
+			var goalDistance = item.goaldistance*4;
 			var startXPos = getXPos1(item.goalsquare);
 			var startYPos = getYPos1(item.goalsquare);
 			var currScorer = item.scorer;
@@ -503,19 +507,19 @@ function setNilGoals(cardIn){
 function getXPos1(refIn){
 	var numOut;
 	if (refIn == "TL" || refIn == "CL"|| refIn == "BL"){
-		numOut=173;
+		numOut=168;
 	}
 	if (refIn == "TCL" || refIn == "CCL"|| refIn == "BCL"){
-		numOut=167;
+		numOut=162;
 	}
 	if (refIn == "TC" || refIn == "CC"|| refIn == "BC"){
-		numOut=158;
+		numOut=153;
 	}
 	if (refIn == "TCR" || refIn == "CCR"|| refIn == "BCR"){
-		numOut=149;
+		numOut=144;
 	}
 	if (refIn == "TR" || refIn == "CR"|| refIn == "BR"){
-		numOut=140;
+		numOut=135;
 	}
 	if (numOut == undefined || numOut =="" || numOut ==null){
 		numOut=0
@@ -527,13 +531,13 @@ function getYPos1(refIn){
 	var numOut = 530;
 
 	if (refIn == "TL" || refIn == "TCL" || refIn == "TC" || refIn == "TCR" || refIn == "TR"){
-		numOut=536;
+		numOut=241;
 	}
 	if (refIn == "CL" || refIn == "CCL" || refIn == "CC" || refIn == "CCR" || refIn == "CR"){
-		numOut=533;
+		numOut=239;
 	}
 	if (refIn == "BL" || refIn == "BCL" || refIn == "BC" || refIn == "BCR" || refIn == "BR"){
-		numOut=530;
+		numOut=236;
 	}
 	if (numOut == undefined || numOut =="" || numOut ==null){
 		numOut+=0
@@ -653,7 +657,7 @@ function expandCard(currClip){
 	$(currClip).addClass("player-card-selected");
 
 	var dataArr = getCardData(currClip);
-	upDateInfoBox(dataArr)
+	//upDateInfoBox(dataArr)
 	globalCardArray = dataArr;
 }
 
