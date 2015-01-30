@@ -75,30 +75,81 @@ html, body {
 	left:0px;
 	top:0px;
 	width:100%;
-	height:36px;
+	height:auto;
+	padding:1px 0 0 0;
+
+}
+
+.sub-header h3{
+	
 	font-family:"Guardian Egyptian Headline", Georgia, serif;
 	font-size:1.8em;
 	line-height: 1.2em;
 	font-weight:200;
 	text-align:left;
-	color: #767676;
-	padding:1px 0 0 0;
+	color: #333;
+	margin:0;
+
+
 }
+
+.sub-header p{
+	font-family:"Guardian Agate Sans", Arial, sans-serif;
+	font-size:1.5em;
+	line-height: .9em;
+	font-weight:200;
+	margin:0 0 12px 0;
+}
+
+
 
 
 #allBarChartsHolder{
 	width: 100%;
 	height: auto;
 }
+
+.graph-wrapper{
+	position:relative;
+	width:100%;
+	float:left;
+	clear:right;
+}
+
+.bar-chart-title{
+	display:block;
+	width: 120px;
+	height: 120px;
+	border-radius:50%;
+	float:left;
+
+	background-image:url("../images/Rooney.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%;
+
+}
+
+#bar-chart-title_1{
+	background-image:url("../images/Charlton.jpg");
+}
+#bar-chart-title_2{
+	background-image:url("../images/Lineker.jpg");
+}
+#bar-chart-title_3{
+	background-image:url("../images/Greaves.jpg");
+}
+#bar-chart-title_4{
+	background-image:url("../images/Owen.jpg");
+}
+
+
 .bar-chart-holder{
 	display:block;
-	width: 100%;
-	min-width:300px;
-	height: 120px;
-	padding: 12px 0 24px 0;
-	background:url("../images/cutouts.png");
-	background-repeat: no-repeat;
-
+	width: 900px;
+	height: 136px;
+	padding: 0 0 24px 20px;
+	float:left;
 }
 
 
@@ -121,7 +172,7 @@ html, body {
 .axis path,
 .axis line {
 	  fill: none;
-	  stroke: rgba(200,200,200,0.2);
+	  stroke: rgba(51,51,51,0.5);
 	  shape-rendering: crispEdges;
 }
 
@@ -245,11 +296,11 @@ html, body {
 /* drop down  - see media queries too */
 
 #drop-down-holder{
+	display:inline-block;
 	position: relative;
 	width: 99.5%;
 	padding: 10px 0 10px 0.5%;
-	height: 60px;
-	background-color: #63717a;	
+	height: 40px;	
 
 }
 
@@ -280,7 +331,7 @@ html, body {
 	font-family: "Guardian Egyptian Headline",Georgia,serif;
 	font-size: 1.8em;
 	font-weight: 500;
-	color: #EFEFEF;
+	color: #005689;
 	padding: 10px 12px 0 0;
 }
 
@@ -347,7 +398,7 @@ p{
 h2{
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 400;
-	font-size: 3em;
+	font-size: 4.2;
 	line-height: 1em;
 	color: #333;
 }
@@ -409,7 +460,7 @@ h6{
 
 .key-item-title, .key-item-title-short, .key-item, .key-item-short{
 	width:120px;
-	height:auto;
+	height:auto; 
 	float:left;
 	clear:right;
 	padding-left: 12px;
@@ -463,13 +514,20 @@ h6{
 	background-color: #bcbcbc;
 }
 
+#heatmap-key{
+	display:inline-block;
+	padding-bottom:48px;
+}
+
 
 
 
 .section-header{
 	width:100%;
 	max-width:1260px;
-	/*border-top: 2px solid #4bc6df;*/
+	float:left;
+	clear:right;
+	border-top: 2px solid #4bc6df;
 	padding-bottom:36px;
 }
 
@@ -484,7 +542,7 @@ h6{
 .section-header h2, .section-header-box-out h2{
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 200;
-	font-size: 2.2em;
+	font-size: 4.2em;
 	line-height: 1.05em;
 	color: #333;
 	padding: 0px;
@@ -499,7 +557,7 @@ h6{
 	text-align:left;
 	line-height: 1.2em;
 	margin:0px;
-	width:100%;
+	width:80%;
 	max-width:600px;
 	color:#767676;
 	}

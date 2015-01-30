@@ -123,7 +123,6 @@ function handleResponse(data) {
 
 
 function setDummyDataForViz(dataIn){
-
 	if(dataIn.length > 0){
 			_.each(dataIn, function(item,i){
 				
@@ -145,9 +144,7 @@ function setDummyDataForViz(dataIn){
 				})
 			});
 		}
-
 	return dataIn;
-
 }
 
 
@@ -156,7 +153,7 @@ function buildPlayerCardsView (dataIn,filteredData){
 	$( "#cardsHolder" ).html(" ");	
 
 	var cardString = "<div class='player-card'><div class='playerCol-left'> </div><div class='playerCol-center'></div><div class='playerCol-right'></div><div class='pitchHolder'>"+pitchSVG+"</svg></div></div>";
-	var graphString = "<div class='bar-chart-holder'></div>";
+	var graphString = "<div class='graph-wrapper'><div class='bar-chart-title'></div><div class='bar-chart-holder'></div></div>";
 	var htmlStr = "";
 	var htmlStrGraphs = ""
 
@@ -182,6 +179,13 @@ function buildPlayerCardsView (dataIn,filteredData){
 		$(e).attr("id", "bar-chart_" +i);
 	});
 
+	$(".bar-chart-title").each(function(i, e) {
+		$(e).attr("id", "bar-chart-title_" +i);
+	});
+
+	$(".graph-wrapper").each(function(i, e) {
+		$(e).attr("id", "graph-wrapper_" +i);
+	});
 	addPrevNextListeners();
 	//addCardListeners();	
 	initViewBuilt = true;
@@ -220,16 +224,16 @@ function buildTrophyBoxOut(){
 function buildBarChartView(){
 	$(".bar-chart-holder").empty();
 
-	var currChart;
+	var currChart, currTitle;
 	var initGraphData = [];
 	var maxCaps = getMaxVal( datasetTopline, "totalcaps");
 	var maxGoals = 5;
 	var margin;
 
-	isMobile ?  margin = {top: 36, right: 20, bottom: 6, left: 3} : margin = {top: 36, right: 140, bottom: 6, left: 3};
+	isMobile ?  margin = {top: 36, right: 20, bottom: 6, left: 3} : margin = {top: 18, right: 3, bottom: 18, left: parseInt($("#bar-chart-title_0").width())};
 
 	var width = $("#bar-chart_0").width() - margin.left - margin.right;
-    var height = $("#bar-chart_0").height() - (margin.top*1.5) - margin.bottom;
+    var height = $("#bar-chart_0").height() - margin.bottom - margin.top;
 	var barUnitH = height/maxGoals; 
 	var barWidth = numDivision(width-margin.right, maxCaps);
 	
@@ -239,13 +243,15 @@ function buildBarChartView(){
 
 	 _.each(datasetTopline, function(item,i){
 	 	// set x axis according to each number of caps
-	 	var x = d3.scale.linear().range([margin.left, (item.totalcaps*barWidth)+margin.left]);
+	 	var x = d3.scale.linear().range([0, (item.totalcaps*barWidth)]);
 	 	x.domain([0,item.totalcaps]);
 	 	var currScorer = item.scorer;
 	 	var currWidth = item.totalcaps * barWidth;
 	 	initGraphData = [];
 	 	currChart = "#bar-chart_"+i;
-	 	$(currChart).css("background-position", getNewBGPos(currScorer)+"px 0px");
+	 	currTitle = "#bar-chart-title_"+i;
+
+	 	//$(currTitle).css("background", "#333");
 		currChart = d3.select(currChart)
 
 
@@ -265,7 +271,7 @@ function buildBarChartView(){
 		var newChartContainer = newChart.append("g")
 			.attr("id", function() { return "chart_inner"+item.scorer })
 			.attr("width", width-margin.right)
-			.attr("transform","translate("+margin.right+",0)")
+			
 
 		// set up a group to add bars to
 		var allBars = newChartContainer.append("g")
@@ -281,7 +287,7 @@ function buildBarChartView(){
 		var yAxis = d3.svg.axis()
 		    .scale(y)
 		    .ticks(4)
-		    .tickSize((width-margin.right), -6, 0)
+		    .tickSize((currWidth), -6, 0)
 		    .orient("right")
 
 		newChartContainer.append("g")
@@ -298,15 +304,15 @@ function buildBarChartView(){
 
 		newChartContainer.append("text")
             .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-            .attr("transform", "translate("+ (currWidth-barWidth) +","+height/4.5+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
+            .attr("transform", "translate("+ (currWidth+barWidth+barWidth+barWidth) +","+height/4.5+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
             .attr("class", "axis-label")
             .text("goals");
 
         newChartContainer.append("text")
             .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-            .attr("transform", "translate("+ ((width-margin.left-margin.right)/2) +","+(height+(height*0.66))+")")  // centre below axis
+            .attr("transform", "translate("+ ((width-margin.left-margin.right)/2) +","+(height+(height*0.5))+")")  // centre below axis
             .attr("class", "axis-label")
-            .text("appearance number");    ;
+            .text("appearances");
 
 		 
 		var barsSelected = allBars.selectAll("rect")
@@ -331,8 +337,8 @@ function buildBarChartView(){
 }
 
 function addTitlesToCharts(){
-	$(".bar-chart-holder").each(function(i, e) {
-		$(e).attr("id", "bar-chart_" +i).prepend('<div class="sub-header">'+dataset[i][0].firstname+' '+dataset[i][0].scorer+'</div>');
+	$(".graph-wrapper").each(function(i, e) {
+		$(e).attr("id", "graph-wrapper_" +i).prepend('<div class="sub-header"><h3>'+dataset[i][0].firstname+' '+dataset[i][0].scorer+'</h3><p>Qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio</p></div>');
 	});
 
 
@@ -374,7 +380,7 @@ function buildGoalsView(dataIn,filteredData){
 			svgContainer = d3.select(selectedPitch);
 			targetClipNameColRight = currCard+" .playerCol-right";
 			updatePlayerText(item,i);
-			$(targetClipNameColRight).css("background-position", getNewBGPos(item[0].scorer)+"px 0px");
+			$(targetClipNameColRight).css("background-position", getNewBGPos(item[0].scorer, -200)+"px 0px");
 			var scorer = item[0].scorer;
 				if(item[0].scorer==undefined){
 					console.log(scorer)
@@ -390,15 +396,15 @@ function buildGoalsView(dataIn,filteredData){
 }
 
 
-function getNewBGPos(scorer){
+function getNewBGPos(scorer, numIn){
 
 	var numOut;
 
 	if(scorer=="Rooney"){ numOut = 0; }
-	if(scorer=="Charlton"){ numOut = -200; }
-	if(scorer=="Lineker"){ numOut = -400; }
-	if(scorer=="Greaves"){ numOut = -600; }
-	if(scorer=="Owen"){ numOut = -800; }
+	if(scorer=="Charlton"){ numOut = (numIn *1); }
+	if(scorer=="Lineker"){ numOut = (numIn *2); }
+	if(scorer=="Greaves"){ numOut = (numIn *3); }
+	if(scorer=="Owen"){ numOut = (numIn *4); }
 
 	return numOut;
 }
@@ -445,7 +451,7 @@ function plotGoals(selectedPitch, tempArr){
 	var lineDataSelected = [];
 	_.each(tempArr, function(item,i){
 		var penBox = d3.select("#penalty-area");
-		console.log(penBox[0])
+		console.log(d3.select(penBox[0]))
 			
 			var matchCat = item.matchcategory;
 			var goalDistance = item.goaldistance*4;
