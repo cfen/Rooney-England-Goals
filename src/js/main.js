@@ -152,7 +152,7 @@ function buildPlayerCardsView (dataIn,filteredData){
 
 	$( "#cardsHolder" ).html(" ");	
 
-	var cardString = "<div class='player-card'><div class='playerCol-left'> </div><div class='playerCol-center'></div><div class='playerCol-right'></div><div class='pitchHolder'>"+pitchSVG+"</svg></div></div>";
+	var cardString = "<div class='player-card'><div class='playerCol-left'><div class='playerCol-caption-panel' id='playerCol-caption'></div></div><div class='pitchHolder'>"+pitchSVG+"</svg></div><div class='playerCol-right'></div></div>";
 	var graphString = "<div class='graph-wrapper'><div class='bar-chart-title'></div><div class='bar-chart-holder'></div></div>";
 	var htmlStr = "";
 	var htmlStrGraphs = ""
@@ -378,9 +378,9 @@ function buildGoalsView(dataIn,filteredData){
 
 			//selectedPitch[0][0].currentScale = 0.5;
 			svgContainer = d3.select(selectedPitch);
-			targetClipNameColRight = currCard+" .playerCol-right";
+
 			updatePlayerText(item,i);
-			$(targetClipNameColRight).css("background-position", getNewBGPos(item[0].scorer, -200)+"px 0px");
+			
 			var scorer = item[0].scorer;
 				if(item[0].scorer==undefined){
 					console.log(scorer)
@@ -451,7 +451,7 @@ function plotGoals(selectedPitch, tempArr){
 	var lineDataSelected = [];
 	_.each(tempArr, function(item,i){
 		var penBox = d3.select("#penalty-area");
-		console.log(d3.select(penBox[0]))
+		//console.log(d3.select(penBox[0]))
 			
 			var matchCat = item.matchcategory;
 			var goalDistance = item.goaldistance*4;
@@ -525,18 +525,66 @@ function getEndXPos(startXPos,itemAngle, goalDistance){
 function updatePlayerText(item,i){
 		var currCard =("#card_"+i);
 		var targetClipNameColLeft = currCard+" .playerCol-left";
-		var targetClipNameColCenter = currCard+" .playerCol-center";
 		var targetClipNameColRight = currCard+" .playerCol-right";
 		var finalTally = item[item.length-1];
-		var htmlStr = setCenterColTxt(finalTally, item);
-		$(targetClipNameColLeft).html(item.length);
-		$(targetClipNameColCenter).html(htmlStr);	
+		var lhColHtml = getLeftColContent(finalTally,item);
+		var rhColHtml = getRightColContent(0,item);
+
+		$(targetClipNameColLeft).html(lhColHtml);
+		$(targetClipNameColRight).html(rhColHtml)
+		
+}
+
+
+function getLeftColContent(finalTally,item){
+
+	var htmlStr = "HTML";
+
+	var lhColCaptionHtml = setLHCapTxt(finalTally, item);
+
+	htmlStr = item[0].firstname+" "+item[0].scorer;
+	htmlStr +="<div class='playerCol-bg-img' style='background-image:url(images/"+item[0].scorer+".jpg)'></div><div class='playerCol-caption-panel'>"+lhColCaptionHtml+"</div>";
+
+	return htmlStr;
+}
+
+function getRightColContent(numIn,item){
+
+	var currItem = item[numIn];
+	var newDate = Date.parse(currItem.date)
+
+	newDate = (newDate.toString('d MMMM yyyy'));
+
+	//console.log(currItem)
+
+	var htmlStr = "<h3>England "+currItem.scoreafterft+" "+currItem.opposition+"</h3>";
+	htmlStr = htmlStr+"<div class='playerCol-caption-panel'>"
+	var dateStr = "<b>"+newDate + "</b></br>"   
+	var compStr = currItem.comp + "</br>"
+	var venueStr = currItem.venue + "</br>"
+	var bodyPart = getBodyPartStr(currItem.bodyPart)
+	var distance = currItem.goaldistance + " yards </br>"
+	var scoreAfter = "<b>Score after goal:</b> "+currItem.scoreaftergoal
+	htmlStr = htmlStr+dateStr + compStr + venueStr+ bodyPart + distance+scoreAfter+"</div>";
+
+	return htmlStr;
+}
+
+function getBodyPartStr(bodyPart){
+	var strOut = "Shot from "
+
+	if (bodyPart == "RF"){ strOut = "Right footed shot from" }
+	if (bodyPart == "LF"){ strOut = "Left footed shot from" }
+	if (bodyPart == "H"){ strOut = "Header from" }
+	
+	return strOut;
+
 }
 
 function setNilGoals(cardIn){
 		var currCard = cardIn;
 		var targetClipNameColLeft = currCard+" .playerCol-left";
-		var targetClipNameColCenter = currCard+" .playerCol-center";
+		
 		var targetClipNameColRight = currCard+" .playerCol-right";
 		//var finalTally = dataIn[dataIn.length-1];
 		$(targetClipNameColLeft).html("0");
@@ -729,10 +777,11 @@ function setglobalSortCategory(valIn){
 }
 
 
-function setCenterColTxt(finalTally, item){
+function setLHCapTxt(finalTally, item){
 	var strOut;
 	var capsNum = 0;
-
+	var goalsNum = 0;
+	var goalAverage = 0;
 	
 	_.each(datasetTopline, function(playerData){
 		var currDataObj;
@@ -742,20 +791,25 @@ function setCenterColTxt(finalTally, item){
 			currDataObj = playerData;
 			if (globalSortCategory == "A"){
 				capsNum = currDataObj.totalcaps;
+				goalsNum = currDataObj.goals;
 			}
 
 			if (globalSortCategory == "T"){
 				capsNum = currDataObj.tournamentcaps;
+				goalsNum = currDataObj.tournamentgoals;
 			}
 			if (globalSortCategory == "Q"){
 				capsNum = currDataObj.qualifiercaps;
+				goalsNum = currDataObj.qualifiergoals;
 			}
 			if (globalSortCategory == "F"){
 				capsNum = (currDataObj.totalcaps-(currDataObj.qualifiercaps+currDataObj.tournamentcaps));
+				goalsNum = currDataObj.goals;
 			}
 		}
 
-		
+		goalAverage = Math.round(goalsNum/capsNum*100);
+		goalAverage = goalAverage/100;
 
 		// if (matchItem.scorer == finalTally.scorer && matchItem.matchcategory == globalSortCategory ){
 		// 	matchCount++;
@@ -766,7 +820,7 @@ function setCenterColTxt(finalTally, item){
 	if(finalTally==undefined){
 		strOut = "Greaves<br/>0 Goals in XX matches";
 	}else{
-		strOut = finalTally.firstname+" "+finalTally.scorer+"<br/>Goals in "+getGameTypeStr()+" "+capsNum+" matches";
+		strOut = goalsNum+" goals in "+getGameTypeStr()+" "+capsNum+" matches<br/>"+goalAverage+" average-per-game";
 	}
 	
 	

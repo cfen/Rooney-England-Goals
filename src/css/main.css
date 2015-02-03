@@ -118,8 +118,8 @@ html, body {
 
 .bar-chart-title{
 	display:block;
-	width: 120px;
-	height: 120px;
+	width: 140px;
+	height: 140px;
 	border-radius:50%;
 	float:left;
 
@@ -203,7 +203,7 @@ html, body {
 
 .player-card, .player-card-static{
 	position: relative;
-	width:300px;
+	width:100%;
 	height: auto;
 	float:left;
 	padding-top: 3px;
@@ -222,22 +222,60 @@ html, body {
 
 .playerCol-left{ 
 	float: left;
+	width: 150px;
+	height:300px;
+	padding: 0 10px 0 0;
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 200;
-	font-size: 4.3em;
-	height: 36px;
-	overflow:hidden;
-	color: #4bc6df;
-	margin-right:10px;
-	padding: 12px 0;
+	font-size: 2.2em;
+	color: #333;	
+}
+
+.playerCol-bg-img{
+	position: relative;
+	top:12px;
+	float:left;
+	clear:right;
+	background-image:url("../images/Rooney.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width:150px;
+	height:150px;
+	border-radius:50%;
+	margin:0;
+	padding:0;
+
+}
+
+.playerCol-caption-panel{
+	position: relative;
+	float:left;
+	clear:left;
+	font-family: "Guardian Agate Sans", Helvetica, Arial;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	width:auto;
+	
+	margin:0;
+	padding: 24px 0 0 0;
+
 }
 
 .playerCol-right{ 
-	position: absolute;
-	top:0px;
-	right:0px; 
-	height:240px; 
-	background:url("../images/cutouts.png");
+	position: relative;
+	float:left;
+	clear:right;
+	margin:0 auto 0 10px;	
+}
+
+.playerCol-right h3{ 
+	
+	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-weight: 200;
+	font-size: 2.2em;
+	color: #767676;
+	margin:0;	
 	
 }
 
@@ -257,6 +295,11 @@ html, body {
 	width: 100%;
 	background-color:#333;
 	color:#FFF;
+}
+
+.pitchHolder{
+	position:relative;
+	float:left;
 }
 
 #trophiesHolder{
