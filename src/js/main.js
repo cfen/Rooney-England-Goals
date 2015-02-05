@@ -27,7 +27,11 @@ iframeMessenger.enableAutoResize();
 //global vars
 var dataset = filteredDataset = globalCardArray = allMatchesArr = allGoalsArr =[], datasetRooney, datasetLineker, isMobile, winW, datasetCharlton, datasetGreaves, datasetOwen, datasetTopline, data, globalSortCategory = "A", currentIndex = 0, initViewBuilt = false, scorersArr = [];
 var goalSquaresArr = ["TL","TCL","TC","TCR","TR","CL","CCL","CC","CCR","CR","BL","BCL","BC","BCR","BR"];
-var pitchSVG = '<svg  class="playerPitch" width="280px" height="226px" viewBox="0 0 280 226" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><title>pitch</title><desc>Chris Fenn</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="pitch-svg" sketch:type="MSLayerGroup" transform="translate(1.000000, 1.000000)" stroke="#4BC6DF"><path d="M0.65482392,216.531467 L277.731236,216.531467 L277.731236,0.353733333 L0.65482392,0.353733333 L277.731236,0.353733333 L0.65482392,0.353733333 L0.65482392,216.531467 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M102.250253,0.354666667 C102.250253,21.1624733 118.997827,38.0305333 139.657007,38.0305333 C160.316186,38.0305333 177.06376,21.1624733 177.06376,0.354666667" id="Oval" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><ellipse id="Oval" stroke-width="1.2204" fill="#4BC6DF" sketch:type="MSShapeGroup" cx="138.471708" cy="0.88667806" rx="0.69269103" ry="0.7"></ellipse><ellipse id="Oval" stroke-width="0.8136" fill="#4BC6DF" sketch:type="MSShapeGroup" cx="139.192106" cy="171.235867" rx="0.813681063" ry="0.822266667"></ellipse><path d="M124.687156,216.531467 L121.835116,223.786267 L156.388392,223.786267 L154.106206,216.531467 L124.687156,216.531467 L124.687156,216.531467 Z" id="goal-frame" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M102.276292,216.531467 L102.276292,193.8832 L176.517993,193.8832 L176.517993,216.531467 L102.276292,216.531467 L102.276292,216.531467 Z" id="six-yard-area" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M57.4545648,216.531467 L57.4545648,148.5876 L221.337874,148.5876 L221.337874,216.531467 L57.4545648,216.531467 L57.4545648,216.531467 Z" id="penalty-area" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M109.397156,148.5876 C121.773236,131.960267 145.147402,128.618 161.60297,141.124667 C164.399595,143.249867 166.885894,145.763333 168.988904,148.5876 L109.397156,148.5876 L109.397156,148.5876 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M4.72969435,216.531467 C4.72969435,214.254133 2.90468439,212.412667 0.655747508,212.412667 L0.655747508,216.531467 L4.72969435,216.531467 L4.72969435,216.531467 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M277.731236,212.414533 C275.483223,212.414533 273.655442,214.254133 273.655442,216.531467 L277.731236,216.531467 L277.731236,212.414533 L277.731236,212.414533 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path></g></g></svg>'
+var globalPitchDimensions = {"w":0, "h":0}
+var pitchSVG = '<svg class="playerPitch" width="628px" height="395px" viewBox="0 0 628 395" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="pitch" sketch:type="MSLayerGroup" transform="translate(0.000000, 0.000000)" stroke="#4BC6DF" stroke-width="1"><path d="M0,0.00800310288 L2.27177403e-14,372 L624,372 L624,0" id="touchline" sketch:type="MSShapeGroup"></path><ellipse id="penalty-spot" sketch:type="MSShapeGroup" cx="311.833795" cy="240.32282" rx="2" ry="2" fill="#4bc6df" stroke="none"></ellipse><path d="M128,371.283374 L128,179 L495.692888,179 L495.692887,371.283374" id="penalty-area" sketch:type="MSShapeGroup"></path><path d="M362.656361,157.37731 C368.959121,163.380786 374.562498,170.481075 379.302057,178.459342 L245,178.459342 C272.891999,131.488807 325.57041,122.047242 362.656361,157.37731 Z" id="d-edge" sketch:type="MSShapeGroup"></path><path d="M228,371.455953 L228,307 L395.004924,307 L395.004924,370.680305" id="six-yard-box" sketch:type="MSShapeGroup"></path><path d="M279.234306,372 L273,393 L350,393 L344.865125,372" id="goal" sketch:type="MSShapeGroup"></path></g></g></svg>';
+var dataCount_0 = dataCount_1 = dataCount_2 = dataCount_3 = dataCount_4 = 0;
+
+//var pitchSVG = '<svg  class="playerPitch" width="280px" height="226px" viewBox="0 0 280 226" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><title>pitch</title><desc>Chris Fenn</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="pitch-svg" sketch:type="MSLayerGroup" transform="translate(1.000000, 1.000000)" stroke="#4BC6DF"><path d="M0.65482392,216.531467 L277.731236,216.531467 L277.731236,0.353733333 L0.65482392,0.353733333 L277.731236,0.353733333 L0.65482392,0.353733333 L0.65482392,216.531467 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M102.250253,0.354666667 C102.250253,21.1624733 118.997827,38.0305333 139.657007,38.0305333 C160.316186,38.0305333 177.06376,21.1624733 177.06376,0.354666667" id="Oval" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><ellipse id="Oval" stroke-width="1.2204" fill="#4BC6DF" sketch:type="MSShapeGroup" cx="138.471708" cy="0.88667806" rx="0.69269103" ry="0.7"></ellipse><ellipse id="Oval" stroke-width="0.8136" fill="#4BC6DF" sketch:type="MSShapeGroup" cx="139.192106" cy="171.235867" rx="0.813681063" ry="0.822266667"></ellipse><path d="M124.687156,216.531467 L121.835116,223.786267 L156.388392,223.786267 L154.106206,216.531467 L124.687156,216.531467 L124.687156,216.531467 Z" id="goal-frame" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M102.276292,216.531467 L102.276292,193.8832 L176.517993,193.8832 L176.517993,216.531467 L102.276292,216.531467 L102.276292,216.531467 Z" id="six-yard-area" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M57.4545648,216.531467 L57.4545648,148.5876 L221.337874,148.5876 L221.337874,216.531467 L57.4545648,216.531467 L57.4545648,216.531467 Z" id="penalty-area" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M109.397156,148.5876 C121.773236,131.960267 145.147402,128.618 161.60297,141.124667 C164.399595,143.249867 166.885894,145.763333 168.988904,148.5876 L109.397156,148.5876 L109.397156,148.5876 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M4.72969435,216.531467 C4.72969435,214.254133 2.90468439,212.412667 0.655747508,212.412667 L0.655747508,216.531467 L4.72969435,216.531467 L4.72969435,216.531467 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path><path d="M277.731236,212.414533 C275.483223,212.414533 273.655442,214.254133 273.655442,216.531467 L277.731236,216.531467 L277.731236,212.414533 L277.731236,212.414533 Z" id="Shape" stroke-width="1.6271" sketch:type="MSShapeGroup"></path></g></g></svg>'
 //var pitchSVG ='<svg class="playerPitch" width="300px" height="242px" viewBox="0 0 300 242" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="pitch-svg" transform="translate(1.000000, 1.000000)" stroke="#4BC6DF"><path d="M0.701933555,231.031342 L297.7119,231.031342 L297.7119,0.377420833 L0.701933555,0.377420833 L297.7119,0.377420833 L0.701933555,0.377420833 L0.701933555,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path d="M109.606387,0.378416667 C109.606387,22.5796032 127.558822,40.5772208 149.704273,40.5772208 C171.849725,40.5772208 189.80216,22.5796032 189.80216,0.378416667" id="Oval" stroke-width="1.6271"></path><ellipse id="Oval" stroke-width="1.2204" fill="#4BC6DF" cx="148.433701" cy="0.946053823" rx="0.742524917" ry="0.746875"></ellipse><ellipse id="Oval" stroke-width="0.8136" fill="#4BC6DF" cx="149.205927" cy="182.702554" rx="0.872219269" ry="0.877329167"></ellipse><path class="goal-frame" d="M133.657455,231.031342 L130.600233,238.771954 L167.639355,238.771954 L165.192983,231.031342 L133.657455,231.031342 L133.657455,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path class="six-yard-box" d="M109.634299,231.031342 L109.634299,206.86645 L189.21713,206.86645 L189.21713,231.031342 L109.634299,231.031342 L109.634299,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path class="penalty-area" d="M61.5879867,231.031342 L61.5879867,158.537663 L237.261462,158.537663 L237.261462,231.031342 L61.5879867,231.031342 L61.5879867,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path d="M117.267455,158.537663 C130.5339,140.796892 155.589661,137.230813 173.229083,150.574979 C176.226904,152.842492 178.892073,155.524271 181.146379,158.537663 L117.267455,158.537663 L117.267455,158.537663 Z" id="Shape" stroke-width="1.6271"></path><path d="M5.06996013,231.031342 C5.06996013,228.601508 3.11365449,226.636729 0.702923588,226.636729 L0.702923588,231.031342 L5.06996013,231.031342 L5.06996013,231.031342 Z" id="Shape" stroke-width="1.6271"></path><path d="M297.7119,226.638721 C295.302159,226.638721 293.342884,228.601508 293.342884,231.031342 L297.7119,231.031342 L297.7119,226.638721 L297.7119,226.638721 Z" id="Shape" stroke-width="1.6271"></path></g></g></svg>'
 //var pitchSVG ='<svg version="1.1" class="playerPitch" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="240px" height="242px" viewBox="0 300 300 210" enable-background="new 0 0 600 600" xml:space="preserve"><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M7.709,298.379v231.619h300V298.379H7.709L7.709,298.379 h300H7.709z"/><circle clip-path="url(#SVGID_2_)" fill="none" fill-opacity="0" stroke="#4bc6df" stroke-width="1.6271" cx="157.709" cy="297.747" r="40.367"/><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="1.2204" cx="158.501" cy="299.39" r="1.323"/><circle fill="#4bc6df" stroke="#4bc6df" stroke-width="0.8136" cx="157.708" cy="481.467" r="0.881"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M142.003,529.998l-3.088,7.773h37.412 l-2.471-7.773H142.003z" class="svgGoalArea"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M117.738,529.998v-24.266h80.384v24.266H117.738z"  class="svgSixYardBox"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M69.208,529.998v-72.797H246.65v72.797H69.208z"  class="svgPenaltyArea"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M125.448,457.201c13.4-17.815,38.708-21.396,56.525-7.996 c3.028,2.277,5.72,4.97,7.997,7.996H125.448z"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M12.121,529.998c0-2.44-1.976-4.413-4.411-4.413 v4.413H12.121z"/><path fill="none" stroke="#4bc6df" stroke-width="1.6271" d="M307.709,525.587 c-2.434,0-4.413,1.971-4.413,4.411h4.413V525.587z"/>'
 
@@ -57,8 +61,6 @@ $(function() {
 
 function checkWin() {
 	winW > 739 ? isMobile = false : isMobile = true;
-
-	console.log("isMobile = "+isMobile)
 }
 
 function initData() {
@@ -186,40 +188,16 @@ function buildPlayerCardsView (dataIn,filteredData){
 	$(".graph-wrapper").each(function(i, e) {
 		$(e).attr("id", "graph-wrapper_" +i);
 	});
-	addPrevNextListeners();
-	//addCardListeners();	
+	
+		
 	initViewBuilt = true;
 	buildGoalsView(dataIn,filteredData);
 	buildBarChartView();
-	buildTrophyBoxOut();
+
+	addListeners();
+
 }
 
-function buildTrophyBoxOut(){
-	
-	var htmlStr="";
-
-	_.each(datasetCopyItems, function(item,i){
-
-		var newBGPos = checkTrophyPos(item.trophy);
-		var yearD = '<div class="trophyYear">'+item.year+'</div>'; 
-		var trophyCopy = '<div class="trophyCopy">'+item.copy+'</div>';
-		var tempStr = '<div class="trophyItem" id="trophy_'+i+'" style="background-position: 0px '+newBGPos+'px">'+yearD+' '+trophyCopy+'</div>';
-		htmlStr+=tempStr;
-	})
-
-	function checkTrophyPos(trophyStr){
-		var newPos = 0;
-
-		if(trophyStr == "Euros"){ newPos = 6; }
-		if(trophyStr == "Jules Rimet"){ newPos = -174; }
-		if(trophyStr == "World Cup"){ newPos = -352; }
-
-		return newPos;
-		
-	}
-
-	$("#trophiesHolder").html(htmlStr);
-}
 
 function buildBarChartView(){
 	$(".bar-chart-holder").empty();
@@ -253,8 +231,6 @@ function buildBarChartView(){
 
 	 	//$(currTitle).css("background", "#333");
 		currChart = d3.select(currChart)
-
-
 
 		// build an array for the graph bars
 		for(var i = 0; i<item.totalcaps; i++){
@@ -378,9 +354,7 @@ function buildGoalsView(dataIn,filteredData){
 
 			//selectedPitch[0][0].currentScale = 0.5;
 			svgContainer = d3.select(selectedPitch);
-
 			updatePlayerText(item,i);
-			
 			var scorer = item[0].scorer;
 				if(item[0].scorer==undefined){
 					console.log(scorer)
@@ -392,7 +366,7 @@ function buildGoalsView(dataIn,filteredData){
 						
 		});	
 	}
-	
+
 }
 
 
@@ -447,14 +421,14 @@ function addGoalsToPitch(selectedPitch, currScorer){
 // 	}
 
 function plotGoals(selectedPitch, tempArr){
+	setGlobalPitchDimensions();
 	var lineDataUnselected = [];
 	var lineDataSelected = [];
 	_.each(tempArr, function(item,i){
-		var penBox = d3.select("#penalty-area");
-		//console.log(d3.select(penBox[0]))
+			var penBox = d3.select("#penalty-area");
 			
 			var matchCat = item.matchcategory;
-			var goalDistance = item.goaldistance*4;
+			var goalDistance = item.goaldistance*10;
 			var startXPos = getXPos1(item.goalsquare);
 			var startYPos = getYPos1(item.goalsquare);
 			var currScorer = item.scorer;
@@ -528,7 +502,7 @@ function updatePlayerText(item,i){
 		var targetClipNameColRight = currCard+" .playerCol-right";
 		var finalTally = item[item.length-1];
 		var lhColHtml = getLeftColContent(finalTally,item);
-		var rhColHtml = getRightColContent(0,item);
+		var rhColHtml = getRightColContent(i,item);
 
 		$(targetClipNameColLeft).html(lhColHtml);
 		$(targetClipNameColRight).html(rhColHtml)
@@ -549,23 +523,21 @@ function getLeftColContent(finalTally,item){
 }
 
 function getRightColContent(numIn,item){
-
 	var currItem = item[numIn];
 	var newDate = Date.parse(currItem.date)
-
+		
 	newDate = (newDate.toString('d MMMM yyyy'));
-
-	//console.log(currItem)
-
+	
 	var htmlStr = "<h3>England "+currItem.scoreafterft+" "+currItem.opposition+"</h3>";
 	htmlStr = htmlStr+"<div class='playerCol-caption-panel'>"
-	var dateStr = "<b>"+newDate + "</b></br>"   
-	var compStr = currItem.comp + "</br>"
-	var venueStr = currItem.venue + "</br>"
+	var dateStr = "<b>"+newDate+"</br>"   
+	var compStr = currItem.comp+"</br>"
+	var venueStr = currItem.venue+"</b></br>"
 	var bodyPart = getBodyPartStr(currItem.bodyPart)
 	var distance = currItem.goaldistance + " yards </br>"
-	var scoreAfter = "<b>Score after goal:</b> "+currItem.scoreaftergoal
-	htmlStr = htmlStr+dateStr + compStr + venueStr+ bodyPart + distance+scoreAfter+"</div>";
+	var scoreAfter = "Score after goal: "+currItem.scoreaftergoal
+	var navigation = '<div class="nav-panel" id ="navPanel_'+numIn+'"><div class="nav-button" id="nav-previous" data-direction="-1"></div><div class="nav-button" id="nav-next" data-direction="1"></div></div>'
+	htmlStr = htmlStr+dateStr + compStr + venueStr+ bodyPart + distance+scoreAfter+"</div>"+navigation;
 
 	return htmlStr;
 }
@@ -592,22 +564,36 @@ function setNilGoals(cardIn){
 }
 
 
+
+function setGlobalPitchDimensions(){
+	var pitchDimensionsClip = d3.select("#pitch_0");
+
+	var penBox = d3.select("#pitch_0 #penalty-area");
+
+	globalPitchDimensions.w = (parseInt(pitchDimensionsClip.attr("width")));
+	globalPitchDimensions.h = (parseInt(pitchDimensionsClip.attr("height")));	
+
+}
+
+
 function getXPos1(refIn){
+	var tempNum = globalPitchDimensions.w/2;
+
 	var numOut;
 	if (refIn == "TL" || refIn == "CL"|| refIn == "BL"){
-		numOut=168;
+		numOut = tempNum - 20;
 	}
 	if (refIn == "TCL" || refIn == "CCL"|| refIn == "BCL"){
-		numOut=162;
+		numOut = tempNum - 10;
 	}
 	if (refIn == "TC" || refIn == "CC"|| refIn == "BC"){
-		numOut=153;
+		numOut = tempNum;
 	}
 	if (refIn == "TCR" || refIn == "CCR"|| refIn == "BCR"){
-		numOut=144;
+		numOut = tempNum + 10;
 	}
 	if (refIn == "TR" || refIn == "CR"|| refIn == "BR"){
-		numOut=135;
+		numOut = tempNum + 20;
 	}
 	if (numOut == undefined || numOut =="" || numOut ==null){
 		numOut=0
@@ -616,16 +602,16 @@ function getXPos1(refIn){
 }
 
 function getYPos1(refIn){
-	var numOut = 530;
+	var tempNum = globalPitchDimensions.h;
 
 	if (refIn == "TL" || refIn == "TCL" || refIn == "TC" || refIn == "TCR" || refIn == "TR"){
-		numOut=241;
+		numOut=tempNum -2;
 	}
 	if (refIn == "CL" || refIn == "CCL" || refIn == "CC" || refIn == "CCR" || refIn == "CR"){
-		numOut=239;
+		numOut=tempNum -11;
 	}
 	if (refIn == "BL" || refIn == "BCL" || refIn == "BC" || refIn == "BCR" || refIn == "BR"){
-		numOut=236;
+		numOut=tempNum  - 20;
 	}
 	if (numOut == undefined || numOut =="" || numOut ==null){
 		numOut+=0
@@ -637,6 +623,7 @@ function getYPos1(refIn){
 
 
 function goalDataSort(){
+	dataCount_0 = dataCount_1 = dataCount_2 = dataCount_3 = dataCount_4 = 0;
 	filteredDataset = tempSubArr  = [];
 
 		if (globalSortCategory == "A"){
@@ -651,8 +638,11 @@ function goalDataSort(){
 							tempSubArr = _.filter(subArr, function(item){ return item.matchcategory == globalSortCategory; });
 					});
 				filteredDataset.push(tempSubArr);
-
 			});
+
+			
+			
+			
 		}
 
 	filteredDataset = _.sortBy(filteredDataset, function(subArr) { return subArr.length; });
@@ -675,78 +665,87 @@ function goalDataSort(){
 						
 	// });
 
+	
+
 	!initViewBuilt ? buildPlayerCardsView (dataset, dataset) : buildPlayerCardsView (dataset, filteredDataset);
 	// currentIndex = 0;
 }
 
-function upDateGoalClasses(){
-	if (globalSortCategory == "A"){
-		$(".goal-line-marker").attr("class", "goal-line-marker-selected");
-	}
 
-	if (globalSortCategory != "A"){
-		$(".goal-line-marker-selected").attr("class", "goal-line-marker");
-			_.each(dataset, function(subArr){
-				_.each(subArr, function(item){	
-					var targetClip;
-						if (item.matchcategory == globalSortCategory){
-							targetClip = $("#goal_"+item.scorer+"_"+item.goalno);
-							$(targetClip).attr("class", "goal-line-marker goal-line-marker-selected");
-						}
-					})
-			});	
-	}
+
+function addListeners(){
+		var counter = 0;
+		$( "select" ).change(function (e) {
+	        upDateFromSelect(e);
+	    })
+
+	    $(".nav-button").click(function(e){ 
+	    	 var tempDirection = ($(this).attr('data-direction'));
+			 var a = $(this).parent();
+			 var numRef = getIDKey(a)
+
+			 //var direction = + target.dataset-direction;
+			 var tempArr = filteredDataset[numRef]
+           	 upDatePosition(numRef,tempDirection,tempArr)
+			 console.log(dataCount_0+" "+dataCount_1+" "+dataCount_2+" "+dataCount_3+" "+dataCount_4);
+           
+		})
 }
 
-function addPrevNextListeners(){
-	$( "select" ).change(function (e) {
-        upDateFromSelect(e);
-    })
-
-    $("#next-button").click(function(e){  
-
-	console.log("clicked")
-	
-	var target = e.currentTarget;
-
-
-	//parseInt(target.dataset.direction)
-	var direction = +target.dataset.direction;
-	console.log(direction);
-	upDatePosition(direction);
-
-	});
-}
-
-function addCardListeners(){
-	$(".player-card").click(function(e){
-    	expandCard(e.currentTarget);
-    });
-}
 
 function upDateFromSelect(e){
     setglobalSortCategory(e.currentTarget.value);
+}
+
+function upDatePosition(numRef,tempDirection,tempArr){
+	
+	var checkMax = tempArr.length-1; 
+
+
+		if(numRef == 0){
+			dataCount_0 = parseInt(dataCount_0) + parseInt(tempDirection); 
+			dataCount_0 = checkMinMax(dataCount_0, checkMax)
+			console.log(tempArr[dataCount_0])
+		}
+		if(numRef == 1){
+			dataCount_1 = parseInt(dataCount_1) + parseInt(tempDirection); 
+			dataCount_1 = checkMinMax(dataCount_1, checkMax)
+			console.log(tempArr[dataCount_1])
+		}
+		if(numRef == 2){
+			dataCount_2 = parseInt(dataCount_2) +  parseInt(tempDirection); 
+			dataCount_2 = checkMinMax(dataCount_2, checkMax)
+			console.log(tempArr[dataCount_2])
+		}
+		if(numRef == 3){
+			dataCount_3 = parseInt(dataCount_3) + parseInt(tempDirection); 
+			dataCount_3 = checkMinMax(dataCount_3, checkMax)
+			console.log(tempArr[dataCount_3])
+		}
+		if(numRef == 4){
+			dataCount_4 = parseInt(dataCount_4) + parseInt(tempDirection); 
+			dataCount_4 = checkMinMax(dataCount_4, checkMax)
+			console.log(tempArr[dataCount_4])
+		}
+
+	
+	
 	
 }
 
-function upDatePosition(numIn){
-	currentIndex += numIn;
-	if (currentIndex < 0) {
-			currentIndex = globalCardArray.length-1;
-	} 
-	else if (currentIndex >= globalCardArray.length ) {
-			currentIndex = 0;
+
+function checkMinMax(dataCount, checkMax){
+	
+
+	if (dataCount > checkMax){
+		dataCount = 0;
 	}
-	console.log(currentIndex);	
-}
 
-function expandCard(currClip){
-	$(".player-card-selected").removeClass("player-card-selected").addClass("player-selected");
-	$(currClip).addClass("player-card-selected");
+	if (dataCount < 0){
+		dataCount = checkMax;
+	}
 
-	var dataArr = getCardData(currClip);
-	//upDateInfoBox(dataArr)
-	globalCardArray = dataArr;
+	return dataCount;
 }
 
 function getCardData(currClip){
@@ -754,6 +753,12 @@ function getCardData(currClip){
 	return(filteredDataset[idStr[2]]);
 }
 
+
+function getIDKey(currClip){
+
+	var idStr = currClip.attr("id").split("_");
+	return(idStr[1]);
+}
 
 function setglobalSortCategory(valIn){
 

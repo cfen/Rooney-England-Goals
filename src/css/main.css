@@ -16,413 +16,6 @@ html, body {
 	font-size: 10px;
 }
 
-.headerContent {
-	color:#FFF;
-	background-color: #222222;
-	padding-bottom:300px;
-}
-
-.headerContent h1 {
-	font-family:"Guardian Egyptian Headline", Georgia, serif;
-	font-weight:200;
-	font-size: 80px;
-}
-
-.headerContent h2 {
-	font-size: 26px;
-}
-
-#player-container{
-	max-width:1260px;
-	width: 100%;
-	height: auto;
-}
-
-#topArea{
-	width: 100%;
-	height: auto;
-	padding:0 0 48px 0;
-}
-
-#top-bar{
-	position:relative;
-	top:0px;
-	left:0px;
-	height:4px;
-	width:70px;
-	background-color:#4bc6df;
-}
-
-#top-header{
-	position:relative;
-	float:left;
-	clear:right;
-	left:0px;
-	top:6px;
-	width:100%;
-	height:auto;
-	font-family:"Guardian Egyptian Headline", Georgia, serif;
-	font-size:2.2em;
-	line-height: 1.2em;
-	font-weight:700;
-	text-align:left;
-	color: #005689;
-	padding-bottom:12px;
-}
-
-.sub-header{
-	position:relative;
-	left:0px;
-	top:0px;
-	width:100%;
-	height:auto;
-	padding:1px 0 0 0;
-
-}
-
-.sub-header h3{
-	
-	font-family:"Guardian Egyptian Headline", Georgia, serif;
-	font-size:1.8em;
-	line-height: 1.2em;
-	font-weight:200;
-	text-align:left;
-	color: #333;
-	margin:0;
-
-
-}
-
-.sub-header p{
-	font-family:"Guardian Agate Sans", Arial, sans-serif;
-	font-size:1.5em;
-	line-height: .9em;
-	font-weight:200;
-	margin:0 0 12px 0;
-}
-
-
-
-
-#allBarChartsHolder{
-	width: 100%;
-	height: auto;
-}
-
-.graph-wrapper{
-	position:relative;
-	width:100%;
-	float:left;
-	clear:right;
-}
-
-.bar-chart-title{
-	display:block;
-	width: 140px;
-	height: 140px;
-	border-radius:50%;
-	float:left;
-
-	background-image:url("../images/Rooney.jpg");
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: 100%;
-
-}
-
-#bar-chart-title_1{
-	background-image:url("../images/Charlton.jpg");
-}
-#bar-chart-title_2{
-	background-image:url("../images/Lineker.jpg");
-}
-#bar-chart-title_3{
-	background-image:url("../images/Greaves.jpg");
-}
-#bar-chart-title_4{
-	background-image:url("../images/Owen.jpg");
-}
-
-
-.bar-chart-holder{
-	display:block;
-	width: 900px;
-	height: 136px;
-	padding: 0 0 24px 20px;
-	float:left;
-}
-
-
-.bar-in-chart{
-	fill: #bdbdbd;
-}
-
-.bar-in-chart-goal{
-	fill: #4bc6df;
-}
-
-.chart text {
-  fill: #767676;
-  font: 10px "Guardian Agate Sans", Helvetica, Arial,sans-serif;
-  text-anchor: end;
-}
-
-
-
-.axis path,
-.axis line {
-	  fill: none;
-	  stroke: rgba(51,51,51,0.5);
-	  shape-rendering: crispEdges;
-}
-
-.axis-label{
-	fill: #bdbdbd;
-}
-
-.axis text {
-	  font: 10px "Guardian Agate Sans", Helvetica, Arial,sans-serif;
-	  fill: #bdbdbd;
-	  text-anchor: end;
-	}
-
-.cards-holder{
-	display: inline-block;
-	width: 100%;
-	margin:0px;
-	padding: 12px 0 0 0;
-}
-
-.cards-holder-dark{
-	display: inline-block;
-	width: 100%;
-	margin:0px;
-	padding: 0 0 48px 0;
-	background-color: #63717a;
-}
-
-.player-card, .player-card-static{
-	position: relative;
-	width:100%;
-	height: auto;
-	float:left;
-	padding-top: 3px;
-	cursor:pointer;
-	background-color:none;
-}
-
-.player-card-selected{
-	position: relative;
-	height: auto;
-	float:left;
-	padding-top: 3px;
-	cursor:pointer;
-	background-color:#EAEAEA;
-}
-
-.playerCol-left{ 
-	float: left;
-	width: 150px;
-	height:300px;
-	padding: 0 10px 0 0;
-	font-family: "Guardian Egyptian Headline", Georgia, serif;
-	font-weight: 200;
-	font-size: 2.2em;
-	color: #333;	
-}
-
-.playerCol-bg-img{
-	position: relative;
-	top:12px;
-	float:left;
-	clear:right;
-	background-image:url("../images/Rooney.jpg");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	width:150px;
-	height:150px;
-	border-radius:50%;
-	margin:0;
-	padding:0;
-
-}
-
-.playerCol-caption-panel{
-	position: relative;
-	float:left;
-	clear:left;
-	font-family: "Guardian Agate Sans", Helvetica, Arial;
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 15px;
-	width:auto;
-	
-	margin:0;
-	padding: 24px 0 0 0;
-
-}
-
-.playerCol-right{ 
-	position: relative;
-	float:left;
-	clear:right;
-	margin:0 auto 0 10px;	
-}
-
-.playerCol-right h3{ 
-	
-	font-family: "Guardian Egyptian Headline", Georgia, serif;
-	font-weight: 200;
-	font-size: 2.2em;
-	color: #767676;
-	margin:0;	
-	
-}
-
-.playerCol-center{  
-	font-family: "Guardian Agate Sans", Helvetica, Arial;
-	font-weight: 500;
-	font-size: 1.4em;
-	line-height: 1em;
-	height: 36px;
-	background-color:none; 
-	color:#4bc6df;
-	padding: 12px 0;
-}
-
-.player-card-infobox{
-	position: relative;
-	width: 100%;
-	background-color:#333;
-	color:#FFF;
-}
-
-.pitchHolder{
-	position:relative;
-	float:left;
-}
-
-#trophiesHolder{
-	background-color: #edf9fc;
-	width: 100%;
-	max-width: 1260px;
-}
-
-.trophyItem{
-	height: 180px;
-	background: url("../images/trophies.svg");
-	background-repeat: no-repeat;
-	border-bottom: 1px dotted #767676;
-}
-.trophyYear{
-	float: left;
-	height: 48px;
-	margin-left: 92px;
-	font-family: "Guardian Egyptian Headline", Georgia, serif;
-	font-weight: 200;
-	font-size: 4.8em;
-	color: #767676;
-}
-
-.trophyCopy{
-	float: left; 
-	height: 132px;
-	margin-left: 92px;
-	font-family: "Guardian Egyptian Headline", Georgia, serif;
-	font-weight: 200;
-	font-size: 1.5em;
-	line-height: 1.2em;
-	color: #767676;
-}
-
-
-/* drop down  - see media queries too */
-
-#drop-down-holder{
-	display:inline-block;
-	position: relative;
-	width: 99.5%;
-	padding: 10px 0 10px 0.5%;
-	height: 40px;	
-
-}
-
-.styled-select {
-	float:left;
-	width:240px;
-	height:34px;
-	padding-left:10px;
-	overflow:hidden;
-	background:url(../images/dropdown.png) no-repeat 218px #fff;
-	border:1px solid #CCC;
-	border-radius:17px
-}
-
-.styled-select:hover {
-	background:url(../images/dropdown-white.png) no-repeat 218px #767676
-}
-
-.styled-select:hover #filter-dropdown {
-	color:#fff
-}
-
-
-
-.drop-down-text-title{
-	position: relative;
-	float:left;
-	font-family: "Guardian Egyptian Headline",Georgia,serif;
-	font-size: 1.8em;
-	font-weight: 500;
-	color: #005689;
-	padding: 10px 12px 0 0;
-}
-
-#filter-dropdown {
-	background:transparent;
-	width:240px;
-	padding: 5px 5px 5px 2px;
-	font-size:16px;
-	line-height:1;
-	border:0;
-	border-radius:0;
-	height:34px;
-	-webkit-appearance:none;
-	font-family:"Guardian Agate Sans",Arial,sans-serif;
-	line-height:1.3em;
-	color:#767676;
-	font-weight:600;
-	cursor:pointer
-}
-
-#filter-dropdown option {
-	padding:10px;
-	border-bottom:1px solid #767676;
-	font-weight:400;
-	color:#767676;
-	background:#fff
-}
-
-/* *********** type *************** */
-
-.large-number{
-	font-family: "Guardian Egyptian Headline", Georgia, serif;
-	font-weight: 200;
-	font-size: 8.4em;
-	text-align: left;
-	padding: 0 10px 12px 70px;
-	margin: 0;
-	color: #bdbdbd;	
-}
-
-.nav-button{
-	width:30px;
-	height:30px;
-	background-color:#005689;
-	border-radius:50%;
-	cursor:pointer;
-}
-
 body {
 	font-family: "Guardian Agate Sans", Arial, sans-serif;
 	font-size: 10px;
@@ -486,15 +79,437 @@ h6{
 	color: #333;
 }
 
+
+.nav-panel {
+
+	position: relative;
+	float: left;
+	clear:both;
+	width:140px;
+	height:auto;
+	background: #333;
+	margin-top: 20px;
+
+	opacity: 0.7;
+}
+
+.nav-panel .nav-button {
+	position: absolute;
+	top: 5px;
+	cursor: pointer;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	border: 1px solid #bdbdbd;
+}
+
+#nav-previous{
+	left:0px;
+	background: url(../images/left-arrow-44.png);
+}
+
+#nav-next{
+	right:0px;
+	background: url(../images/right-arrow-44.png);
+}
+
+.headerContent {
+	color:#FFF;
+	background-color: #222222;
+	padding-bottom:300px;
+}
+
+.headerContent h1 {
+	font-family:"Guardian Egyptian Headline", Georgia, serif;
+	font-weight:200;
+	font-size: 80px;
+}
+
+.headerContent h2 {
+	font-size: 26px;
+}
+
+#player-container{
+	max-width:1260px;
+	width: 100%;
+	height: auto;
+}
+
+#topArea{
+	width: 100%;
+	height: auto;
+	padding:0 0 48px 0;
+}
+
+#top-bar{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:4px;
+	width:70px;
+	background-color:#4bc6df;
+}
+
+#top-header{
+	position:relative;
+	float:left;
+	clear:right;
+	left:0px;
+	top:6px;
+	width:100%;
+	height:auto;
+	font-family:"Guardian Egyptian Headline", Georgia, serif;
+	font-size:2.2em;
+	line-height: 1.2em;
+	font-weight:700;
+	text-align:left;
+	color: #005689;
+	padding-bottom:12px;
+}
+
+.sub-header{
+	position:relative;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:auto;
+	padding:1px 0 0 0;
+}
+
+.sub-header h3{
+	
+	font-family:"Guardian Egyptian Headline", Georgia, serif;
+	font-size:1.8em;
+	line-height: 1.2em;
+	font-weight:200;
+	text-align:left;
+	color: #333;
+	margin:0;
+}
+
+.sub-header p{
+	font-family:"Guardian Agate Sans", Arial, sans-serif;
+	font-size:1.5em;
+	line-height: .9em;
+	font-weight:200;
+	margin:0 0 12px 0;
+}
+
+#allBarChartsHolder{
+	width: 100%;
+	height: auto;
+}
+
+.graph-wrapper{
+	position:relative;
+	width:100%;
+	float:left;
+	clear:right;
+}
+
+.bar-chart-title{
+	display:block;
+	width: 140px;
+	height: 140px;
+	border-radius:50%;
+	float:left;
+	background-image:url("../images/Rooney.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%;
+}
+
+#bar-chart-title_1{
+	background-image:url("../images/Charlton.jpg");
+}
+
+#bar-chart-title_2{
+	background-image:url("../images/Lineker.jpg");
+}
+
+#bar-chart-title_3{
+	background-image:url("../images/Greaves.jpg");
+}
+
+#bar-chart-title_4{
+	background-image:url("../images/Owen.jpg");
+}
+
+.bar-chart-holder{
+	display:block;
+	width: 900px;
+	height: 136px;
+	padding: 0 0 24px 20px;
+	float:left;
+}
+
+.bar-in-chart{
+	fill: #bdbdbd;
+}
+
+.bar-in-chart-goal{
+	fill: #4bc6df;
+}
+
+.chart text {
+  fill: #767676;
+  font: 10px "Guardian Agate Sans", Helvetica, Arial,sans-serif;
+  text-anchor: end;
+}
+
+.axis path,
+.axis line {
+	  fill: none;
+	  stroke: rgba(51,51,51,0.5);
+	  shape-rendering: crispEdges;
+}
+
+.axis-label{
+	fill: #bdbdbd;
+}
+
+.axis text {
+	  font: 10px "Guardian Agate Sans", Helvetica, Arial,sans-serif;
+	  fill: #bdbdbd;
+	  text-anchor: end;
+}
+
+.cards-holder{
+	display: inline-block;
+	width: 100%;
+	margin:0px;
+	padding: 12px 0 0 0;
+}
+
+.cards-holder-dark{
+	display: inline-block;
+	width: 100%;
+	margin:0px;
+	padding: 0 0 48px 0;
+	background-color: #63717a;
+}
+
+.player-card, .player-card-static{
+	position: relative;
+	width: 100%;
+	height: auto;
+	float: left;
+	padding: 12px 0 36px 0;
+}
+
+#card_0, #card_1,  #card_2,  #card_3{
+	border-bottom: 1px dotted #DCDCDC;
+}
+
+.player-card-selected{
+	position: relative;
+	height: auto;
+	float:left;
+	padding-top: 3px;
+	cursor:pointer;
+	background-color:#EAEAEA;
+}
+
+.playerCol-left{ 
+	float: left;
+	width: 150px;
+	height:300px;
+	padding: 0 10px 0 0;
+	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-weight: 200;
+	font-size: 2.2em;
+	color: #767676;	
+}
+
+.playerCol-bg-img{
+	position: relative;
+	top:12px;
+	float:left;
+	clear:right;
+	background-image:url("../images/Rooney.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width:150px;
+	height:150px;
+	border-radius:50%;
+	margin:0 0 12px 0;
+	padding:0;
+}
+
+.playerCol-caption-panel{
+	position: relative;
+	float:left;
+	clear:left;
+	font-family: "Guardian Agate Sans", Helvetica, Arial;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	color:#767676;
+	width:auto;	
+	margin:0;
+	padding: 12px 0 0 0;
+}
+
+.playerCol-right{ 
+	position: relative;
+	float:left;
+	clear:right;
+	margin:0 auto 0 10px;	
+}
+
+.playerCol-right h3{ 	
+	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-weight: 200;
+	font-size: 2.2em;
+	color: #767676;
+	margin:0;		
+}
+
+.playerCol-center{  
+	font-family: "Guardian Agate Sans", Helvetica, Arial;
+	font-weight: 500;
+	font-size: 1.4em;
+	line-height: 1em;
+	height: 36px;
+	background-color:none; 
+	color:#4bc6df;
+	padding: 12px 0;
+}
+
+.player-card-infobox{
+	position: relative;
+	width: 100%;
+	background-color:#333;
+	color:#FFF;
+}
+
+.pitchHolder{
+	position:relative;
+	float:left;
+	padding : 0 20px;
+}
+
+#trophiesHolder{
+	background-color: #edf9fc;
+	width: 100%;
+	max-width: 1260px;
+}
+
+.trophyItem{
+	height: 180px;
+	background: url("../images/trophies.svg");
+	background-repeat: no-repeat;
+	border-bottom: 1px dotted #767676;
+}
+
+.trophyYear{
+	float: left;
+	height: 48px;
+	margin-left: 92px;
+	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-weight: 200;
+	font-size: 4.8em;
+	color: #767676;
+}
+
+.trophyCopy{
+	float: left; 
+	height: 132px;
+	margin-left: 92px;
+	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-weight: 200;
+	font-size: 1.5em;
+	line-height: 1.2em;
+	color: #767676;
+}
+
+
+/* drop down  - see media queries too */
+
+#drop-down-holder{
+	display:inline-block;
+	position: relative;
+	width: 99.5%;
+	padding: 10px 0 10px 0.5%;
+	height: 40px;	
+
+}
+
+.styled-select {
+	float:left;
+	width:240px;
+	height:34px;
+	padding-left:10px;
+	overflow:hidden;
+	background:url(../images/dropdown.png) no-repeat 218px #fff;
+	border:1px solid #CCC;
+	border-radius:17px
+}
+
+.styled-select:hover {
+	background:url(../images/dropdown-white.png) no-repeat 218px #767676
+}
+
+.styled-select:hover #filter-dropdown {
+	color:#fff
+}
+
+.drop-down-text-title{
+	position: relative;
+	float:left;
+	font-family: "Guardian Egyptian Headline",Georgia,serif;
+	font-size: 1.8em;
+	font-weight: 500;
+	color: #005689;
+	padding: 10px 12px 0 0;
+}
+
+#filter-dropdown {
+	background:transparent;
+	width:240px;
+	padding: 5px 5px 5px 2px;
+	font-size:16px;
+	line-height:1;
+	border:0;
+	border-radius:0;
+	height:34px;
+	-webkit-appearance:none;
+	font-family:"Guardian Agate Sans",Arial,sans-serif;
+	line-height:1.3em;
+	color:#767676;
+	font-weight:600;
+	cursor:pointer
+}
+
+#filter-dropdown option {
+	padding:10px;
+	border-bottom:1px solid #767676;
+	font-weight:400;
+	color:#767676;
+	background:#fff
+}
+
+/* *********** type *************** */
+
+.large-number{
+	font-family: "Guardian Egyptian Headline", Georgia, serif;
+	font-weight: 200;
+	font-size: 8.4em;
+	text-align: left;
+	padding: 0 10px 12px 70px;
+	margin: 0;
+	color: #bdbdbd;	
+}
+
 .goal-line-marker{
-	stroke-width: 1;
-    stroke: #EFEFEF;
+	stroke-width: 2;
+    stroke: #bdbdbd;
     stroke-opacity: 0.5;
 }
 
 .goal-line-marker-selected{
-	stroke-width: 1;
-    stroke: #FFCC00;
+	stroke-width: 2;
+    stroke: #005689;
 }
 
 #graphsHolder{
@@ -517,8 +532,7 @@ h6{
 
 .key-item{
 	width:auto;
-	font-weight: 400;
-	
+	font-weight: 400;	
 }
 
 .key-item-short{
@@ -531,7 +545,6 @@ h6{
 	float:left;
 	clear:right;
 	padding-left:3px;
-
 }
 
 .key-item-title-short{
@@ -562,9 +575,6 @@ h6{
 	padding-bottom:48px;
 }
 
-
-
-
 .section-header{
 	width:100%;
 	max-width:1260px;
@@ -591,7 +601,7 @@ h6{
 	padding: 0px;
 	margin: 3px 0 0 0;
 
-	}
+}
 
 .section-header p, .section-header-box-out p{
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
@@ -603,16 +613,7 @@ h6{
 	width:80%;
 	max-width:600px;
 	color:#767676;
-	}
-
-
-
-
-
-
-
-
-
+}
 
 
 /* ------------------------------------------------------------- THIS FOR FOUR IN ROW ------------------------------------------------------------ */
