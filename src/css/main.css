@@ -635,7 +635,7 @@ best-of-rest-holder{
 .graphBarHolder {
 	clear: right;
 	float: left;
-	height: auto;
+	height: 600px;
 	margin: 0 0 2px;
 	position: relative;
 	width: 100%;
@@ -650,6 +650,41 @@ best-of-rest-holder{
 	width: 99%;
 	margin: 0 0 1%;
 }
+
+
+
+.new-bar-chart .legend {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: start;
+  font-size: 12px;
+}
+
+.new-bar-chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+
+.new-bar-chart .label {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: end;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.new-bar-chart .axis path,
+.new-bar-chart .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+
+
 
 /* ------------------------------------------------------------- THIS FOR FOUR IN ROW ------------------------------------------------------------ */
 

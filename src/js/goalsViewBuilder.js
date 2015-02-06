@@ -56,7 +56,9 @@ function plotGoals(selectedPitch, tempArr){
 	var lineDataUnselected = [];
 	var lineDataSelected = [];
 	_.each(tempArr, function(item,i){
-			var penBox = d3.select("#penalty-area");
+			var penBox = $("#penalty-area");
+
+			//console.log( penBox );
 			
 			var matchCat = item.matchcategory;
 			var goalDistance = item.goaldistance*10;
@@ -65,7 +67,7 @@ function plotGoals(selectedPitch, tempArr){
 			var currScorer = item.scorer;
 			var endXPos = getEndXPos(startXPos,item.goalangle*1, goalDistance);
 			var endYPos = startYPos - goalDistance;
-			var coords = {"x1":startXPos, "y1":startYPos, "x2":endXPos, "y2":endYPos, "id":"goal_"+currScorer+"_"+i};
+			var coords = {"x1":startXPos, "y1":startYPos, "x2":endXPos, "y2":endYPos, "id":"goal_"+currScorer+"_"+(i+1)};
 			matchCat == globalSortCategory ? lineDataSelected.push(coords) : lineDataUnselected.push(coords);	
 		});
 	
@@ -124,7 +126,7 @@ function getXPos1(refIn){
 	if (refIn == "TCL" || refIn == "CCL"|| refIn == "BCL"){
 		numOut = tempNum - 10;
 	}
-	if (refIn == "TC" || refIn == "CC"|| refIn == "BC"){
+	if (refIn == "T" || refIn == "C"|| refIn == "B"){
 		numOut = tempNum;
 	}
 	if (refIn == "TCR" || refIn == "CCR"|| refIn == "BCR"){
@@ -142,13 +144,13 @@ function getXPos1(refIn){
 function getYPos1(refIn){
 	var tempNum = globalPitchDimensions.h;
 
-	if (refIn == "TL" || refIn == "TCL" || refIn == "TC" || refIn == "TCR" || refIn == "TR"){
+	if (refIn == "TL" || refIn == "TCL" || refIn == "T" || refIn == "TCR" || refIn == "TR"){
 		numOut=tempNum -2;
 	}
-	if (refIn == "CL" || refIn == "CCL" || refIn == "CC" || refIn == "CCR" || refIn == "CR"){
+	if (refIn == "CL" || refIn == "CCL" || refIn == "C" || refIn == "CCR" || refIn == "CR"){
 		numOut=tempNum -11;
 	}
-	if (refIn == "BL" || refIn == "BCL" || refIn == "BC" || refIn == "BCR" || refIn == "BR"){
+	if (refIn == "BL" || refIn == "BCL" || refIn == "B" || refIn == "BCR" || refIn == "BR"){
 		numOut=tempNum  - 20;
 	}
 	if (numOut == undefined || numOut =="" || numOut ==null){

@@ -1,108 +1,76 @@
-var dataBarChart = [];
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+/*
+.chart rect {
+  fill: steelblue;
+}
+*/
+.new-bar-chart .legend {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: start;
+  font-size: 12px;
+}
+
+.new-bar-chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+
+.new-bar-chart .label {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: end;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.new-bar-chart .axis path,
+.new-bar-chart .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
 
-function buildBestOfData(){
-	var labels = [];
-	var seriesArr = [];
-	var tempObj;
-
-	for (var key in datasetBestOfRest[0]) { 
-	 				console.log(i+"  "+ datasetBestOfRest[0][key])
-
-		}
-
-	_.each(datasetBestOfRest, function (item,i){
-		var tempLabel;
-		var tempArr =[]
-		
-		labels.push(item.firstname+" "+item.scorer);
-	 	//tempArr.push(item.totalcaps)
-
-	 	
-// 
-
-						 
-// 					
-			
-		
-		});
+</style>
+<svg class="new-bar-chart"></svg>
+<script src="js/libs/d3/d3.js" charset="utf-8"></script>
+<script>
 
 
-	
-
-	console.log(labels);
-
-dataBarChart = {
-        // labels: [
-        //   'Rooney', 'Ronaldo', 'Pele',
-        //   'John', 'Keane', 'Daei'
-        // ],
+ var dataBarChart = {
+        labels: [
+          'resilience', 'maintainability', 'accessibility',
+          'uptime', 'functionality', 'impact'
+        ],
         series: [
           {
-            label: 'Caps',
-            values: [4, 8, 15, 16, 23, 42, 6]
+            label: '2012',
+            values: [4, 8, 15, 16, 23, 42]
           },
           {
-            label: 'Goals',
-            values: [12, 43, 22, 11, 73, 25, 5]
+            label: '2013',
+            values: [12, 43, 22, 11, 73, 25]
           },
           {
-            label: 'length of career',
-            values: [31, 28, 14, 8, 15, 21, 6]
+            label: '2014',
+            values: [31, 28, 14, 8, 15, 21]
           },]
       };
 
-      dataBarChart.labels=labels;
-}
 
+function addChart(dataBarChart){
 
-
-
-var bestOfChartW = 300;
-
-function bestOfRestData (){
-	var htmlStr = "<svg class='new-bar-chart'></svg>"
-	 targetClip = $('#bestGraph');
-	 targetClip.html(htmlStr);
-	// _.each(datasetBestOfRest, function (item,i){
-	// 	htmlStr+="<div class= 'graphBarHorizontal' id='bestGraphBar_"+item.scorer+"'></div>";
-	// });
-	//htmlStr+='<div class="chart"></div>'
-	
-	buildBestOfData();
-	buildBestOfChart();
-	//drawBestWidths();
-}
-
-function drawBestWidths(){
-
-	// var maxUnit = getMaxVal(datasetBestOfRest,"goals");
-	// var w = $("#bestGraph").width();
-	// w = w  / maxUnit;
-
-	// console.log(w)
-
-	// _.each(datasetBestOfRest, function (item,i){
-	// 	var targetClip = $("bestGraphBar_"+item.scorer);
-	// 	var newW = Math.floor(w * item.goals);
-
-	// 	targetClip.css("width",newW);
-
-	// })	
-	
-	
-
-}
-
-
-
-
-function buildBestOfChart(){
-
-		console.log(isMobile)	
      
-      	var chartWidth       = bestOfChartW,
-          barInChartHeight   = 20,
+
+      var chartWidth       = 300,
+          barInChartHeight        = 20,
           groupHeight      = barInChartHeight * dataBarChart.series.length,
           gapBetweenGroups = 10,
           spaceForLabels   = 150,
@@ -115,7 +83,7 @@ function buildBestOfChart(){
           zippedData.push(dataBarChart.series[j].values[i]);
         }
 
-        //console.log(zippedData)
+        console.log(zippedData)
       }
 
       // Color scale
@@ -210,3 +178,6 @@ function buildBestOfChart(){
 
 }
 
+addChart();
+
+</script>

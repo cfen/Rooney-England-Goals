@@ -215,11 +215,13 @@ function getRightColContent(item,numIn){
 	var dateStr = "<span id='captionText'><b>"+newDate+"</br>"   
 	var compStr = currItem.comp+"</br>"
 	var venueStr = currItem.venue+"</b></br>"
-	var bodyPart = getBodyPartStr(currItem.bodyPart)
-	var distance = currItem.goaldistance + " yards </br>"
-	var scoreAfter = "Score after goal: "+currItem.scoreaftergoal+"</span>"
+	var bodyPart = getBodyPartStr(currItem.bodypart)
+	var distance = getDistanceStr(currItem.goaldistance)  + "</br>"
+	var scoreAfter = "Score after goal: "+currItem.scoreaftergoal+"</br>"
+	var capStr = "Appearance number:"+currItem.capno+"</br>"
+	var countStr = "<b>Goal number "+currItem.goalno+" of "+item.length+"</b></span>"
 	var navigation = '<div class="nav-panel" id ="navPanel_'+numIn+'"><div class="nav-button" id="nav-previous" data-direction="-1"></div><div class="nav-button" id="nav-next" data-direction="1"></div></div>'
-	htmlStr = htmlStr+dateStr + compStr + venueStr+ bodyPart + distance+scoreAfter+"</div>"+navigation;
+	htmlStr = htmlStr+dateStr + compStr + venueStr+ bodyPart + distance+scoreAfter+capStr+countStr+"</div>"+navigation;
 
 	return htmlStr;
 }
@@ -273,11 +275,12 @@ function setLHCapTxt(finalTally, item){
 
 
 function getBodyPartStr(bodyPart){
-	var strOut = "Shot from "
 
-	if (bodyPart == "RF"){ strOut = "Right footed shot from" }
-	if (bodyPart == "LF"){ strOut = "Left footed shot from" }
-	if (bodyPart == "H"){ strOut = "Header from" }
+	var strOut = "Scored from "
+
+	if (bodyPart == "RF"){ strOut = "Right footed shot from " }
+	if (bodyPart == "LF"){ strOut = "Left footed shot from " }
+	if (bodyPart == "H"){ strOut = "Header from " }
 	
 	return strOut;
 
@@ -403,23 +406,11 @@ function upDatePosition(numRef,tempDirection){
 		 
 		var currCard =("#card_"+numRef);
 		var currItem = tempArr[dataCountIn];
-		var targetClipHeader = currCard+" .playerCol-right h3";
-		var targetClipCap = currCard+" .playerCol-right  #captionText";
 
-		var newDate = Date.parse(currItem.date);
-	    newDate = (newDate.toString('d MMMM yyyy'));
-
-		var newCapText = "<b>"+newDate+"</br>"   
-		newCapText = newCapText + currItem.comp+"</br>"
-		newCapText = newCapText + currItem.venue+"</b></br>"
-		newCapText = newCapText + getBodyPartStr(currItem.bodyPart)
-		newCapText = newCapText + currItem.goaldistance + " yards </br>"
-		newCapText = newCapText + "Score after goal: "+currItem.scoreaftergoal;
+		upDateInfoPanel(currCard, currItem, tempArr.length)
 
 
-		$(targetClipHeader).html("England "+currItem.scoreafterft+" "+currItem.opposition);
-
-		$(targetClipCap).html(newCapText);
+		
 		
 		//$(targetClipNameColRight).empty()
 		
@@ -432,6 +423,34 @@ function upDatePosition(numRef,tempDirection){
 
 	}	
 
+}
+
+function upDateInfoPanel(currCard, currItem, maxVal){
+	var targetClipHeader = currCard+" .playerCol-right h3";
+		var targetClipCap = currCard+" .playerCol-right  #captionText";
+
+		var newDate = Date.parse(currItem.date);
+	    newDate = (newDate.toString('d MMMM yyyy'));
+
+		var newCapText = "<b>"+newDate+"</br>"   
+		newCapText = newCapText + currItem.comp+"</br>"
+		newCapText = newCapText + currItem.venue+"</b></br>"
+		newCapText = newCapText + getBodyPartStr(currItem.bodypart)
+		newCapText = newCapText + getDistanceStr(currItem.goaldistance) + "</br>"
+		newCapText = newCapText + "Score after goal: "+currItem.scoreaftergoal+"</br>"
+		newCapText = newCapText +"Appearance number: "+currItem.capno+"</br>"
+		newCapText = newCapText += "<b>Goal number "+currItem.goalno+" of "+maxVal+"</b>";
+
+
+		$(targetClipHeader).html("England "+currItem.scoreafterft+" "+currItem.opposition);
+
+		$(targetClipCap).html(newCapText);
+}
+
+function getDistanceStr(valIn){
+	var strOut = " ";
+	valIn == 1 ? strOut = valIn +" yard" :   strOut = valIn +" yards";
+	return strOut;
 }
 
 function numDivision(widthRef, unitRef){
