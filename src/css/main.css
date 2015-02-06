@@ -281,6 +281,15 @@ h6{
 	padding: 12px 0 0 0;
 }
 
+best-of-rest-holder{
+	display: inline-block;
+	width: 100%;
+	margin:0px;
+	padding: 12px 0 0 0;
+}
+
+
+
 .cards-holder-dark{
 	display: inline-block;
 	width: 100%;
@@ -430,7 +439,7 @@ h6{
 	display:inline-block;
 	position: relative;
 	width: 99.5%;
-	padding: 10px 0 10px 0.5%;
+	padding: 10px 0 10px 0;
 	height: 40px;	
 
 }
@@ -512,10 +521,14 @@ h6{
     stroke: #005689;
 }
 
+.goal-line-marker-highlighted{
+	stroke-width: 2;
+    stroke: #FF6600;
+}
+
 #graphsHolder{
 	padding-bottom:36px;
 }
-
 .key-item-title, .key-item-title-short, .key-item, .key-item-short{
 	width:120px;
 	height:auto; 
@@ -615,6 +628,28 @@ h6{
 	color:#767676;
 }
 
+#graphHolder {
+	top: 4px;
+}
+
+.graphBarHolder {
+	clear: right;
+	float: left;
+	height: auto;
+	margin: 0 0 2px;
+	position: relative;
+	width: 100%;
+}
+
+.graphBarHorizontal {
+	position: relative;
+	height: 54px;
+	background-color: #4bc6df;
+	left: 0px;
+	top: 0px;
+	width: 99%;
+	margin: 0 0 1%;
+}
 
 /* ------------------------------------------------------------- THIS FOR FOUR IN ROW ------------------------------------------------------------ */
 
