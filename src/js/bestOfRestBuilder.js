@@ -5,214 +5,150 @@ var bestOf_capsArr = [];
 var bestOf_careerArr = [];
 var bestOf_nationalities = [];
 var seriesArr = [];
+
 var bestOfChartW = 900;
+
 var globalColorsArr = ["#4bc6df", "#005689", "#e6711b" ]; 
 
-// for (var key in item) { 
-    //  console.log(i+"  "+ item[key]);
-// }
+var topFigure = 0;
 
-function buildBestOfData(){
 
-datasetBestOfRest = _.sortBy(datasetBestOfRest, function(item) { return item.goals; });
- // datasetBestOfRest.reverse();
+// for (var key in datasetBestOfRest) { 
+//     console.log(i+"  "+ datasetBestOfRest[key])
+//   }
 
-	_.each(datasetBestOfRest, function (item,i){
-		var tempLabel;
-		
-    bestOf_goalsArr.push(item.goals)
-    
-    bestOf_capsArr.push(item.totalcaps)
-    
-    bestOf_careerArr.push(item.lengthofcareer)
+
+function bestOfRestInit (){
+
+  var htmlStr="";
+  var targetClip = $('#bestGraph');
    
-    bestOf_nationalities.push(item.nationality)
-		labels.push(item.firstname+" "+item.scorer+" - "+item.nationality);
-	 	//tempArr.push(item.totalcaps)
-    // 					 
-    // 					
-});
+    _.each(datasetBestOfRest, function (item,i){
+        htmlStr += "<div class='new-bar-chart' id='newBarChart_"+i+"'></div>"   
+    });
 
-dataBarChart = {
-        // labels: [
-        //   'Rooney', 'Ronaldo', 'Pele',
-        //   'John', 'Keane', 'Daei'
-        // ],
-      series: [
-        {
-            label: 'Goals',
-             colorVal: globalColorsArr[1],
-             values: []
-        },
-        {
-            label: 'Caps',
-             colorVal: globalColorsArr[0],
-             values: []
-        },
-          
-        {
-            label: 'length of career',
-             colorVal: globalColorsArr[2],
-             values: []
-        },
-      ]
-    };
+    targetClip.html(htmlStr);
+    addBestOfGraphs();
 
-      dataBarChart.labels = labels;
-      dataBarChart.series[0]["values"] = bestOf_capsArr;
-      dataBarChart.series[1]["values"] = bestOf_goalsArr;
-      dataBarChart.series[2]["values"] = bestOf_careerArr;
-      bestOf_goalsArr.colorRef = globalColorsArr [0]
-      bestOf_capsArr.colorRef = globalColorsArr [1]
-      bestOf_careerArr.colorRef = globalColorsArr [2]
-      dataBarChart.nationalities = bestOf_nationalities;
-
-      
-
-      console.log(dataBarChart);
 }
 
-function bestOfRestData (){
-	var htmlStr = "<svg class='new-bar-chart'></svg>"
-	 targetClip = $('#bestGraph');
-	 targetClip.html(htmlStr);
-	// _.each(datasetBestOfRest, function (item,i){
-	// 	htmlStr+="<div class= 'graphBarHorizontal' id='bestGraphBar_"+item.scorer+"'></div>";
-	// });
-	//htmlStr+='<div class="chart"></div>'
-	
-	buildBestOfData();
-	buildBestOfChart(".new-bar-chart");
-	//drawBestWidths();
-}
-
-function drawBestWidths(){
-	// var maxUnit = getMaxVal(datasetBestOfRest,"goals");
-	// var w = $("#bestGraph").width();
-	// w = w  / maxUnit;
-
-	// console.log(w)
-
-	// _.each(datasetBestOfRest, function (item,i){
-	// 	var targetClip = $("bestGraphBar_"+item.scorer);
-	// 	var newW = Math.floor(w * item.goals);
-
-	// 	targetClip.css("width",newW);
-
-	// })	
+function addBestOfGraphs(){
+   _.each(datasetBestOfRest, function (item,i){
+        buildBestOfChart( d3.select("#newBarChart_"+i), item );
+    });
 }
 
 
-function buildBestOfChart(targetChartClip){
+function buildBestOfChart(targetClip, dataIn){
 
-		console.log(isMobile)	
-     
-      	var chartWidth = bestOfChartW,
-          barInChartHeight   = 36,
-          groupHeight      = barInChartHeight * dataBarChart.series.length,
-          gapBetweenGroups = 12,
-          spaceForLabels   = 180,
-          spaceForLegend   = 180;
+		var categories= ['Goals', 'Caps'];
 
-      // Zip the series data together (first values, second values, etc.)
-      var zippedData = [];
-      for (var i=0; i<dataBarChart.labels.length; i++) {
-        for (var j=0; j<dataBarChart.series.length; j++) {
-          zippedData.push(dataBarChart.series[j].values[i]);
-        }
+    var playerVals = [];
 
-        //console.log(zippedData)
-      }
+    var graphH = 144;
 
-      // Color scale
-      var color = globalColorsArr;
-      var chartHeight = barInChartHeight * zippedData.length + gapBetweenGroups * dataBarChart.labels.length;
+    var graphW = 900;
 
-      var x = d3.scale.linear()
-          .domain([0, d3.max(zippedData)])
-          .range([0, chartWidth]);
+    topFigure = getMaxVal(datasetBestOfRest,"totalcaps"); 
+    
+    playerVals.push(dataIn.totalcaps)
+    playerVals.push(dataIn.goals)
 
-      var y = d3.scale.linear()
-          .range([chartHeight + gapBetweenGroups, 0]);
+    console.log(playerVals)
 
-      var yAxis = d3.svg.axis()
-          .scale(y)
-          .tickFormat('')
-          .tickSize(0)
-          .orient("left");
+    var colors = ['#4bc6df','#005689','#0094ff','#0d4bcf','#0066AE','#074285','#00187B','#285964','#405F83','#416545','#4D7069','#6E9985','#7EBC89','#0283AF','#79BCBF','#99C19E'];
 
-      // Specify the chart area and dimensions
-      var chart = d3.select(targetChartClip)
-          .attr("width", spaceForLabels + chartWidth + spaceForLegend)
-          .attr("height", chartHeight);
+    var grid = d3.range(25).map(function(i){
+      return {'x1':0,'y1':0,'x2':0,'y2':180};
+    });
 
-      // Create bars
-      var bar = chart.selectAll("g")
-          .data(zippedData)
-          .enter().append("g")
-          .attr("transform", function(d, i) {
-            return "translate(" + spaceForLabels + "," + (i * barInChartHeight + gapBetweenGroups * (0.5 + Math.floor(i/dataBarChart.series.length))) + ")";
-          });
+    var tickVals = grid.map(function(d,i){
+      if(i>0){ return i*10; }
+      else if(i===0){ return "100";}
+    });
 
-      // Create rectangles of the correct width
-      bar.append("rect")
-          .attr("fill", function(d,i) { console.log(d); return globalColorsArr[0] })
-          .attr("class", "bar")
-          .attr("width", x)
-          .attr("height", barInChartHeight - 1);
+    var xscale = d3.scale.linear()
+            .domain([0, topFigure])
+            .range([0, 722]);        
 
-      // Add text label in bar
-      bar.append("text")
-          .attr("x", function(d) { return x(d) - 3; })
-          .attr("y", barInChartHeight / 2)
-          .attr("fill", "#005689")
-          .attr("dy", ".35em")
-          .text(function(d) { return d; });
+    var yscale = d3.scale.linear()
+            .domain([0,categories.length])
+            .range([0,80]);
 
-      // Draw labels
-      // bar.append("text")
-      //     .attr("class", "label")
-      //     .attr("x", function(d) { return - 10; })
-      //     .attr("y", groupHeight / 2)
-      //     .attr("dy", ".35em")
-      //     .text(function(d,i) {
-      //       if (i % dataBarChart.series.length === 0)
-      //         return dataBarChart.labels[Math.floor(i/dataBarChart.series.length)];
-      //       else
-      //         return ""});
+    var colorScale = d3.scale.quantize()
+            .domain([0,categories.length])
+            .range(colors);
 
-      chart.append("g")
-            .attr("class", "y axis")
-            .attr("transform", "translate(" + spaceForLabels + ", " + -gapBetweenGroups/2 + ")")
-            .call(yAxis);
+    var canvas = targetClip
+            .append('svg')
+            .attr({'width':graphW,'height':graphH});
 
-      // Draw legend
-      var legendRectSize = 18,
-          legendSpacing  = 2;
+    var grids = canvas.append('g')
+            .attr('id','grid')
+            .attr('transform','translate(180,0)')
+            .selectAll('line')
+            .data(grid)
+            .enter()
+            .append('line')
+            .attr({'x1':function(d,i){ return i*30; },
+               'y1':function(d){ return d.y1; },
+               'x2':function(d,i){ return i*30; },
+               'y2':function(d){ return d.y2; },
+            })
+            .style({'stroke':'#adadad','stroke-width':'1px'});
 
-      var legend = chart.selectAll('.legend')
-          .data(dataBarChart.series)
-          .enter()
-          .append('g')
-          .attr('transform', function (d, i) {
-              var height = legendRectSize + legendSpacing;
-              var offset = -gapBetweenGroups/2;
-              var horz = spaceForLabels + chartWidth + 40 - legendRectSize;
-              var vert = i * height - offset;
-              return 'translate(' + horz + ',' + vert + ')';
-          });
+    // var xAxis = d3.svg.axis();
+    //   xAxis
+    //     .orient('bottom')
+    //     .scale(xscale)
+    //     .tickValues(tickVals);
 
-      legend.append('rect')
-          .attr('width', legendRectSize)
-          .attr('height', legendRectSize)
-          .style('fill', function (d, i) { return color[i]; })
-          .style('stroke', function (d, i) { return color[i]; });
+    // var yAxis = d3.svg.axis();
+    //   yAxis
+    //     .orient('left')
+    //     .scale(yscale)
+    //     .tickSize(2)
+    //     .tickFormat(function(d,i){ return categories[i]; })
+    //     .tickValues(d3.range(17));
 
-      legend.append('text')
-          .attr('class', 'legend')
-          .attr('x', legendRectSize + legendSpacing)
-          .attr('y', legendRectSize - legendSpacing)
-          .text(function (d) { return d.label; });
+    // var y_xis = canvas.append('g')
+    //           .attr("transform", "translate(180,0)")
+    //           .attr('id','yaxis')
+    //           .call(yAxis);
 
+    // var x_xis = canvas.append('g')
+    //           .attr("transform", "translate(180,480)")
+    //           .attr('id','xaxis')
+    //           .call(xAxis);
+
+    var chart = canvas.append('g')
+              .attr("transform", "translate(180,0)")
+              .attr('class','barsInBestOf')
+              .selectAll('rect')
+              .data(playerVals)
+              .enter()
+              .append('rect')
+              .attr('height',graphH/4) // 144/4 returns 36
+              .attr({'x':0,'y':function(d,i){ return yscale(i); }})
+              .attr('id', function(d,i){ return 'bars-in-best-of_'+i; })
+              .style('fill',function(d,i){ return colorScale(i); })
+              .attr("width", function(d) {return xscale(d); });
+              //.attr('width',function(d){ return 0; });
+
+
+    var transit = d3.select("svg").selectAll("rect")
+              .data(playerVals)
+              .transition()
+              .duration(1000) 
+              .attr("width", function(d) {return xscale(d);});
+
+    var transitext = d3.selectAll(".barsInBestOf")
+              .selectAll('text')
+              .data(playerVals)
+              .enter()
+              .append('text')
+              .attr("class", "horiz-bar-figure")
+              .attr({'x':function(d) {return xscale(d)-10; },'y':function(d,i){ return yscale(i)+24; }})
+              .text(function(d){ return d; });
 }
 

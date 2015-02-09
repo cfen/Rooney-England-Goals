@@ -512,18 +512,18 @@ best-of-rest-holder{
 
 .goal-line-marker{
 	stroke-width: 2;
-    stroke: #bdbdbd;
+    stroke: #EFEFEF;
     stroke-opacity: 0.5;
 }
 
 .goal-line-marker-selected{
 	stroke-width: 2;
-    stroke: #005689;
+    stroke: #FFCf4c;
 }
 
 .goal-line-marker-highlighted{
 	stroke-width: 2;
-    stroke: #FF6600;
+    stroke: #e6711b;
 }
 
 #graphsHolder{
@@ -628,59 +628,7 @@ best-of-rest-holder{
 	color:#767676;
 }
 
-#graphHolder {
-	top: 4px;
-}
 
-.graphBarHolder {
-	clear: right;
-	float: left;
-	height: 600px;
-	margin: 0 0 2px;
-	position: relative;
-	width: 100%;
-}
-
-.graphBarHorizontal {
-	position: relative;
-	height: 54px;
-	background-color: #4bc6df;
-	left: 0px;
-	top: 0px;
-	width: 99%;
-	margin: 0 0 1%;
-}
-
-
-.new-bar-chart .legend {
-  fill: black;
-  font: 15px  "Guardian Agate Sans", Arial, sans-serif;
-  text-anchor: start;
- 
-}
-
-.new-bar-chart text {
-  fill: white;
-  font: 15px  "Guardian Agate Sans", Arial, sans-serif;
-  text-anchor: end;
-}
-
-.new-bar-chart .label {
-  fill: black;
-  font: 15px  "Guardian Agate Sans", Arial, sans-serif;
-  text-anchor: end;
-}
-
-.bar:hover {
-  fill: #005689;
-}
-
-.new-bar-chart .axis path,
-.new-bar-chart .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
 
 
 

@@ -30,8 +30,6 @@ function buildGoalsView(dataIn,filteredData){
 }
 
 
-
-
 function addGoalsToPitch(selectedPitch, currScorer){
 //handle 0 greaves here
 	var tempGoalsArr =[];	

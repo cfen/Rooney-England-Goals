@@ -116,7 +116,8 @@ function handleResponse(data) {
 
 	buildLayout (dataset, dataset);
 
-	bestOfRestData ()
+	bestOfRestInit();
+
 }
 
 
