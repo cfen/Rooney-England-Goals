@@ -652,28 +652,27 @@ best-of-rest-holder{
 }
 
 
-
 .new-bar-chart .legend {
   fill: black;
-  font: 14px sans-serif;
+  font: 15px  "Guardian Agate Sans", Arial, sans-serif;
   text-anchor: start;
-  font-size: 12px;
+ 
 }
 
 .new-bar-chart text {
   fill: white;
-  font: 10px sans-serif;
+  font: 15px  "Guardian Agate Sans", Arial, sans-serif;
   text-anchor: end;
 }
 
 .new-bar-chart .label {
   fill: black;
-  font: 14px sans-serif;
+  font: 15px  "Guardian Agate Sans", Arial, sans-serif;
   text-anchor: end;
 }
 
 .bar:hover {
-  fill: brown;
+  fill: #005689;
 }
 
 .new-bar-chart .axis path,
