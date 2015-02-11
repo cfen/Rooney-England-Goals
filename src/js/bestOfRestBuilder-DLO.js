@@ -12,38 +12,16 @@ function buildBestOfData(){
 
 	var tempObj;
 
-	for (var key in datasetBestOfRest) { 
-    //console.log(i+"  "+ datasetBestOfRest[key])
-	}
-
-
-  // $.each(datasetBestOfRest, function(key, value) { 
-
-  //   console.log(datasetBestOfRest[key])
-  //   // key is the key
-  //   // value is the value +"  "+value
-  // });
+	// for (var key in datasetBestOfRest) { 
+     //console.log(i+"  "+ datasetBestOfRest[key])
+	// }
 
 	_.each(datasetBestOfRest, function (item,i){
 		var tempLabel;
-		
-
-    // for (var key in item) { 
-    //     console.log(i+"  "+ item[key])
-    // }
-
-    // $.each(item, function(key, value) { 
-    //       console.log(item[key])
-    //       // key is the key
-    //       // value is the value +"  "+value
-    // });
-		
+	
     bestOf_goalsArr.push(item.goals)
-    
     bestOf_capsArr.push(item.totalcaps)
-    
     bestOf_careerArr.push(item.lengthofcareer)
-   
     bestOf_nationalities.push(item.nationality)
 		labels.push(item.firstname+" "+item.scorer);
 	 	//tempArr.push(item.totalcaps)

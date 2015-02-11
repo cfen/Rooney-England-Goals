@@ -81,15 +81,13 @@ h6{
 
 
 .nav-panel {
-
 	position: relative;
 	float: left;
-	clear:both;
-	width:140px;
-	height:auto;
-	background: #333;
+	clear: both;
+	width: 140px;
+	height: 48px;
+	/* background: #333; */
 	margin-top: 20px;
-
 	opacity: 0.7;
 }
 
@@ -205,6 +203,11 @@ h6{
 	width:100%;
 	float:left;
 	clear:right;
+	background-color:#FCFCFC;
+}
+
+#graph-wrapper_0{
+	padding-top:2px;
 }
 
 .bar-chart-title{
@@ -238,8 +241,7 @@ h6{
 .bar-chart-holder{
 	display:block;
 	width: 900px;
-	height: 136px;
-	padding: 0 0 24px 20px;
+	height: auto;
 	float:left;
 }
 
@@ -249,6 +251,11 @@ h6{
 
 .bar-in-chart-goal{
 	fill: #4bc6df;
+}
+
+
+.bar-in-chart-goal-highlighted{
+	fill: #FF6600;
 }
 
 .chart text {
@@ -298,7 +305,7 @@ best-of-rest-holder{
 	background-color: #63717a;
 }
 
-.player-card, .player-card-static{
+.player-card, .player-card-lower, .player-card-static{
 	position: relative;
 	width: 100%;
 	height: auto;
@@ -306,7 +313,7 @@ best-of-rest-holder{
 	padding: 12px 0 36px 0;
 }
 
-#card_0, #card_1,  #card_2,  #card_3{
+#card_0, #card_1,  #card_2,  #card_3, #lower-card_0, #lower-card_1,  #lower-card_2,  #lower-card_3, #lower-card_4,  #lower-card_5 {
 	border-bottom: 1px dotted #DCDCDC;
 }
 
@@ -321,8 +328,8 @@ best-of-rest-holder{
 
 .playerCol-left{ 
 	float: left;
-	width: 150px;
-	height:300px;
+	width: 220px;
+	height:auto;
 	padding: 0 10px 0 0;
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 200;
@@ -338,9 +345,9 @@ best-of-rest-holder{
 	background-image:url("../images/Rooney.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
-	width:150px;
-	height:150px;
-	border-radius:50%;
+	width:220px;
+	height:162px;/*
+	border-radius:50%;*/
 	margin:0 0 12px 0;
 	padding:0;
 }
@@ -354,22 +361,28 @@ best-of-rest-holder{
 	font-size: 15px;
 	line-height: 15px;
 	color:#767676;
-	width:auto;	
+	width:220px;	
 	margin:0;
 	padding: 12px 0 0 0;
 }
 
 .playerCol-right{ 
 	position: relative;
-	float:left;
-	clear:right;
-	margin:0 auto 0 10px;	
+	float: left;
+	clear: both;
+	margin: 0 auto 0 0;
 }
 
-.playerCol-right h3{ 	
+.grid-holder{
+	position:relative;
+	float:left;
+	padding:0 0 0 10px;
+}
+
+.playerCol-right h3, .playerCol-left h3{ 	
 	font-family: "Guardian Egyptian Headline", Georgia, serif;
 	font-weight: 200;
-	font-size: 2.2em;
+	font-size: 22px;
 	color: #767676;
 	margin:0;		
 }
@@ -395,7 +408,7 @@ best-of-rest-holder{
 .pitchHolder{
 	position:relative;
 	float:left;
-	padding : 0 20px;
+	padding : 33px 10px 0 10px;
 }
 
 #trophiesHolder{
@@ -570,7 +583,7 @@ best-of-rest-holder{
 	padding: 2px;
 	margin-right:6px;
 	margin-top:3px;
-	border-radius: 50%;
+	/*border-radius: 50%;*/
 	float:left;
 	clear:right;
 }
@@ -585,7 +598,8 @@ best-of-rest-holder{
 
 #heatmap-key{
 	display:inline-block;
-	padding-bottom:48px;
+	padding:36px 0 48px 0;
+	margin-left:70px;
 }
 
 .section-header{

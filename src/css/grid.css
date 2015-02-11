@@ -1,0 +1,15 @@
+.grid-cell{
+	fill: #f6f6f6;
+	stroke: #f6f6f6;
+}
+
+.grid-cell-goal{
+	fill: #4bc6df;
+	stroke: #FFF;
+}
+
+.grid-cell-highlighted{
+	fill: #FF6600;
+	stroke: #FFF;
+}
+

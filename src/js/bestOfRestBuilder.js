@@ -1,10 +1,4 @@
 var dataBarChart = [];
-var labels = []
-var bestOf_goalsArr = [];
-var bestOf_capsArr = [];
-var bestOf_careerArr = [];
-var bestOf_nationalities = [];
-var seriesArr = [];
 
 var bestOfChartW = 900;
 
@@ -18,13 +12,37 @@ var topFigure = 0;
 //   }
 
 
+
+
+
 function bestOfRestInit (){
+
+  datasetBestOfRest = _.sortBy(datasetBestOfRest, function(item) { return item.goals; });
 
   var htmlStr="";
   var targetClip = $('#bestGraph');
+  var goalAverage = 0;
+
+  var margin;
+
+  isMobile ?  margin = {top: 36, right: 20, bottom: 6, left: 3} : margin = {top: 18, right: 3, bottom: 18, left: parseInt($("#bar-chart-title_0").width())};
+ 
    
     _.each(datasetBestOfRest, function (item,i){
-        htmlStr += "<div class='new-bar-chart' id='newBarChart_"+i+"'></div>"   
+
+        //var lhColCaptionHtml = setLHCapTxt(finalTally, item);
+
+        goalAverage = Math.round(item.goals/item.totalcaps*100);
+        goalAverage = goalAverage/100;
+
+
+        '<div class="playerCol-left">Jimmy Greaves<div class="playerCol-bg-img" style="background-image:url(images/Greaves.jpg)"></div><div class="playerCol-caption-panel">45 goals in all 57 matches<br>0.79 average-per-game</div></div>'
+
+        var playerName = item.firstname+" "+item.scorer;
+        htmlStr +="<div class='player-card-lower' id='lower-card_"+i+"'><div class='playerCol-left'>"+playerName+"<div class='playerCol-bg-img' style='background-image:url(images/"+item.scorer+".jpg)'></div><div class='playerCol-caption-panel'>"+item.goals+" goals in "+item.totalcaps+" matches<br>"+goalAverage+" average-per-game</div></div>"
+        htmlStr += "<div class='new-bar-chart' id='newBarChart_"+i+"'> </div></div>"    
+        return htmlStr;
+
     });
 
     targetClip.html(htmlStr);
@@ -45,7 +63,7 @@ function buildBestOfChart(targetClip, dataIn){
 
     var playerVals = [];
 
-    var graphH = 144;
+    var graphH = 152;
 
     var graphW = 900;
 
@@ -56,10 +74,10 @@ function buildBestOfChart(targetClip, dataIn){
 
     console.log(playerVals)
 
-    var colors = ['#4bc6df','#005689','#0094ff','#0d4bcf','#0066AE','#074285','#00187B','#285964','#405F83','#416545','#4D7069','#6E9985','#7EBC89','#0283AF','#79BCBF','#99C19E'];
+    var colors = globalColorsArr;
 
     var grid = d3.range(25).map(function(i){
-      return {'x1':0,'y1':0,'x2':0,'y2':180};
+      return {'x1':0,'y1':0,'x2':0,'y2':20};
     });
 
     var tickVals = grid.map(function(d,i){
@@ -73,7 +91,7 @@ function buildBestOfChart(targetClip, dataIn){
 
     var yscale = d3.scale.linear()
             .domain([0,categories.length])
-            .range([0,80]);
+            .range([0,150]);
 
     var colorScale = d3.scale.quantize()
             .domain([0,categories.length])
@@ -85,7 +103,6 @@ function buildBestOfChart(targetClip, dataIn){
 
     var grids = canvas.append('g')
             .attr('id','grid')
-            .attr('transform','translate(180,0)')
             .selectAll('line')
             .data(grid)
             .enter()
@@ -93,42 +110,42 @@ function buildBestOfChart(targetClip, dataIn){
             .attr({'x1':function(d,i){ return i*30; },
                'y1':function(d){ return d.y1; },
                'x2':function(d,i){ return i*30; },
-               'y2':function(d){ return d.y2; },
-            })
-            .style({'stroke':'#adadad','stroke-width':'1px'});
+               'y2':function(d){ return graphH; },
+            })            
+            .style({'stroke':'#FFFFFF','stroke-width':'1px'});
 
     // var xAxis = d3.svg.axis();
-    //   xAxis
+    //     xAxis
     //     .orient('bottom')
     //     .scale(xscale)
     //     .tickValues(tickVals);
 
     // var yAxis = d3.svg.axis();
-    //   yAxis
+    //     yAxis
     //     .orient('left')
     //     .scale(yscale)
     //     .tickSize(2)
     //     .tickFormat(function(d,i){ return categories[i]; })
-    //     .tickValues(d3.range(17));
+    //     .tickValues(d3.range(20));
 
     // var y_xis = canvas.append('g')
-    //           .attr("transform", "translate(180,0)")
+    //           .attr("transform", "translate(0,0)")
     //           .attr('id','yaxis')
     //           .call(yAxis);
 
     // var x_xis = canvas.append('g')
-    //           .attr("transform", "translate(180,480)")
+    //           .attr("transform", "translate(0,100)")
     //           .attr('id','xaxis')
     //           .call(xAxis);
 
     var chart = canvas.append('g')
-              .attr("transform", "translate(180,0)")
+              .attr("transform", "translate(0,36)")
               .attr('class','barsInBestOf')
               .selectAll('rect')
               .data(playerVals)
               .enter()
               .append('rect')
-              .attr('height',graphH/4) // 144/4 returns 36
+              .attr('height',(graphH/2)) // 144/4 returns 36
               .attr({'x':0,'y':function(d,i){ return yscale(i); }})
               .attr('id', function(d,i){ return 'bars-in-best-of_'+i; })
               .style('fill',function(d,i){ return colorScale(i); })
