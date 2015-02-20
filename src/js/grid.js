@@ -56,24 +56,35 @@ function buildHeatMapGrid(maxCaps, item, id, width, height, square)
                  .data(function (d) { return d; })
                  .enter().append("svg:rect")
                  .attr("class", "grid-cell")
+                 //.style("opacity", 0)
                  .attr("id", function (d,i){ return d.id})
                  .attr("x", function(d) { return d.x; })
                  .attr("y", function(d) { return d.y; })
                  .attr("width", function(d) { return d.width; })
                  .attr("height", function(d) { return d.height; })
-
-                 .on('mouseover', function() {
+            
+            .on('mouseover', function() {
                     d3.select(this)
                         //.style('fill', '#0F0');
                  })
-                 .on('mouseout', function() {
+
+            .on('mouseout', function() {
                     d3.select(this)
                         //.style('fill', '#FFF');
                  })
-                 .on('click', function() {
+
+            .on('click', function() {
                     currClip = d3.select(this)
                     console.log(currClip.attr("id"));
                  })
+
+            // col.enter().append('rect')
+            //   .attr('opacity', 1)
+
+            col.transition()
+                .delay(250) //function(d,i) { return i * 10; }
+                .duration(250)
+                .attr('opacity', 1)
 
       if (id=="#bar-chart_0"){
             grid.append("g")
@@ -86,14 +97,9 @@ function buildHeatMapGrid(maxCaps, item, id, width, height, square)
                     this.remove();
                 }
           });
+   
       }
-
-      
-
-
-
-
-                 
+               
 }
 
 ////////////////////////////////////////////////////////////////////////
