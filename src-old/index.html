@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- CSS_START -->
+		<!--  <link rel="stylesheet" href="css/local-fonts.css"/> -->
+		<link rel="stylesheet" href="http://pasteup.guim.co.uk/0.0.5/css/fonts.pasteup.min.css"/>
+		<link rel="stylesheet" href="css/factbox.css"/>
+		<link rel="stylesheet" href="css/main.css"/>
+		<link rel="stylesheet" href="css/bestOfGraph.css"/>
+		<link rel="stylesheet" href="css/grid.css"/>
+		
+
+		<!-- CSS_END -->
+		<!-- JS_START -->
+		<script src='js/libs/jquery-2.1.1.js' type="text/javascript"></script>
+		<script src='js/libs/TweenMax.min.js' type="text/javascript"></script>
+		<script src="js/libs/touchmouse.js"></script>
+		<script src="js/libs/triangle-solver.js"></script>
+		<script src="js/libs/d3/d3.js" charset="utf-8"></script>
+		<script src="js/libs/underscore/underscore-min.js" charset="utf-8"></script>
+		<script src="js/libs/datejs/date-en-GB.js"></script>
+		
+		
+		<!--<script src="//interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>-->
+			
+		<script src="http://interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>
+		
+		<title>Rooney goals</title>
+
+		</head>
+	<body>
+
+		<header id="interactiveHeader">
+        <div class="headerContent">
+            <h1>Rooney breaks the record</h1>
+            <h2>Placeholder for initial animation video</h2>
+ </header>
+
+		<div id='player-container'>
+			
+
+			<div id="sectionHeader1" class="section-header">
+					<h2>First among lions</h2>
+					<p>Rooney broke the England goalscoring record after 101 international caps, 12 years, one month and x days. How do these essential career statistics compare with England's next highest scorers?</p>
+			</div>
+
+			<div id="graphsHolder">
+
+			</div>
+
+			<div id="heatmap-key">
+				<div class="key-item-title">Key</div>
+				<div class="key-item" id="key-item-1"><div class="key-item-color-one"></div>Scored</div>
+				<div class="key-item" id="key-item-2"><div class="key-item-color-two"></div>Didn't score</div>
+				<!-- <div class="key-item-short" id="key-item-3"><div class="key-item-color-three"></div>Imports</div>
+				<div class="key-item-short" id="key-item-4"><div class="key-item-color-four"></div>Exports</div> -->
+				
+			</div>
+			
+			
+			<div id="sectionHeader2" class="section-header">
+					<h2>Explore the data</h2>
+					<p>Who scored in tournaments, who headed the most goals, who hit the most shots, who was a fox-in-the-box - use the filters to find out below</p>
+			</div>
+
+				<div id="drop-down-holder">
+				<div class="drop-down-text-title">Select </div>
+
+				<div class="styled-select">
+					<select id="filter-dropdown">
+						  <option value="all" id="select_All"selected>All goals</option>
+						  <option value="tournaments" id="select_Tournaments">Tournaments</option>
+						  <option value="qualifiers" id="select_Qualifiers">Qualifiers</option>
+						  <option value="friendlies" id="select_Friendlies">Friendlies</option>
+						</select>
+					</div>	
+				</div>
+
+			
+				<div id="cardsHolder" class="cards-holder">
+
+
+				</div>
+
+
+				<div id="sectionHeader2" class="section-header">
+					<h2>Comparison with others</h2>
+					<p>Who scored in tournaments, who headed the most goals, who hit the most shots, who was a fox-in-the-box - use the filters to find out below</p>
+				</div>
+				<div class="graphBarHolder" id="bestGraph"> 
+				
+
+				</div>
+
+
+				<!-- <div class="nav-button" id="previous-button" data-direction="-1" ></div>
+				<div class="nav-button" id="next-button" data-direction="1" ></div> -->
+
+</div>
+	
+		<script src="js/barGraphBuilder.js"></script>
+		<script src="js/goalsViewBuilder.js"></script>
+		<script src="js/bestOfRestBuilder.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/grid.js"></script>
+		
+		
+
+
+	</body>
+</html>

@@ -4,6 +4,76 @@ select:focus {
 	outline:none
 }
 
+body {
+	font-family:"Guardian Agate Sans",Arial,sans-serif;
+	font-size:10px;
+	color:#EFEFEF;
+	background-color:#4b4b4b;
+	margin:0px;
+	padding:0px;
+	overflow-x:hidden;
+}
+
+body:after{
+   display:none;
+  /* content: url(../images/splash-1260.jpg) url(../images/splash-739.jpg) url(../images/background0.png) url(../images/concentric-circles/background1.png) url(../images/concentric-circles/background2.png) url(../images/concentric-circles/background3.png) url(../images/concentric-circles/background4.png) url(../images/concentric-circles/background5.png) url(../images/concentric-circles/background6.png) url(../images/concentric-circles/background7.png) url(../images/concentric-circles/background8.png) url(../images/concentric-circles/background9.png) url(../images/concentric-circles/background10.png) url(../images/concentric-circles/background11.png)  url(../images/concentric-circles/background12.png) url(../images/concentric-circles/background13.png) url(../images/concentric-circles/background1.png) url(../images/concentric-circles/background14.png) url(../images/concentric-circles/background15.png) url(../images/concentric-circles/background16.png) url(../images/concentric-circles/background17.png) url(../images/concentric-circles/background18.png) url(../images/concentric-circles/background19.png) url(../images/concentric-circles/background20.png);*/
+}
+
+p {
+	font-family:"Guardian Egyptian Headline",Georgia,serif;
+	font-weight:200;
+	font-size:1.8em;
+	line-height:1.5em;
+	color:#767676
+}
+
+h2 {
+	font-family:"Guardian Egyptian Headline",Georgia,serif;
+	font-weight:400;
+	font-size:3em;
+	line-height:1.2em;
+	color:#333
+}
+
+h3 {
+	font-family:"Guardian Egyptian Headline",Georgia,serif;
+	font-weight:400;
+	font-size:2.4em;
+	line-height:1.05em;
+	color:#333
+}
+
+h4 {
+	font-family:"Guardian Egyptian Headline",Georgia,serif;
+	font-weight:400;
+	font-size:2.4em;
+	text-align:center;
+	line-height:1.5em;
+	color:#767676
+}
+
+h5 {
+	display:inline!important;
+	font-family:"Guardian Egyptian Headline",Georgia,serif;
+	font-weight:500;
+	font-size:2.2em;
+	text-align:left;
+	line-height:1.2em;
+	padding:0 0 12px;
+	margin:0;
+	color:#333
+}
+
+h6 {
+	font-family:"Guardian Egyptian Headline",Georgia,serif;
+	font-weight:400;
+	font-size:1.8em;
+	text-align:left;
+	line-height:1.5em;
+	padding:0;
+	margin:0;
+	color:#333
+}
 
 #loading {
 	font-size: 14px;

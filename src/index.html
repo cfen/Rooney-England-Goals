@@ -1,114 +1,277 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en-GB"><head>
+<meta charset="utf-8">
+<title>Rooney goals interactive</title>
 
-		<!-- CSS_START -->
-		<!--  <link rel="stylesheet" href="css/local-fonts.css"/> -->
-		<link rel="stylesheet" href="http://pasteup.guim.co.uk/0.0.5/css/fonts.pasteup.min.css"/>
-		<link rel="stylesheet" href="css/factbox.css"/>
-		<link rel="stylesheet" href="css/main.css"/>
-		<link rel="stylesheet" href="css/bestOfGraph.css"/>
-		<link rel="stylesheet" href="css/grid.css"/>
-		
-
-		<!-- CSS_END -->
-		<!-- JS_START -->
-		<script src='js/libs/jquery-2.1.1.js' type="text/javascript"></script>
-		<script src='js/libs/TweenMax.min.js' type="text/javascript"></script>
-		<script src="js/libs/touchmouse.js"></script>
-		<script src="js/libs/triangle-solver.js"></script>
-		<script src="js/libs/d3/d3.js" charset="utf-8"></script>
-		<script src="js/libs/underscore/underscore-min.js" charset="utf-8"></script>
-		<script src="js/libs/datejs/date-en-GB.js"></script>
-		
-		
-		<!--<script src="//interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>-->
-			
-		<script src="http://interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>
-		
-		<title>Rooney goals</title>
-
-		</head>
-	<body>
-
-		<header id="interactiveHeader">
-        <div class="headerContent">
-            <h1>Rooney breaks the record</h1>
-            <h2>Placeholder for initial animation video</h2>
- </header>
-
-		<div id='player-container'>
-			
-
-			<div id="sectionHeader1" class="section-header">
-					<h2>First among lions</h2>
-					<p>Rooney broke the England goalscoring record after 101 international caps, 12 years, one month and x days. How do these essential career statistics compare with England's next highest scorers?</p>
-			</div>
-
-			<div id="graphsHolder">
-
-			</div>
-
-			<div id="heatmap-key">
-				<div class="key-item-title">Key</div>
-				<div class="key-item" id="key-item-1"><div class="key-item-color-one"></div>Scored</div>
-				<div class="key-item" id="key-item-2"><div class="key-item-color-two"></div>Didn't score</div>
-				<!-- <div class="key-item-short" id="key-item-3"><div class="key-item-color-three"></div>Imports</div>
-				<div class="key-item-short" id="key-item-4"><div class="key-item-color-four"></div>Exports</div> -->
-				
-			</div>
-			
-			
-			<div id="sectionHeader2" class="section-header">
-					<h2>Explore the data</h2>
-					<p>Who scored in tournaments, who headed the most goals, who hit the most shots, who was a fox-in-the-box - use the filters to find out below</p>
-			</div>
-
-				<div id="drop-down-holder">
-				<div class="drop-down-text-title">Select </div>
-
-				<div class="styled-select">
-					<select id="filter-dropdown">
-						  <option value="all" id="select_All"selected>All goals</option>
-						  <option value="tournaments" id="select_Tournaments">Tournaments</option>
-						  <option value="qualifiers" id="select_Qualifiers">Qualifiers</option>
-						  <option value="friendlies" id="select_Friendlies">Friendlies</option>
-						</select>
-					</div>	
-				</div>
-
-			
-				<div id="cardsHolder" class="cards-holder">
+    <link rel="stylesheet" href="http://pasteup.guim.co.uk/0.0.5/css/fonts.pasteup.min.css"/>
+    <link rel="stylesheet" href="http://pasteup.guim.co.uk/0.0.5/css/fonts.pasteup.min.css"/>
+    <link rel="stylesheet" href="css/factbox.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/bestOfGraph.css"/>
+    <link rel="stylesheet" href="css/grid.css"/>
+    <link rel="stylesheet" href="css/graphicHolders.css"/>
 
 
-				</div>
+    <script async="" type="text/javascript" src="http://partner.googleadservices.com/gpt/pubads_impl_56.js"></script>
+    <script src='js/libs/jquery-2.1.1.js' type="text/javascript"></script>
+    <script src='js/libs/TweenMax.min.js' type="text/javascript"></script>
+    <script src="js/libs/touchmouse.js"></script>
+    <script src="js/libs/triangle-solver.js"></script>
+    <script src="js/libs/d3/d3.js" charset="utf-8"></script>
+    <script src="js/libs/underscore/underscore-min.js" charset="utf-8"></script>
+    <script src="js/libs/datejs/date-en-GB.js"></script>
+    <script src="http://interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>
+
+</head>
 
 
-				<div id="sectionHeader2" class="section-header">
-					<h2>Comparison with others</h2>
-					<p>Who scored in tournaments, who headed the most goals, who hit the most shots, who was a fox-in-the-box - use the filters to find out below</p>
-				</div>
-				<div class="graphBarHolder" id="bestGraph"> 
-				
-
-				</div>
-
-
-				<!-- <div class="nav-button" id="previous-button" data-direction="-1" ></div>
-				<div class="nav-button" id="next-button" data-direction="1" ></div> -->
-
-</div>
-	
-		<script src="js/barGraphBuilder.js"></script>
-		<script src="js/goalsViewBuilder.js"></script>
-		<script src="js/bestOfRestBuilder.js"></script>
-		<script src="js/main.js"></script>
-		<script src="js/grid.js"></script>
-		
-		
+    <div class="guInteractive">
+        <div id="guardianNav">
+            <nav id="navContainer">
+                <a href="http://theguardian.com" id="backtohome">
+                    <img id="homeLogo" src="http://interactive.guim.co.uk/visuals-blank-page/watch-me-date/assets-1423846742764/imgs/homeLogo.svg"><span>home</span></a>
+                    <a href="http://theguardian.com">
+                    <img id="guardianLogo" src="http://interactive.guim.co.uk/visuals-blank-page/watch-me-date/assets-1423846742764/imgs/guardianLogo.png">
+                </a>
+            </nav>
+        </div>
 
 
-	</body>
+        <div id="content">
+
+            <div id="mainVideoContainer">
+                <div class="contentBlock" id="mainEpisode">
+                    <div id="mainEpisodeVideo">
+                        <div id="backgroundLayer">
+                            
+                        </div>
+
+
+                        <div id="backgroundContainer">
+                            <!--                 http://http://static.guim.co.uk/sys-images/Sport/Pix/columnists/2014/9/5/1409915651282/wayne-rooney-england-norw-014.jpg  --><img id="backgroundImage"
+                            src="imgs/wayne-rooney-england-norw-014.jpg" width="100%">
+
+                            <div id="videoContainer">
+                            </div>
+                            <button class="startVideo" data-date=
+                            "iansarah"><span></span></button>
+                        </div>
+                    </div>
+
+
+                    <div id="mainEpisodeContent">
+                        <h3>First among lions</h3>
+                        28 March 2015
+
+                        <p id="episodeDescription">Copy here copy here copy
+                        here copy here copy here copy here copy here copy here
+                        copy here copy here copy here copy here copy here</p>
+
+
+                        <div id="shareButtons">
+                            <button data-couple="iansarah" data-source=
+                            "twitter" id="shareTwitter"></button>
+                            <button data-couple="iansarah" data-source=
+                            "facebook" id="shareFacebook"></button>
+                        </div>
+                    </div>
+
+                </div>
+            
+                
+            </div>               
+
+              <div class="contentBlock">
+                       <h4 class="sectionHeading">Explore the data</h4>
+
+                                <div id="aboutDatesContainer">
+                                    <div id="shareButtons">
+                                        <button data-couple="iansarah" data-source="twitter" id="shareTwitter"></button>
+                                        <button data-couple="iansarah" data-source="facebook" id="shareFacebook"></button>
+                                    </div>
+                                </div>
+
+                        <div id="lhCol1" class="left-col-copy">
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam
+                        </div>    
+                </div>
+                        <div id="graphsHolder" class="basic-content">
+                        
+
+                        </div>
+                
+
+
+                <div class="contentBlock">
+                       <h4 class="sectionHeading">Explore the data</h4>
+
+                        <div id="aboutDatesContainer">
+                            <div id="shareButtons">
+                                <button data-couple="iansarah" data-source="twitter" id="shareTwitter"></button>
+                                <button data-couple="iansarah" data-source="facebook" id="shareFacebook"></button>
+                            </div>
+                        </div>
+
+                        <div id="lhCol1" class="left-col-copy">
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam
+                        </div>    
+                </div>
+
+                <div class="basic-content" id="cardsHolder">
+
+                </div>
+
+                <div class="contentBlock">
+                    <h4 class="sectionHeading">Comparison with all-time legends</h4>
+
+
+                        <div id="aboutDatesContainer">
+                            <div id="shareButtons">
+                                <button data-couple="iansarah" data-source=
+                                "twitter" id="shareTwitter"></button>
+                                <button data-couple="iansarah" data-source=
+                                "facebook" id="shareFacebook"></button>
+                            </div>
+
+                        </div>
+
+                <div id="lhCol1" class="left-col-copy">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam
+                </div>
+            </div>
+
+                <div id="bestGraph" class="basic-content">
+
+
+                </div>
+        
+
+                <footer>
+       
+                    <div id="footerContent">
+                        <ul class="colophon u-cf">
+                            <li class="colophon__item">
+                                <a data-link-name="uk : footer : membership"
+                                href=
+                                "https://membership.theguardian.com/?INTCMP=NGW_FOOTER_UK_GU_MEMBERSHIP">
+                                membership</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="uk : footer : jobs" href=
+                                "http://jobs.theguardian.com/?INTCMP=NGW_FOOTER_UK_GU_JOBS">
+                                jobs</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="uk : footer : soulmates"
+                                href=
+                                "https://soulmates.theguardian.com/?INTCMP=NGW_FOOTER_UK_GU_SOULMATES">
+                                dating</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="uk : footer : masterclasses"
+                                href=
+                                "/guardian-masterclasses?INTCMP=NGW_FOOTER_UK_GU_MASTERCLASSES">
+                                masterclasses</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="uk : footer : subscribe"
+                                href=
+                                "http://subscribe.theguardian.com/?INTCMP=NGW_FOOTER_UK_GU_SUBSCRIBE"
+                                target="_blank">subscribe</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="all topics" href=
+                                "/index/subjects/a">all topics</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="all contributors" href=
+                                "/index/contributors">all contributors</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="uk : footer : about us"
+                                href="/info" target="_blank">about us</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="uk : footer : contact us"
+                                href="/help/contact-us" target="_blank">contact
+                                us</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="complaints" href=
+                                "/info/complaints-and-corrections">complaints
+                                &amp; corrections</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="terms" href=
+                                "/help/terms-of-service">terms &amp;
+                                conditions</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="privacy" href=
+                                "/help/privacy-policy">privacy policy</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="cookie" href=
+                                "/info/cookies">cookie policy</a>
+                            </li>
+
+
+                            <li class="colophon__item">
+                                <a data-link-name="securedrop" href=
+                                "https://securedrop.theguardian.com/">securedrop</a>
+                            </li>
+                        </ul>
+
+
+                        <div class="l-footer__misc">
+                            <div class="really-serious-copyright">
+                                © 2015 Guardian News and Media Limited or its
+                                affiliated companies.
+                                All&nbsp;rights&nbsp;reserved.
+                            </div>
+                        </div>
+
+                    </div>
+                </footer>
+
+                   
+
+        </div>
+
+            
+
+
+    </div>
+</figure>
+
+
+        <script src="js/app/barGraphBuilder.js"></script>
+        <script src="js/app/goalsViewBuilder.js"></script>
+        <script src="js/app/bestOfRestBuilder.js"></script>
+        <script src="js/app/main.js"></script>
+        <script src="js/app/grid.js"></script>
+
 </html>

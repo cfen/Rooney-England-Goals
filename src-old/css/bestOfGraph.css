@@ -1,0 +1,63 @@
+ #xaxis .domain {
+    fill:none;
+    stroke:#000;
+  }
+  #xaxis text, #yaxis text {
+    font-size: 12px;
+  }
+
+#graphHolder {
+	top: 4px;
+}
+
+.graphBarHolder {
+	clear: right;
+	float: left;
+	height: 600px;
+	margin: 0 0 2px;
+	position: relative;
+	width: 100%;
+}
+
+.graphBarHorizontal {
+	position: relative;
+	background-color: #EFEFEF;
+	left: 0px;
+	top: 0px;
+	width: 99%;
+	margin: 0 0 1%;
+}
+
+
+.new-bar-chart .legend {
+  fill: black;
+  font: 15px  "Guardian Agate Sans", Arial, sans-serif;
+  text-anchor: start;
+ 
+}
+
+.new-bar-chart text {
+	fill:#FFF;
+  	font: 27px "Guardian Egyptian Headline", Arial, sans-serif;
+	font-weight: 200;
+	line-height: 36px;
+	text-align:center;
+	text-anchor: end;
+}
+
+.new-bar-chart .label {
+  fill: black;
+  font: 15px  "Guardian Agate Sans", Arial, sans-serif;
+  text-anchor: end;
+}
+
+.bar:hover {
+  fill: #005689;
+}
+
+.new-bar-chart .axis path,
+.new-bar-chart .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
