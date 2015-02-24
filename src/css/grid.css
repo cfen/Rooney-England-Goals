@@ -1,0 +1,36 @@
+.grid-cell{
+	fill: none;
+	stroke: none;
+
+}
+
+.grid-cell-cap{
+	fill: rgb(241,241,241);
+	/*stroke: rgb(189,189,189);*/
+}
+
+.grid-cell-goal{
+	fill: rgb(75,198,223);
+	/*stroke: rgb(255,255,255);
+	fill: rgb(0,86,137);
+	stroke: rgb(0,26,77);*/
+}
+
+
+
+.grid-cell-highlighted{
+	fill: rgb(255,204,0);
+	stroke: rgb(215,164,0);
+}
+
+.graphStats{
+	float:left;
+	clear: left;
+	font-family:"Guardian Egyptian Headline", Georgia, serif;
+	font-size:16px;
+	line-height: 1.2;
+	font-weight:200;
+	text-align:left;
+	color: #767676;
+}
+
