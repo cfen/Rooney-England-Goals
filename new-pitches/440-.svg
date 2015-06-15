@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="440px" height="379px" viewBox="0 0 440 379" enable-background="new 0 0 440 379" xml:space="preserve">
+<g id="Page-1" sketch:type="MSPage">
+	<g id="_x36_00" sketch:type="MSLayerGroup">
+		<path id="goal-frame" sketch:type="MSShapeGroup" fill="#4BC6DF" fill-opacity="0.5" d="M189.294,378.049v-16.111h64.037v15.917
+			L189.294,378.049z"/>
+		<path id="touchline" sketch:type="MSShapeGroup" fill="#76A96E" fill-opacity="0.3" d="M-0.339,0.75v360h440.25v-360"/>
+		<path id="d-edge" sketch:type="MSShapeGroup" fill="#76A96E" fill-opacity="0.3" d="M268.292,223.802
+			c-9.407-17.871-27.944-30.029-49.275-30.029c-21.252,0-39.732,12.068-49.17,29.832"/>
+		<path id="center-circle" fill="#76A96E" fill-opacity="0.3" d="M153.426,0.5c0.108,36.561,29.774,66.167,66.359,66.167
+			c36.586,0,66.253-29.606,66.36-66.167H153.426z"/>
+		<path id="penalty-area" sketch:type="MSShapeGroup" fill="#76A96E" fill-opacity="0.3" d="M90.801,360.931V224.727h256.805
+			v136.204"/>
+		<path id="six-yard-box" sketch:type="MSShapeGroup" fill="#76A96E" fill-opacity="0.3" d="M160.842,360.931v-45.657h116.638
+			v45.107L160.842,360.931z"/>
+		<ellipse id="penalty-spot" sketch:type="MSShapeGroup" fill="#FCFADF" cx="219.271" cy="267.697" rx="1.396" ry="1.417">
+		</ellipse>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="130px" height="71px" viewBox="0 0 130 71" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>130</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#C8E0C2" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#C8E0C2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="130" sketch:type="MSLayerGroup">
+            <path d="M55.5454545,71 L55.5454545,66.207007 L74.4545455,66.207007 L74.4545455,70.9423517 L55.5454545,71 Z" id="goal-frame" fill-opacity="0.5" fill="#FF5B3A" sketch:type="MSShapeGroup"></path>
+            <path d="M-1.42108547e-14,0 L-1.42108547e-14,65.8467742 L130,65.8467742 L129.999997,0 L-1.42108547e-14,0 Z" id="touchline" fill="url(#linearGradient-1)" sketch:type="MSShapeGroup"></path>
+            <path d="M79.2968054,24.8143016 C76.519271,19.4975295 71.0453043,15.8805811 64.7465806,15.8805811 C58.471144,15.8805811 53.014377,19.4708341 50.2272727,24.7554006" id="d-edge" fill-opacity="0.3" fill="#77AB6F" sketch:type="MSShapeGroup"></path>
+            <path d="M27.1304348,65.7145309 L27.1304348,25.1935484 L102.961488,25.1935484 L102.961488,65.7145309" id="penalty-area" fill-opacity="0.3" fill="#77AB6F" sketch:type="MSShapeGroup"></path>
+            <path d="M47.5681818,65.7105864 L47.5681818,52.1275903 L82.0101721,52.1275903 L82.0101721,65.5472152 L47.5681818,65.7105864 Z" id="six-yard-box" fill-opacity="0.3" fill="#77AB6F" sketch:type="MSShapeGroup"></path>
+            <ellipse id="penalty-spot" fill="#FFFFDF" sketch:type="MSShapeGroup" cx="64.8215529" cy="38.1700781" rx="0.412461949" ry="0.421466715"></ellipse>
+        </g>
+    </g>
+</svg>

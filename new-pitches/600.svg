@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600px" height="413px" viewBox="0 0 600 413" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>600</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="600" sketch:type="MSLayerGroup">
+            <path d="M256.363636,413 L256.363636,391.119205 L343.636364,391.119205 L343.636364,412.736826 L256.363636,413 Z" id="goal-frame-2" fill-opacity="0.5" fill="#FF5B3A" sketch:type="MSShapeGroup"></path>
+            <path d="M-5.68434189e-14,0 L-5.68434189e-14,389.751656 L600,389.751656 L599.999986,0" id="touchline-2" fill-opacity="0.3" fill="#77AB6F" sketch:type="MSShapeGroup"></path>
+            <path d="M365.985256,202.154752 C353.165866,177.88282 327.901404,161.370861 298.830372,161.370861 C269.866818,161.370861 244.68174,177.760952 231.818182,201.88586" id="d-edge-2" fill-opacity="0.3" fill="#77AB6F" sketch:type="MSShapeGroup"></path>
+            <path d="M124.090909,388.749796 L124.090909,203.764901 L474.080385,203.764901 L474.080385,388.749796" id="penalty-area-2" fill-opacity="0.3" fill="#77AB6F" sketch:type="MSShapeGroup"></path>
+            <path d="M219.545455,388.852964 L219.545455,326.844371 L378.508487,326.844371 L378.508487,388.107148 L219.545455,388.852964 Z" id="six-yard-box-2" fill-opacity="0.3" fill="#77AB6F" sketch:type="MSShapeGroup"></path>
+            <ellipse id="penalty-spot-2" fill="#FFFFDF" sketch:type="MSShapeGroup" cx="299.176398" cy="263.126051" rx="1.90367053" ry="1.92406431"></ellipse>
+        </g>
+    </g>
+</svg>

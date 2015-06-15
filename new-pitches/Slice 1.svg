@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="440px" height="313px" viewBox="0 0 440 313" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="440" sketch:type="MSLayerGroup">
+            <path d="M188,313 L188,296.865841 L252,296.865841 L252,312.805944 L188,313 L188,313 Z" id="Shape" fill-opacity="0.5" fill="#FF5B3A" sketch:type="MSShapeGroup"></path>
+            <path d="M0,0 L0,296 L440,296 L439.999989,0 L0,0 L0,0 Z" id="Shape" fill-opacity="0.3" fill="#77AB6F" sketch:type="MSShapeGroup"></path>
+            <path d="M268.389187,158.529832 C258.988302,140.632529 240.46103,128.457167 219.142273,128.457167 C197.902333,128.457167 179.433276,140.542667 170,158.33156" id="Shape" fill-opacity="0.3" fill="#77AB6F" sketch:type="MSShapeGroup"></path>
+            <path d="M92,296.401617 L92,160 L348.658949,160 L348.658949,296.401617" id="Shape" fill-opacity="0.3" fill="#77AB6F" sketch:type="MSShapeGroup"></path>
+            <path d="M161,295.723044 L161,250 L277.57289,250 L277.57289,295.173104 L161,295.723044 L161,295.723044 Z" id="Shape" fill-opacity="0.3" fill="#77AB6F" sketch:type="MSShapeGroup"></path>
+            <ellipse id="Oval" fill="#FFFFDF" sketch:type="MSShapeGroup" cx="219.396025" cy="203.488009" rx="1.39602506" ry="1.41874007"></ellipse>
+        </g>
+    </g>
+</svg>
